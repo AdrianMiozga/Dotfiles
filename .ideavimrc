@@ -1,0 +1,40 @@
+set ignorecase
+set incsearch
+set ideajoin
+set ideamarks
+set clipboard=unnamed
+set clipboard+=ideaput
+set number relativenumber
+set surround
+set multiple-cursors
+set argtextobj
+set commentary
+
+let mapleader = " "
+:map <leader>sj :action FileStructurePopup<CR>
+:map <leader>pr :action ActivateProjectToolWindow<CR>
+:map <leader>bv :action SelectBuildVariant<CR>
+:map <leader>vc :action Vcs.Show.Log<CR>
+:map <leader>lc :action ActivateLogcatToolWindow<CR>
+:map <leader>ru :action ActivateRunToolWindow<CR>
+:map <leader>me :action ActivateMessagesToolWindow<CR>
+:map <leader>ic :action InspectCode<CR>
+:map <leader>sd :action DeviceAndSnapshotComboBox<CR>
+:map <leader>ed :action ExternalJavaDoc<CR>
+:map <leader>co :action CheckinProject<CR>
+:map <leader>ir :action ActivateInspectionResultsToolWindow<CR>
+:map <leader>bu :action ActivateBuildToolWindow<CR>
+:nmap <Enter> :action EditorStartNewLine<CR>
+:nmap <S-Enter> :action EditorStartNewLineBefore<CR>
+:map <leader>td :action ActivateTODOToolWindow<CR>
+:map <leader>fe :action ActivateDeviceFileExplorerToolWindow<CR>
+:map <leader>cs :action ChangeSignature<CR>
+:map <leader>fi :action ActivateFindToolWindow<CR>
+:map <leader>fu :action FindUsages<CR>
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
+:map <leader>ij mio<Esc>`i
+:map <leader>ik miO<Esc>`i
+nnoremap Y y$
+
+:map <leader>re :action RenameElement<CR>
