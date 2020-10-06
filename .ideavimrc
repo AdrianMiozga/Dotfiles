@@ -1,14 +1,13 @@
-set ignorecase
-set incsearch
+source ~/.vimrc
+
 set ideajoin
 set ideamarks
-set clipboard=unnamed
 set clipboard+=ideaput
-set number relativenumber
 set surround
 set multiple-cursors
 set argtextobj
 set commentary
+set ReplaceWithRegister
 
 let mapleader = " "
 :map <leader>sj :action FileStructurePopup<CR>
@@ -31,10 +30,7 @@ let mapleader = " "
 :map <leader>cs :action ChangeSignature<CR>
 :map <leader>fi :action ActivateFindToolWindow<CR>
 :map <leader>fu :action FindUsages<CR>
+:map <leader>re :action RenameElement<CR>
+
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
-:map <leader>ij mio<Esc>`i
-:map <leader>ik miO<Esc>`i
-nnoremap Y y$
-
-:map <leader>re :action RenameElement<CR>
