@@ -4,7 +4,7 @@
 ; 
 ; It's written with this setup in mind:
 ; Windows as host machine with dual-key-remap
-; Linux VM on VirtualBox with caps2esc
+; Linux VM on VirtualBox with caps2esc OR Windows VM on VirtualBox with dual-key-remap
 ; 
 ; Basically, it kills the dual-key-remap process whenever you switch to VM
 ; and starts it when you switch out.
