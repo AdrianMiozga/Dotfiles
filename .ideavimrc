@@ -31,6 +31,7 @@ let mapleader = " "
 :map <leader>fi :action ActivateFindToolWindow<CR>
 :map <leader>fu :action FindUsages<CR>
 :map <leader>re :action RenameElement<CR>
+:map <leader>em :action ActivateAndroidEmulatorToolWindow<CR>
 
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
