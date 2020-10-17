@@ -1,0 +1,231 @@
+" Command used to edit files in various contexts.
+
+set vicmd=vim
+
+" This makes vifm perform file operations on its own instead of relying on
+" standard utilities like `cp`. While using `cp` and alike is a more universal
+" solution, it's also much slower when processing large amounts of files and
+" doesn't support progress measuring.
+
+set syscalls
+
+" Trash Directory
+" The default is to move files that are deleted with dd or :d to
+" the trash directory. If you change this you will not be able to move
+" files by deleting them and then using p to put the file in the new location.
+" I recommend not changing this until you are familiar with vifm.
+" This probably shouldn't be an option.
+
+set trash
+
+" This is how many directories to store in the directory history.
+
+set history=100
+
+" Automatically resolve symbolic links on l or Enter.
+
+set nofollowlinks
+
+" Natural sort of (version) numbers within text.
+
+set sortnumbers
+
+" Maximum number of changes that can be undone.
+
+set undolevels=100
+
+" Use Vim's format of help file (has highlighting and "hyperlinks").
+" If you would rather use a plain text help file set novimhelp.
+
+set vimhelp
+
+" If you would like to run an executable file when you
+" press Enter, l or Right Arrow, set this.
+
+set norunexec
+
+" List of color schemes to try (picks the first one supported by the terminal)
+
+colorscheme onedark
+
+" Format for displaying time in file list.
+" See man date or man strftime for details.
+
+set timefmt=%d.%m.%Y\ %H:%M
+
+" Show list of matches on tab completion in command-line mode
+
+set wildmenu
+
+" Display completions in a form of popup with descriptions of the matches
+
+set wildstyle=popup
+
+" Display suggestions in normal, visual and view modes for keys, marks and
+" registers (at most 5 files). In other view, when available.
+
+set suggestoptions=normal,visual,view,otherpane,keys,marks,registers
+
+" Ignore case in search patterns unless it contains at least one uppercase
+" letter
+
+set ignorecase
+set smartcase
+
+" Don't highlight search results automatically
+
+set nohlsearch
+
+" Use increment searching (search while typing)
+set incsearch
+
+" Don't do too many requests to slow file systems
+
+if !has('win')
+    set slowfs=curlftpfs
+endif
+
+" Enable Ranger-like mode
+" set millerview
+
+" ------------------------------------------------------------------------------
+
+" :com[mand][!] command_name action
+" The following macros can be used in a command
+" %a is replaced with the user arguments.
+" %c the current file under the cursor.
+" %C the current file under the cursor in the other directory.
+" %f the current selected file, or files.
+" %F the current selected file, or files in the other directory.
+" %b same as %f %F.
+" %d the current directory name.
+" %D the other window directory name.
+" %m run the command in a menu window
+
+command! df df -h %m 2> /dev/null
+command! diff vim -d %f %F
+command! zip zip -r %f.zip %f
+command! run !! ./%f
+command! make !!make %a
+command! mkcd :mkdir %a | cd %a
+command! vgrep vim "+grep %a"
+command! reload :write | restart full
+
+" Open all other files with default system programs (you can also remove all
+" :file[x]type commands above to ensure they don't interfere with system-wide
+" settings). By default all unknown files are opened with 'vi[x]cmd'
+" uncommenting one of lines below will result in ignoring 'vi[x]cmd' option
+" for unknown file types.
+" For *nix:
+" filetype * xdg-open
+" For OS X:
+" filetype * open
+" For Windows:
+filetype * start, explorer &
+
+" ------------------------------------------------------------------------------
+
+" What should be saved automatically between vifm sessions. Drop "savedirs"
+" value if you don't want vifm to remember last visited directories for you.
+set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
+    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
+
+" ------------------------------------------------------------------------------
+
+" Examples of configuring both panels
+
+" Customize view columns a bit (enable ellipsis for truncated file names)
+
+set viewcolumns=-{name}..,6{}.
+
+" Filter-out build and temporary files
+"
+" filter! {*.lo,*.o,*.d,*.class,*.pyc,*.pyo,.*~}
+
+" ------------------------------------------------------------------------------
+
+" Display sorting dialog
+nnoremap s :sort<cr>
+
+" Toggle visibility of preview window
+nnoremap w :view<cr>
+vnoremap w :view<cr>gv
+
+" Interaction with system clipboard
+if has('win')
+    " Yank current directory path to Windows clipboard
+    nnoremap yd :!pwsh -NoProfile -Command
+        \ "$s = \"%d\"
+        \ -replace '\\ ', ' '
+        \ -replace '\\&', '&'
+        \ -replace '\\''', '''';
+        \ Set-Clipboard -Value $s" & <cr>
+
+    " Yank path to current file to Windows clipboard
+    nnoremap yf :!pwsh -NoProfile -Command
+        \ "$s = \"%d\%c\"
+        \ -replace '\\ ', ' '
+        \ -replace '\\&', '&'
+        \ -replace '\\''', '''';
+        \ Set-Clipboard -Value $s" & <cr>
+elseif executable('xclip')
+    " Yank current directory path into the clipboard
+    nnoremap yd :!echo %d | xclip %i<cr>
+    " Yank current file path into the clipboard
+    nnoremap yf :!echo %c:p | xclip %i<cr>
+elseif executable('xsel')
+    " Yank current directory path into primary and selection clipboards
+    nnoremap yd :!echo -n %d | xsel --input --primary %i &&
+                \ echo -n %d | xsel --clipboard --input %i<cr>
+    " Yank current file path into into primary and selection clipboards
+    nnoremap yf :!echo -n %c:p | xsel --input --primary %i &&
+                \ echo -n %c:p | xsel --clipboard --input %i<cr>
+endif
+
+" Mappings for faster renaming
+nnoremap I cw<c-a>
+nnoremap cc cw<c-u>
+nnoremap A cw
+
+" Open editor to edit vifmrc and apply settings after returning to vifm
+nnoremap ,c :write | edit $MYVIFMRC | restart full<cr>
+" Open gvim to edit vifmrc
+nnoremap ,C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
+
+" Toggle wrap setting on ,w key
+nnoremap ,w :set wrap!<cr>
+
+" Example of standard two-panel file managers mappings
+nnoremap <f3> :!less %f<cr>
+nnoremap <f4> :edit<cr>
+nnoremap <f5> :copy<cr>
+nnoremap <f6> :move<cr>
+nnoremap <f7> :mkdir<Space>
+nnoremap <f8> :delete<cr>
+
+" Midnight commander alike mappings
+" Open current directory in the other pane
+nnoremap <a-i> :sync<cr>
+" Open directory under cursor in the other pane
+nnoremap <a-o> :sync %c<cr>
+" Swap panes
+" nnoremap <c-u> <c-w>x
+
+" Quick way to jump to bookmarks
+nnoremap b :bmgo<Space>
+
+" Open file in GIMP
+nnoremap gp :!gimp-2.10 %"f & <cr>
+
+" Use PowerShell to unpack archive
+nnoremap gz :!pwsh -NoProfile -Command "Expand-Archive %"f" <cr>
+
+nnoremap <Space> <nop>
+
+" Open VLC and hide any errors
+nnoremap <Space>vo :!vlc -q 2>&1 %"c & <cr>
+nnoremap <Space>vd :!vlc -q 2>&1 dvd:///%"c & <cr>
+nnoremap <Space>vb :!vlc -q 2>&1 bluray:///%"c & <cr>
+
+" Open current folder in Windows File Explorer
+nnoremap <Space>fe :!explorer . & <cr>
