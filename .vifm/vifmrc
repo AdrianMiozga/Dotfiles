@@ -144,6 +144,8 @@ set viewcolumns=-{name}..,6{}.
 
 " ------------------------------------------------------------------------------
 
+nnoremap <Space> <nop>
+
 " Display sorting dialog
 nnoremap s :sort<cr>
 
@@ -187,21 +189,14 @@ nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
 
-" Open editor to edit vifmrc and apply settings after returning to vifm
-nnoremap ,c :write | edit $MYVIFMRC | restart full<cr>
-" Open gvim to edit vifmrc
-nnoremap ,C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
+" Copy between two panes
+nnoremap <Space>cp :copy<cr>
 
-" Toggle wrap setting on ,w key
-nnoremap ,w :set wrap!<cr>
+" Move between two panes
+nnoremap <Space>mv :move<cr>
 
-" Example of standard two-panel file managers mappings
-nnoremap <f3> :!less %f<cr>
-nnoremap <f4> :edit<cr>
-nnoremap <f5> :copy<cr>
-nnoremap <f6> :move<cr>
-nnoremap <f7> :mkdir<Space>
-nnoremap <f8> :delete<cr>
+" Create a directory
+nnoremap <Space>ad :mkdir<Space>
 
 " Midnight commander alike mappings
 " Open current directory in the other pane
@@ -214,18 +209,22 @@ nnoremap <a-o> :sync %c<cr>
 " Quick way to jump to bookmarks
 nnoremap b :bmgo<Space>
 
-" Open file in GIMP
-nnoremap gp :!gimp-2.10 %"f & <cr>
-
-" Use PowerShell to unpack archive
-nnoremap gz :!pwsh -NoProfile -Command "Expand-Archive %"f" <cr>
-
-nnoremap <Space> <nop>
-
 " Open VLC and hide any errors
 nnoremap <Space>vo :!vlc -q 2>&1 %"c & <cr>
 nnoremap <Space>vd :!vlc -q 2>&1 dvd:///%"c & <cr>
 nnoremap <Space>vb :!vlc -q 2>&1 bluray:///%"c & <cr>
 
+" Open file in GIMP and hide any errors
+nnoremap <Space>gp :!gimp-2.10 2>&1 %"f & <cr>
+
 " Open current folder in Windows File Explorer
 nnoremap <Space>fe :!explorer . & <cr>
+
+" Use PowerShell to unpack archive
+nnoremap gz :!pwsh -NoProfile -Command "Expand-Archive %"f" <cr>
+
+" Testing stuff
+nnoremap <Space>pr :!pwsh -NoProfile -command
+    \ "$o = new-object -com Shell.Application;
+    \ $o.Namespace(\"%"d\").ParseName(\"%"c\").InvokeVerb(\"Properties\");
+    \ Start-Sleep -s 100" <cr>
