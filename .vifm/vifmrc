@@ -224,7 +224,12 @@ nnoremap <Space>ps :!photoshop 2>&1 %"d/%"f & <cr>
 nnoremap <Space>fe :!explorer . & <cr>
 
 " Use PowerShell to unpack archive
-nnoremap gz :!pwsh -NoProfile -Command "Expand-Archive %"f" <cr>
+nnoremap <Space>ea :!pwsh -NoProfile -Command "Expand-Archive %"f" <cr>
+
+" Use PowerShell to create zip
+" Works only on one file/directory
+nnoremap <Space>ca :!pwsh -NoProfile -Command
+    \ "Compress-Archive -Path \"%"f\" -DestinationPath \"%"d/%"f.zip\"" <cr>
 
 " Testing stuff
 nnoremap <Space>pr :!pwsh -NoProfile -command
