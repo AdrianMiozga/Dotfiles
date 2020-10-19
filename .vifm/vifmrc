@@ -217,6 +217,9 @@ nnoremap <Space>vb :!vlc -q 2>&1 bluray:///%"c & <cr>
 " Open file in GIMP and hide any errors
 nnoremap <Space>gp :!gimp-2.10 2>&1 %"f & <cr>
 
+" Open file in Photoshop and hide any errors
+nnoremap <Space>ps :!photoshop 2>&1 %"d/%"f & <cr>
+
 " Open current folder in Windows File Explorer
 nnoremap <Space>fe :!explorer . & <cr>
 
