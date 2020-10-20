@@ -220,6 +220,9 @@ nnoremap <Space>gp :!gimp-2.10 2>&1 %"f & <cr>
 " Open file in Photoshop and hide any errors
 nnoremap <Space>ps :!photoshop 2>&1 %"d/%"f & <cr>
 
+" Open file/directory in VS Code
+nnoremap <Space>vs :!code %"f & <cr>
+
 " Open current folder in Windows File Explorer
 nnoremap <Space>fe :!explorer . & <cr>
 
