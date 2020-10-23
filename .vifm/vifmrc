@@ -213,10 +213,8 @@ nnoremap <Space>fe :!explorer.exe . & <cr>
 " Open file in Vim
 nnoremap <Space>vi :!vim %f <cr>
 
-" Use PowerShell to create zip
-" Works only on one file/directory
-nnoremap <Space>ca :!pwsh -NoProfile -Command
-    \ "Compress-Archive -Path \"%"f\" -DestinationPath \"%"d/%"f.zip\"" <cr>
+nnoremap <Space>uz :!zsh -ic "extract %d/%c" <cr>
+nnoremap <Space>zi :!zip -r %f.zip %f <cr>
 
 " Testing stuff
 nnoremap <Space>pr :!pwsh -NoProfile -command
