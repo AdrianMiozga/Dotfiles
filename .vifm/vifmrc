@@ -210,8 +210,8 @@ nnoremap <Space>vs :!code.exe %f <cr>
 " Open current folder in Windows File Explorer
 nnoremap <Space>fe :!explorer.exe . & <cr>
 
-" Use PowerShell to unpack archive
-nnoremap <Space>ea :!pwsh -NoProfile -Command "Expand-Archive %"f" <cr>
+" Open file in Vim
+nnoremap <Space>vi :!vim %f <cr>
 
 " Use PowerShell to create zip
 " Works only on one file/directory
