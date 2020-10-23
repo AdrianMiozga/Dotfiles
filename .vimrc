@@ -3,6 +3,15 @@ set incsearch
 set clipboard=unnamed
 set number relativenumber
 
+" Width of tab
+set tabstop=4
+
+" Match indentation of < and > the same as setting of tabstop
+set shiftwidth=0
+
+" Tab creates spaces instead of inserting tab
+set expandtab
+
 let mapleader = " "
 :map <leader>ij mio<Esc>`i
 :map <leader>ik miO<Esc>`i
