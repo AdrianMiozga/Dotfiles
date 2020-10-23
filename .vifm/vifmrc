@@ -149,6 +149,9 @@ set viewcolumns=-{name}..,6{}.
 
 nnoremap <Space> <nop>
 
+" Use Esc to quit Vifm
+nnoremap <Esc> ZZ
+
 " Display sorting dialog
 nnoremap s :sort<cr>
 
