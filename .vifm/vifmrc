@@ -124,7 +124,7 @@ filetype vifmrc,*.zsh,*.vifm,*.txt,*.sh vim %f
 " For OS X:
 " filetype * open
 " For Windows:
-filetype * start, explorer &
+filetype * start.exe, explorer.exe &
 
 " ------------------------------------------------------------------------------
 
@@ -160,35 +160,8 @@ nnoremap w :view<cr>
 vnoremap w :view<cr>gv
 
 " Interaction with system clipboard
-if has('win')
-    " Yank current directory path to Windows clipboard
-    nnoremap yd :!pwsh -NoProfile -Command
-        \ "$s = \"%d\"
-        \ -replace '\\ ', ' '
-        \ -replace '\\&', '&'
-        \ -replace '\\''', '''';
-        \ Set-Clipboard -Value $s" & <cr>
-
-    " Yank path to current file to Windows clipboard
-    nnoremap yf :!pwsh -NoProfile -Command
-        \ "$s = \"%d\%c\"
-        \ -replace '\\ ', ' '
-        \ -replace '\\&', '&'
-        \ -replace '\\''', '''';
-        \ Set-Clipboard -Value $s" & <cr>
-elseif executable('xclip')
-    " Yank current directory path into the clipboard
-    nnoremap yd :!echo %d | xclip %i<cr>
-    " Yank current file path into the clipboard
-    nnoremap yf :!echo %c:p | xclip %i<cr>
-elseif executable('xsel')
-    " Yank current directory path into primary and selection clipboards
-    nnoremap yd :!echo -n %d | xsel --input --primary %i &&
-                \ echo -n %d | xsel --clipboard --input %i<cr>
-    " Yank current file path into into primary and selection clipboards
-    nnoremap yf :!echo -n %c:p | xsel --input --primary %i &&
-                \ echo -n %c:p | xsel --clipboard --input %i<cr>
-endif
+nnoremap yd :!powershell.exe -NoProfile -Command "Set-Clipboard -Value %d" & <cr>
+nnoremap yf :!powershell.exe -NoProfile -Command "Set-Clipboard -Value %d/%c" & <cr>
 
 " Mappings for faster renaming
 nnoremap I cw<c-a>
@@ -221,21 +194,21 @@ nnoremap <a-o> :sync %c<cr>
 nnoremap b :bmgo<Space>
 
 " Open VLC and hide any errors
-nnoremap <Space>vo :!vlc -q 2>&1 %"c & <cr>
-nnoremap <Space>vd :!vlc -q 2>&1 dvd:///%"c & <cr>
-nnoremap <Space>vb :!vlc -q 2>&1 bluray:///%"c & <cr>
+nnoremap <Space>vo :!vlc.exe -q 2>&1 %"c & <cr>
+nnoremap <Space>vd :!vlc.exe -q 2>&1 dvd:///%"c & <cr>
+nnoremap <Space>vb :!vlc.exe -q 2>&1 bluray:///%"c & <cr>
 
 " Open file in GIMP and hide any errors
-nnoremap <Space>gp :!gimp-2.10 2>&1 %"f & <cr>
+nnoremap <Space>gp :!gimp-2.10.exe 2>&1 %"f & <cr>
 
 " Open file in Photoshop and hide any errors
-nnoremap <Space>ps :!photoshop 2>&1 %"d/%"f & <cr>
+nnoremap <Space>ps :!photoshop.exe 2>&1 %"d/%"f & <cr>
 
 " Open file/directory in VS Code
-nnoremap <Space>vs :!code %"f & <cr>
+nnoremap <Space>vs :!code.exe %f <cr>
 
 " Open current folder in Windows File Explorer
-nnoremap <Space>fe :!explorer . & <cr>
+nnoremap <Space>fe :!explorer.exe . & <cr>
 
 " Use PowerShell to unpack archive
 nnoremap <Space>ea :!pwsh -NoProfile -Command "Expand-Archive %"f" <cr>
