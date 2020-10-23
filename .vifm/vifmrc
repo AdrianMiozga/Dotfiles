@@ -201,8 +201,13 @@ nnoremap <Space>cp :copy<cr>
 " Move between two panes
 nnoremap <Space>mv :move<cr>
 
-" Create a directory
-nnoremap <Space>ad :mkdir<Space>
+" Create directory without having to use ' ' if using spaces in the name
+command! makedir :mkdir '%a'
+nnoremap md :makedir<Space>
+
+" Create file without having to use ' ' if using spaces in the name
+command! makefile :touch '%a'
+nnoremap mf :makefile<Space>
 
 " Midnight commander alike mappings
 " Open current directory in the other pane
