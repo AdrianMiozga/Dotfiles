@@ -129,6 +129,13 @@ zle -N zle-keymap-select
 # Don't blink the beam cursor when starting Zsh
 echo -ne '\e[6 q'
 
+# Sometimes executing commands would revert the cursor shape to block one.
+# That shouldn't happen as after executing commands, I'm always in insert mode.
+# This code fixes it.
+preexec() {
+    echo -ne '\e[6 q'
+}
+
 # Remove delay when going from insert to normal mode
 KEYTIMEOUT=1
 
