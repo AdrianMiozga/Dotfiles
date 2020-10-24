@@ -39,3 +39,7 @@ if has("autocmd")
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") |
         \ exe "normal! g`\"" | endif
 endif
+
+" Insert date in ISO format
+" Example: 2020-10-24
+:iab <expr> ddd strftime("%F")
