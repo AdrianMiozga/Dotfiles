@@ -3,6 +3,10 @@ set incsearch
 set clipboard=unnamed
 set number relativenumber
 
+" Enable syntax highlighting
+syntax on
+colorscheme murphy
+
 " Width of tab
 set tabstop=4
 
