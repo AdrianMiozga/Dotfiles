@@ -14,6 +14,12 @@
 ; but it was annoying.
 ; 
 ; You can still access CapsLock by pressing the left and right shift at the same time.
+;
+; For best results, you might want to run this script and dual-key-remap
+; with elevated privileges. That way, they will also have an effect on programs
+; with admin rights, like in elevated terminal.
+; You can create an elevated shortcut that skips the UAC prompt with the help of
+; Task Scheduler.
 
 #Persistent
 OnWinActiveChange(hWinEventHook, vEvent, hWnd) {
@@ -28,7 +34,7 @@ OnWinActiveChange(hWinEventHook, vEvent, hWnd) {
         Process, Exist, dual-key-remap.exe
 
         if !ErrorLevel {
-            Run, C:/Program Files/Dual Key Remap/dual-key-remap.exe, , hide
+            Run, C:/Program Files/Dual Key Remap/dual-key-remap - Elevated.lnk, , hide
         }
     }
 }
