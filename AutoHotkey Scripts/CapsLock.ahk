@@ -49,9 +49,9 @@ ToggleCaps() {
         static capsState := true
 
         if (capsState) {
-            KeyboardLED(4, "on", 2)
+            KeyboardLED(4, "on", 0)
         } else {
-            KeyboardLED(4, "off", 2)
+            KeyboardLED(4, "off", 0)
         }
 
         capsState := !capsState
