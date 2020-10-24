@@ -159,8 +159,17 @@ bindkey '^l' autosuggest-accept
 bindkey '^k' history-substring-search-up
 bindkey '^j' history-substring-search-down
 
-# Use Ctrl + O to open vifm
-bindkey -s '^o' 'vifm^M'
+# Use Ctrl + O to open vifm.
+# Works in normal and insert mode. Clears any input if it exists.
+bindkey -M viins '^o' open_vifm
+bindkey -M vicmd '^o' open_vifm
+
+zle -N open_vifm
+open_vifm() {
+    zle vi-change-whole-line
+    BUFFER+="vifm"
+    zle accept-line
+}
 
 # Change directory in shell to last location in vifm on exit
 vifm() {
