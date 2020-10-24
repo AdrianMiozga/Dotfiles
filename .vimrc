@@ -51,3 +51,12 @@ endif
 " Insert human-readable timestamp appropriate for file names
 " Example: 2020-10-24 13-00-57
 :iab <expr> dts strftime("%F %H-%M-%S")
+
+" WSL yank support
+let s:clip = '/mnt/c/Windows/System32/clip.exe'
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
