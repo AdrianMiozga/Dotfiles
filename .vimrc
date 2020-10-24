@@ -43,3 +43,7 @@ endif
 " Insert date in ISO format
 " Example: 2020-10-24
 :iab <expr> ddd strftime("%F")
+
+" Insert human-readable timestamp appropriate for file names
+" Example: 2020-10-24 13-00-57
+:iab <expr> dts strftime("%F %H-%M-%S")
