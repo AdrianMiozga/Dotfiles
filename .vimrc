@@ -3,6 +3,9 @@ set incsearch
 set clipboard=unnamed
 set number relativenumber
 
+" Use the same indent level when starting a new line
+set autoindent
+
 " Enable syntax highlighting
 syntax on
 colorscheme murphy
