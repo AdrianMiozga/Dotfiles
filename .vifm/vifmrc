@@ -111,7 +111,7 @@ command! vgrep vim "+grep %a"
 command! reload :write | restart full
 
 " Open these files with Vim by default
-filetype vifmrc,*.zsh,*.vifm,*.txt,*.sh vim %f
+filetype vifmrc,*.zsh,*.vifm,*.txt,*.sh,hosts vim %f
 
 " Open all other files with default system programs (you can also remove all
 " :file[x]type commands above to ensure they don't interfere with system-wide
