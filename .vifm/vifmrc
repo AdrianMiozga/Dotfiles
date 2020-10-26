@@ -144,6 +144,9 @@ set viewcolumns=-{name}..,6{}.
 "
 " filter! {*.lo,*.o,*.d,*.class,*.pyc,*.pyo,.*~}
 
+" Don't show these files in vifm
+filter /desktop.ini|\.\w+\.parts/
+
 " ------------------------------------------------------------------------------
 
 nnoremap <Space> <nop>
