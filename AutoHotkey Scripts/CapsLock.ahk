@@ -28,7 +28,7 @@ OnWinActiveChange(hWinEventHook, vEvent, hWnd) {
 
     WinGetTitle, title, A
 
-    if (InStr(title, "VirtualBox")) {
+    if (InStr(title, "VirtualBox") && InStr(title, "Running")) {
         Process, Close, dual-key-remap.exe
     } else {
         Process, Exist, dual-key-remap.exe
