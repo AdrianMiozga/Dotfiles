@@ -236,3 +236,7 @@ nnoremap t tj
 
 " Always use Vim for renaming
 nnoremap cw v_cw
+
+" Show file attributes, file size (adds with selection), remaining space
+" on partition
+set statusline="  %A %54E %50a"
