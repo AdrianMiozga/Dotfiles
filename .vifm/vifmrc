@@ -233,3 +233,6 @@ nnoremap ; :
 
 " After selection through t move down
 nnoremap t tj
+
+" Always use Vim for renaming
+nnoremap cw v_cw
