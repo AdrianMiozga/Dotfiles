@@ -240,3 +240,7 @@ nnoremap cw v_cw
 " Show file attributes, file size (adds with selection), remaining space
 " on partition
 set statusline="  %A %54E %50a"
+
+" File number, number of displayed files, number of files
+" (including filtered ones)
+set rulerformat="%l/%S/%L"
