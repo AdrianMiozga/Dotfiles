@@ -251,3 +251,6 @@ set dotdirs=
 command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('find
     \ 2>/dev/null | fzf --height 10 2>/dev/tty'))
 nnoremap <c-f> :FZFfind<cr>
+
+" Open editor to edit vifmrc and apply settings after returning to vifm
+nnoremap ,c :write | edit $MYVIFMRC | restart<cr>
