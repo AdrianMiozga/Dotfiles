@@ -244,3 +244,6 @@ set statusline="  %A %54E %50a"
 " File number, number of displayed files, number of files
 " (including filtered ones)
 set rulerformat="%l/%S/%L"
+
+" Don't display "../" when directory has files
+set dotdirs=
