@@ -3,6 +3,9 @@ set incsearch
 set clipboard=unnamed
 set number relativenumber
 
+" Don't add new empty line at end of file if it doesn't exist
+set nofixendofline
+
 " Use the same indent level when starting a new line
 set autoindent
 
