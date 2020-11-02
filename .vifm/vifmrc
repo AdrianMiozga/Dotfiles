@@ -88,7 +88,7 @@ endif
 " Enable Ranger-like mode
 " set millerview
 
-" ------------------------------------------------------------------------------
+" ******************************************************************************
 
 " :com[mand][!] command_name action
 " The following macros can be used in a command
@@ -125,14 +125,14 @@ filetype vifmrc,*.zsh,*.vifm,*.txt,*.sh,hosts vim %f
 " For Windows:
 filetype * start.exe, explorer.exe &
 
-" ------------------------------------------------------------------------------
+" ******************************************************************************
 
 " What should be saved automatically between vifm sessions. Drop "savedirs"
 " value if you don't want vifm to remember last visited directories for you.
 set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
     \phistory,fhistory,dirstack,registers,bookmarks,bmarks
 
-" ------------------------------------------------------------------------------
+" ******************************************************************************
 
 " Examples of configuring both panels
 
@@ -147,9 +147,7 @@ set viewcolumns=-{name}..,6{}.
 " Don't show these files in vifm
 filter /desktop.ini|\.\w+\.parts/
 
-" ------------------------------------------------------------------------------
-
-nnoremap <Space> <nop>
+" ******************************************************************************
 
 " Use Esc to quit Vifm
 nnoremap <Esc> ZZ
@@ -171,10 +169,10 @@ nnoremap cc cw<c-u>
 nnoremap A cw
 
 " Copy between two panes
-nnoremap <Space>cp :copy<cr>
+nnoremap <wait> <Space>cp :copy<cr>
 
 " Move between two panes
-nnoremap <Space>mv :move<cr>
+nnoremap <wait> <Space>mv :move<cr>
 
 " Create directory without having to use ' ' if using spaces in the name
 command! makedir :mkdir '%a'
@@ -196,30 +194,30 @@ nnoremap <a-o> :sync %c<cr>
 nnoremap b :bmgo<Space>
 
 " Open VLC and hide any errors
-nnoremap <Space>vo :!vlc.exe -q 2>&1 %"c & <cr>
-nnoremap <Space>vd :!vlc.exe -q 2>&1 dvd:///%"c & <cr>
-nnoremap <Space>vb :!vlc.exe -q 2>&1 bluray:///%"c & <cr>
+nnoremap <wait> <Space>vo :!vlc.exe -q 2>&1 %"c & <cr>
+nnoremap <wait> <Space>vd :!vlc.exe -q 2>&1 dvd:///%"c & <cr>
+nnoremap <wait> <Space>vb :!vlc.exe -q 2>&1 bluray:///%"c & <cr>
 
 " Open file in GIMP and hide any errors
-nnoremap <Space>gp :!gimp-2.10.exe 2>&1 %"f & <cr>
+nnoremap <wait> <Space>gp :!gimp-2.10.exe 2>&1 %"f & <cr>
 
 " Open file in Photoshop and hide any errors
-nnoremap <Space>ps :!photoshop.exe 2>&1 %"d/%"f & <cr>
+nnoremap <wait> <Space>ps :!photoshop.exe 2>&1 %"d/%"f & <cr>
 
 " Open file/directory in VS Code
-nnoremap <Space>vs :!code.exe %f <cr>
+nnoremap <wait> <Space>vs :!code.exe %f <cr>
 
 " Open current folder in Windows File Explorer
-nnoremap <Space>fe :!explorer.exe . & <cr>
+nnoremap <wait> <Space>fe :!explorer.exe . & <cr>
 
 " Open file in Vim
-nnoremap <Space>vi :!vim %f <cr>
+nnoremap i :!vim %f <cr>
 
-nnoremap <Space>uz :!zsh -ic "extract %d/%c" <cr>
-nnoremap <Space>zi :!zip -r %f.zip %f <cr>
+nnoremap <wait> <Space>uz :!zsh -ic "extract %d/%c" <cr>
+nnoremap <wait> <Space>zi :!zip -r %f.zip %f <cr>
 
 " Show Exif of a file
-nnoremap <Space>ex :!exiftool.exe %f | less <cr>
+nnoremap <wait> <Space>ex :!exiftool.exe %f | less <cr>
 
 " Remove all Exif data from selected files. Overwrites files.
 command! rmexif :!exiftool.exe -overwrite_original -all= %f &
