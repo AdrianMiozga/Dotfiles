@@ -247,3 +247,7 @@ set rulerformat="%l/%S/%L"
 
 " Don't display "../" when directory has files
 set dotdirs=
+
+command! FZFfind :set noquickview | :execute 'goto' fnameescape(term('find
+    \ 2>/dev/null | fzf --height 10 2>/dev/tty'))
+nnoremap <c-f> :FZFfind<cr>
