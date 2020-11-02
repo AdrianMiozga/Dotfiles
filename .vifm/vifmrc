@@ -227,3 +227,6 @@ command! rmexif :!exiftool.exe -overwrite_original -all= %f &
 command! tp :!zsh -ic "tp %c | less"
 command! settp :!zsh -ic "settp %c %a >/dev/null &!" &!
 command! integr :!zsh -ic "integr %f %a &!" &!
+
+" Use ; for going into command line
+nnoremap ; :
