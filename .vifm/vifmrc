@@ -224,3 +224,6 @@ nnoremap <Space>ex :!exiftool.exe %f | less <cr>
 " Remove all Exif data from selected files. Overwrites files.
 command! rmexif :!exiftool.exe -overwrite_original -all= %f &
 
+command! tp :!zsh -ic "tp %c | less"
+command! settp :!zsh -ic "settp %c %a >/dev/null &!" &!
+command! integr :!zsh -ic "integr %f %a &!" &!
