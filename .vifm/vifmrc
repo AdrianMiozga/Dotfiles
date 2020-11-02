@@ -230,3 +230,6 @@ command! integr :!zsh -ic "integr %f %a &!" &!
 
 " Use ; for going into command line
 nnoremap ; :
+
+" After selection through t move down
+nnoremap t tj
