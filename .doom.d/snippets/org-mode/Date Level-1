@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: Date Level-1
+# key: date1
+# --
+
+* `(format-time-string "%B %Y")`
+** `(format-time-string "%d.%m.%Y")`
+$0
+

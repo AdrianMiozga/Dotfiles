@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: ISO Date
+# key: isodate
+# --
+`(format-time-string "%Y-%m-%d")`
