@@ -181,3 +181,15 @@ vifm() {
     cd "$dst"
 } 
 
+HISTORY_IGNORE="*vifm*"
+
+setopt HIST_FIND_NO_DUPS
+
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE="true"
+HISTORY_SUBSTRING_SEARCH_FUZZY="true"
+
+# Appends every command to the history file once it is executed
+setopt inc_append_history
+
+# Reloads the history whenever you use it
+setopt share_history
