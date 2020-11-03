@@ -59,6 +59,12 @@
                 "commandline": "cmd.exe"
             },
             {
+                "guid": "{1b5f6518-4881-46ba-b1bf-b8f1b12fd40d}",
+                "name": "Syncthing",
+                "icon": "C:\\Program Files\\Syncthing\\syncthing-icon.png",
+                "commandline": "C:\\Program Files\\Syncthing\\syncthing.exe"
+            },
+            {
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
                 "hidden": true,
                 "name": "Azure Cloud Shell",
