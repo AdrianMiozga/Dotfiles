@@ -239,7 +239,11 @@
   '(org-level-4 :foreground "#DFF6FF" :weight bold :height 1.1)
   '(org-level-5 :foreground "#AB9BD5" :weight bold :height 1.1)
 
+  '(org-list-dt :foreground "#DFF6FF")
+
   '(org-link :foreground "SteelBlue1" :underline nil)
+
+  '(org-footnote :foreground "SteelBlue1")
 
   '(org-document-title :inherit bold :foreground "#BC6EC5" :underline nil :height 1.4)
   '(org-meta-line :inherit org-document-info-keyword :foreground "Seashell")
