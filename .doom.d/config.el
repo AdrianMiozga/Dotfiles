@@ -60,6 +60,8 @@
 ;; Start Doom in fullscreen
 (add-hook! 'window-setup-hook #'toggle-frame-fullscreen)
 
+(add-hook! 'after-make-frame-functions #'toggle-frame-fullscreen)
+
 ;; Disable line numbers in Org-mode
 (add-hook! 'org-mode-hook #'doom-disable-line-numbers-h)
 
