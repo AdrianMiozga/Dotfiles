@@ -234,6 +234,8 @@
 
 (setq writeroom-extra-line-spacing 0.3)
 
+(setq org-pretty-entities t)
+
 (custom-set-faces!
   '(org-level-1 :foreground "#AB9BD5" :weight bold :height 1.1)
   '(org-level-2 :foreground "#BC6EC5" :weight bold :height 1.1)
