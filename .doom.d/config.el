@@ -202,12 +202,12 @@
       (flyspell-do-correct 'save nil (car word) current-location (cadr word) (caddr word) current-location))))
 
 (use-package! flyspell-correct
-  :commands (flyspell-correct-at-point)
+  :commands (flyspell-correct-at-point flyspell-correct-next flyspell-correct-previous)
   :after flyspell
-  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper)
-         :map flyspell-mode-map ("[S" . flyspell-correct-previous)
-         :map flyspell-mode-map ("]S" . flyspell-correct-next))
+  :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper))
   :init
+  (map! :n "]S" #'flyspell-correct-next
+        :n "[S" #'flyspell-correct-previous)
   (map! :leader
         :prefix "S"
         :desc "correct-word" "s" #'flyspell-correct-at-point))
