@@ -237,6 +237,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 2) ((control) . nil)))
+
 (setq nov-text-width t)
 (add-hook 'nov-mode-hook 'visual-line-mode)
 (setq nov-unzip-program "C:\\Program Files\\Unzip\\unzip.exe")
