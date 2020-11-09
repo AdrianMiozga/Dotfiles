@@ -230,10 +230,16 @@
 
 (use-package! writeroom
   :hook
-  (org-mode . writeroom-mode))
+  (org-mode . writeroom-mode)
+  (nov-mode . writeroom-mode))
 
 (setq writeroom-extra-line-spacing 0.3)
 
+(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+
+(setq nov-text-width t)
+(add-hook 'nov-mode-hook 'visual-line-mode)
+(setq nov-unzip-program "C:\\Program Files\\Unzip\\unzip.exe")
 (setq org-pretty-entities t)
 
 (custom-set-faces!
