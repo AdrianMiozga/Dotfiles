@@ -242,6 +242,9 @@
 (setq nov-text-width t)
 (add-hook 'nov-mode-hook 'visual-line-mode)
 (setq nov-unzip-program "C:\\Program Files\\Unzip\\unzip.exe")
+
+(setq org-startup-with-inline-images t)
+
 (setq org-pretty-entities t)
 
 (custom-set-faces!
