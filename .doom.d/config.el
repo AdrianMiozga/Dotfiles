@@ -30,10 +30,6 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-one)
 
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org-roam/")
-
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type 'relative)
@@ -62,22 +58,38 @@
 
 (add-hook! 'after-make-frame-functions #'toggle-frame-fullscreen)
 
-;; Disable line numbers in Org-mode
-(add-hook! 'org-mode-hook #'doom-disable-line-numbers-h)
+;; Auto save after 2 seconds of idle
+(setq auto-save-timeout 2)
 
-;; Prettify symbols
-(add-hook 'org-mode-hook (lambda ()
-                           (push '("#+TITLE: " . "") prettify-symbols-alist)
-                           (push '("#+ROAM_TAGS: " . "") prettify-symbols-alist)
-                           (prettify-symbols-mode)))
+;; Change scroll amount
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 2) ((control) . nil)))
 
+(map! :leader
+      :prefix "i"
+      :desc "Insert line below" "j" #'+evil/insert-newline-below
+      :desc "Insert line above" "k" #'+evil/insert-newline-above)
 
-(setq org-startup-folded t)
+(map! :leader
+      :desc "Switch to last buffer" "TAB" #'evil-switch-to-windows-last-buffer)
+
+(setq doom-org-special-tags nil)
+
+(use-package! org
+  :init
+  (setq org-startup-folded t)
+  (setq org-startup-with-inline-images t)
+  (setq org-hide-emphasis-markers t)
+  (setq org-pretty-entities t)
+  (setq org-directory "~/org-roam/")
+  :hook (org-mode . doom-disable-line-numbers-h)
+  :hook (org-mode . (lambda ()
+                      (push '("#+TITLE: " . "") prettify-symbols-alist)
+                      (push '("#+ROAM_TAGS: " . "") prettify-symbols-alist)
+                      (prettify-symbols-mode))))
 
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam-switch-to-buffer org-roam)
-  :hook
-  (after-init . org-roam-mode)
+  :hook (after-init . org-roam-mode)
   :init
   (map! :leader
         :prefix "n"
@@ -87,57 +99,29 @@
         :desc "Org-roam find file" "f" #'org-roam-find-file
         :desc "Org-roam insert" "i" #'org-roam-insert
         :desc "Org-roam capture" "c" #'org-roam-capture)
-  (setq org-roam-directory (file-truename "~/org-roam/")
-        org-roam-db-gc-threshold most-positive-fixnum
-        org-roam-tag-sources '(prop last-directory)
-        org-id-link-to-org-use-id t)
+  (setq org-roam-directory (file-truename "~/org-roam/"))
+  (setq org-roam-db-gc-threshold most-positive-fixnum)
+  (setq org-roam-tag-sources '(prop last-directory))
+  (setq org-id-link-to-org-use-id t)
   (setq org-roam-capture-templates
-   '(("d" "default" plain #'org-roam-capture--get-point "%?" :file-name "%<%Y%m%d%H%M%S>-${slug}" :head "#+TITLE: ${title}" :unnarrowed t))))
-
-(after! org-roam
-  (setq org-link-frame-setup '((file . find-file-other-window))))
-
-(setq auto-save-timeout 2)
-
-;; Auto save directly to file
-(auto-save-visited-mode t)
-
-;; Auto saving
-(defadvice evil-window-down (before other-window-now activate)
-  (org-save-all-org-buffers))
-
-(defadvice evil-window-up (before other-window-now activate)
-  (org-save-all-org-buffers))
-
-(defadvice evil-window-left (before other-window-now activate)
-  (org-save-all-org-buffers))
-
-(defadvice evil-window-right (before other-window-now activate)
-  (org-save-all-org-buffers))
-
-(defadvice +org/dwim-at-point (before other-window-now activate)
-  (org-save-all-org-buffers))
-
-(defadvice evil-switch-to-windows-last-buffer (before save-buffer-now activate)
-  (org-save-all-org-buffers))
-
-(add-hook 'focus-out-hook 'org-save-all-org-buffers)
+        '(("d" "default" plain #'org-roam-capture--get-point "%?"
+           :file-name "%<%Y%m%d%H%M%S>-${slug}"
+           :head "#+TITLE: ${title}" :unnarrowed t)))
+  (after! org-roam
+    (setq org-link-frame-setup '((file . find-file-other-window)))))
 
 (use-package! mixed-pitch
-  :hook
-  (text-mode . mixed-pitch-mode))
+  :hook (text-mode . mixed-pitch-mode))
 
 (use-package! org-bullets
-  :hook
-  (org-mode . org-bullets-mode))
+  :hook (org-mode . org-bullets-mode))
 
 (use-package! typo
-  :hook
-  (text-mode . typo-mode))
+  :hook (text-mode . typo-mode))
 
-(setq deft-directory "~/org-roam")
-
-(setq org-hide-emphasis-markers t)
+(use-package! deft
+  :init
+  (setq deft-directory "~/org-roam"))
 
 (use-package! org-table-wrap-functions
   :load-path "~/emacs-plugins"
@@ -154,14 +138,6 @@
         :prefix "e"
         :desc "title-case" "t" #'xah-title-case-region-or-line))
 
-
-;; Change cursor colors
-(setq evil-normal-state-cursor '(box "#CD96CD")
-      evil-insert-state-cursor '(bar "#CD96CD")
-      evil-visual-state-cursor '(box "#CD96CD")
-      evil-operator-state-cursor '((hbar . 9) "#CD96CD")
-      evil-replace-state-cursor '(hbar "#CD96CD"))
-
 (use-package! org-delete-link
   :commands (org-delete-link)
   :load-path  "~/emacs-plugins"
@@ -169,17 +145,16 @@
   (map! :leader
         :desc "delete-link" "aod" #'org-delete-link))
 
-
 ;; Turn off auto completion in org-mode
-(setq company-global-modes '(not org-mode))
-
+(use-package! company
+  :init
+  (setq company-global-modes '(not org-mode)))
 
 ;; Spell checking
 (use-package! ispell
   :hook
-  (after-init . ispell))
-
-(after! ispell
+  (after-init . ispell)
+  :config
   (setq ispell-program-name "hunspell")
   (setq ispell-dictionary "en_US,pl_PL")
   (ispell-set-spellchecker-params)
@@ -215,37 +190,32 @@
 (use-package! flyspell-correct-ivy
   :after flyspell-correct)
 
-
-(setq doom-org-special-tags nil)
-
-(map! :leader
-      :prefix "i"
-      :desc "Insert line below" "j" #'+evil/insert-newline-below
-      :desc "Insert line above" "k" #'+evil/insert-newline-above)
-
-(map! :leader
-      :desc "Switch to last buffer" "TAB" #'evil-switch-to-windows-last-buffer)
-
-(setq +zen-text-scale 0)
+(use-package! nov
+  :init
+  (setq nov-text-width t)
+  (setq nov-unzip-program "C:\\Program Files\\Unzip\\unzip.exe")
+  :config
+  (unbind-key "i" nov-mode-map)
+  (unbind-key "<normal-state> i" nov-mode-map)
+  :hook (nov-mode . visual-line-mode)
+  :mode ("\\.\\(epub\\|mobi\\)\\'" . nov-mode))
 
 (use-package! writeroom
   :hook
   (org-mode . writeroom-mode)
-  (nov-mode . writeroom-mode))
+  (nov-mode . writeroom-mode)
+  :init
+  (setq writeroom-extra-line-spacing 0.3)
+  (setq +zen-text-scale 0))
 
-(setq writeroom-extra-line-spacing 0.3)
 
-(add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
 
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 2) ((control) . nil)))
-
-(setq nov-text-width t)
-(add-hook 'nov-mode-hook 'visual-line-mode)
-(setq nov-unzip-program "C:\\Program Files\\Unzip\\unzip.exe")
-
-(setq org-startup-with-inline-images t)
-
-(setq org-pretty-entities t)
+;; Change cursor colors
+(setq evil-normal-state-cursor '(box "#CD96CD")
+      evil-insert-state-cursor '(bar "#CD96CD")
+      evil-visual-state-cursor '(box "#CD96CD")
+      evil-operator-state-cursor '((hbar . 9) "#CD96CD")
+      evil-replace-state-cursor '(hbar "#CD96CD"))
 
 (custom-set-faces!
   '(org-level-1 :foreground "#AB9BD5" :weight bold :height 1.1)
