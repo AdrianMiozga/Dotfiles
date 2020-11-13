@@ -81,6 +81,8 @@
   (setq org-hide-emphasis-markers t)
   (setq org-pretty-entities t)
   (setq org-directory "~/org-roam/")
+  :config
+  (setq org-display-remote-inline-images 'skip)
   :hook (org-mode . doom-disable-line-numbers-h)
   :hook (org-mode . (lambda ()
                       (push '("#+TITLE: " . "") prettify-symbols-alist)
