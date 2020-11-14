@@ -89,6 +89,20 @@
                       (push '("#+ROAM_TAGS: " . "") prettify-symbols-alist)
                       (prettify-symbols-mode))))
 
+(use-package! org-agenda
+  :init
+  (setq org-agenda-start-on-weekday 1)
+  (setq calendar-week-start-day 1)
+  (setq org-agenda-files '("~/org-roam/20200820212859-main.org"))
+  (setq org-agenda-prefix-format '((agenda . " %i %?-12t% s")
+                                   (todo . " %i ")
+                                   (tags . " %i ")
+                                   (search . " %i ")))
+  (setq org-agenda-custom-commands
+        '(("c" "Simple agenda view"
+           ((agenda "")
+            (alltodo ""))))))
+
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam-switch-to-buffer org-roam)
   :hook (after-init . org-roam-mode)
@@ -206,6 +220,7 @@
   :hook
   (org-mode . writeroom-mode)
   (nov-mode . writeroom-mode)
+  (org-agenda-mode . writeroom-mode)
   :init
   (setq writeroom-extra-line-spacing 0.3)
   (setq +zen-text-scale 0))
