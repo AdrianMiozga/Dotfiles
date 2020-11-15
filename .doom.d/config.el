@@ -225,7 +225,24 @@
   (setq writeroom-extra-line-spacing 0.3)
   (setq +zen-text-scale 0))
 
+(require 'google-translate)
+(defun google-translate--search-tkk () "Search TKK." (list 430675 2721866130))
+(setq google-translate-backend-method 'curl)
 
+(use-package! google-translate
+  :commands (google-translate-query-translate google-translate-query-translate-reverse)
+  :init
+  (setq google-translate-default-source-language "en")
+  (setq google-translate-default-target-language "pl")
+  (setq google-translate-pop-up-buffer-set-focus t)
+  (map! :leader
+        :prefix "s"
+        "g" #'google-translate-query-translate
+        "G" #'google-translate-query-translate-reverse))
+
+(use-package! translate-operator
+  :load-path "~/emacs-plugins"
+  :after google-translate)
 
 ;; Change cursor colors
 (setq evil-normal-state-cursor '(box "#CD96CD")
