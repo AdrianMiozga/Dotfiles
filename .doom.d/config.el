@@ -101,7 +101,9 @@
   (setq org-agenda-custom-commands
         '(("c" "Simple agenda view"
            ((agenda "")
-            (alltodo ""))))))
+            (alltodo "")))))
+  :config
+  (setq org-agenda-start-day "+0d"))
 
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam-switch-to-buffer org-roam)
