@@ -95,6 +95,7 @@
   (setq org-agenda-start-on-weekday 1)
   (setq calendar-week-start-day 1)
   (setq org-agenda-weekend-days 'nil)
+  (setq org-agenda-todo-list-sublevels 'nil)
   (setq org-agenda-files '("~/org-roam/20200820212859-main.org"))
   (setq org-agenda-prefix-format '((agenda . " %i %?-12t% s")
                                    (todo . " %i ")
