@@ -99,6 +99,7 @@
   (setq org-log-done 'time)
   (setq org-lowest-priority ?D)
   (setq org-default-priority ?C)
+  (setq org-priority-start-cycle-with-default 'nil)
   (setq org-agenda-clockreport-parameter-plist '(:link t :maxlevel 99))
   (setq org-agenda-skip-scheduled-if-done t)
   (setq org-agenda-log-mode-items '(clock))
