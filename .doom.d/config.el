@@ -104,9 +104,18 @@
                                    (tags . " %i ")
                                    (search . " %i ")))
   (setq org-agenda-custom-commands
-        '(("c" "Simple agenda view"
-           ((agenda "")
-            (alltodo "")))))
+        '(("c" "Agenda + TODO"
+           ((agenda "" ((org-agenda-span 'day)
+                        (org-agenda-show-log t)
+                        (org-agenda-time-grid nil)))
+            (alltodo "")))
+          ("d" "Incomplete deadlines"
+           agenda "" ((org-agenda-span 'month)
+                      (org-agenda-time-grid nil)
+                      (org-agenda-show-all-dates nil)
+                      (org-agenda-skip-deadline-if-done t)
+                      (org-agenda-entry-types '(:deadline))
+                      (org-deadline-warning-days 0)))))
   :config
   (setq org-agenda-start-day "+0d"))
 
