@@ -92,16 +92,25 @@
 (use-package! org-agenda
   :init
   (map! :prefix "C-c" "a" #'(lambda (&optional arg) (interactive "P")(org-agenda arg "c")))
+  ;; Start agenda and calendar on Monday
   (setq org-agenda-start-on-weekday 1)
   (setq calendar-week-start-day 1)
+  ;; Don't draw weekend days in special color
   (setq org-agenda-weekend-days 'nil)
+  ;; Don't show sublevels of TODO entries
   (setq org-agenda-todo-list-sublevels 'nil)
+  ;; Show timestamp when making task DONE
   (setq org-log-done 'time)
+  ;; Add D as another task priority
   (setq org-lowest-priority ?D)
+  ;; Use C as default priority instead of B
   (setq org-default-priority ?C)
   (setq org-priority-start-cycle-with-default 'nil)
+  ;; Go further with clock report than 2 levels
   (setq org-agenda-clockreport-parameter-plist '(:link t :maxlevel 99))
+  ;; Don't show done entries
   (setq org-agenda-skip-scheduled-if-done t)
+  ;; Show only clocked items. Default was clocked + closed
   (setq org-agenda-log-mode-items '(clock))
   (setq org-agenda-files '("~/org-roam/main.org" "~/org-roam/todo.org"))
   (setq org-agenda-prefix-format '((agenda . " %i %?-12t% s")
