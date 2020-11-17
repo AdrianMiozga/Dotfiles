@@ -97,6 +97,7 @@
   (setq org-agenda-weekend-days 'nil)
   (setq org-agenda-todo-list-sublevels 'nil)
   (setq org-log-done 'time)
+  (setq org-agenda-log-mode-items '(clock))
   (setq org-agenda-files '("~/org-roam/main.org" "~/org-roam/todo.org"))
   (setq org-agenda-prefix-format '((agenda . " %i %?-12t% s")
                                    (todo . " %i ")
