@@ -131,6 +131,10 @@
                       (org-agenda-entry-types '(:deadline))
                       (org-deadline-warning-days 0)))))
   :config
+  (setq org-priority-faces '((65 . error)
+                             (66 . warning)
+                             (67 . success)
+                             (68 :foreground "#51AFEF")))
   (setq org-agenda-start-day "+0d"))
 
 (use-package! org-roam
