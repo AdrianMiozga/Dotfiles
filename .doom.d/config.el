@@ -121,6 +121,7 @@
         '(("c" "Agenda + TODO"
            ((agenda "" ((org-agenda-span 'day)
                         (org-agenda-show-log t)
+                        (org-agenda-skip-deadline-if-done t)
                         (org-agenda-time-grid nil)))
             (alltodo "")))
           ("d" "Incomplete deadlines"
