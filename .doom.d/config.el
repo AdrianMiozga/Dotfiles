@@ -313,5 +313,14 @@
   '(org-todo :background "#32322C" :foreground "SteelBlue1" :weight bold)
 
   '(org-table :background "#262633" :foreground "#B2B2B2" :height 1.0 :family "Consolas")
+  '(org-indent :inherit (org-hide fixed-pitch))
 
-  '(org-indent :inherit (org-hide fixed-pitch)))
+  ;; Agenda
+  '(org-agenda-done :foreground "#AB9BD5") ;; Done tasks + clocked items
+  '(org-agenda-current-time :foreground "#BC6EC5")
+  '(org-time-grid :foreground "#BBC2CF")
+  '(org-agenda-dimmed-todo-face :foreground "#BBC2CF")
+  '(org-upcoming-distant-deadline :foreground "#BBC2CF")
+  '(org-upcoming-deadline :foreground "#BBC2CF")
+  '(org-scheduled-today :foreground "#BBC2CF")
+  '(org-warning :foreground "#FF6C6B")) ;; Deadline color
