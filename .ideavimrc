@@ -10,7 +10,7 @@ set commentary
 set ReplaceWithRegister
 
 let mapleader = " "
-:map <leader>sj :action FileStructurePopup<CR>
+:map <leader>m. :action FileStructurePopup<CR>
 :map <leader>pr :action ActivateProjectToolWindow<CR>
 :map <leader>bv :action SelectBuildVariant<CR>
 :map <leader>vc :action Vcs.Show.Log<CR>
