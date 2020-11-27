@@ -259,6 +259,7 @@
   (nov-mode . writeroom-mode)
   (org-agenda-mode . writeroom-mode)
   :init
+  (setq writeroom-mode-line t)
   (setq writeroom-extra-line-spacing 0.3)
   (setq +zen-text-scale 0))
 
