@@ -54,6 +54,9 @@
   :recipe (:host github :repo "org-roam/org-roam")
   :pin "89e9121")
 
+(package! org-table-wrap-functions
+  :recipe (:host github :repo "analyticd/org-table-wrap-functions"))
+
 (package! mixed-pitch)
 (package! org-bullets)
 (package! typo)

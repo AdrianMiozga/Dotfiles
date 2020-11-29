@@ -177,7 +177,6 @@
   (setq deft-directory "~/org-roam"))
 
 (use-package! org-table-wrap-functions
-  :load-path "~/emacs-plugins"
   :after org
   :bind
   ("C-|" . org-table-column-wrap-to-point)
