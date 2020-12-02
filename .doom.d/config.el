@@ -112,6 +112,8 @@
   (setq org-agenda-skip-scheduled-if-done t)
   ;; Show only clocked items. Default was clocked + closed
   (setq org-agenda-log-mode-items '(clock))
+  ;; Don't show headline tags
+  (setq org-agenda-remove-tags t)
   (setq org-agenda-files '("~/org-roam/main.org" "~/org-roam/todo.org" "~/org-roam/getflow.org"))
   (setq org-agenda-prefix-format '((agenda . " %i %?-12t% s")
                                    (todo . " %i ")
