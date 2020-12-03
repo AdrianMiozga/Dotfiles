@@ -166,10 +166,10 @@
 (use-package! mixed-pitch
   :hook (text-mode . mixed-pitch-mode))
 
-(use-package! org-bullets
-  :init
-  (setq org-bullets-bullet-list '("◉" "○" "✸" "◆"))
-  :hook (org-mode . org-bullets-mode))
+(use-package! org-superstar
+   :init
+   (setq org-superstar-headline-bullets-list '("◉" "○" "✸" "◆"))
+   :hook (org-mode . org-superstar-mode))
 
 (use-package! typo
   :hook (text-mode . typo-mode))

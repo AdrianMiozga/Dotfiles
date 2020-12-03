@@ -58,7 +58,7 @@
   :recipe (:host github :repo "analyticd/org-table-wrap-functions"))
 
 (package! mixed-pitch)
-(package! org-bullets)
+(package! org-superstar)
 (package! typo)
 (package! flyspell-correct)
 (package! flyspell-correct-ivy)
