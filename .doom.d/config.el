@@ -171,6 +171,24 @@
    (setq org-superstar-headline-bullets-list '("◉" "○" "✸" "◆"))
    :hook (org-mode . org-superstar-mode))
 
+(use-package! org-pomodoro
+  :init
+  (map! :prefix "C-c" "p" #'org-pomodoro)
+  (setq org-pomodoro-format "%s")
+  (setq org-pomodoro-short-break-format "Short Break: %s")
+  (setq org-pomodoro-long-break-format "Long Break: %s")
+  (setq org-pomodoro-keep-killed-pomodoro-time t)
+  (setq org-pomodoro-manual-break t)
+
+  (defun org-pomodoro-prompt ()
+    (interactive)
+    (org-clock-goto)
+    (if (y-or-n-p "Start a new pomodoro?")
+        (progn
+          (org-pomodoro))))
+
+  (add-hook 'org-pomodoro-break-finished-hook 'org-pomodoro-prompt))
+
 (use-package! typo
   :hook (text-mode . typo-mode))
 
