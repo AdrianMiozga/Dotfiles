@@ -67,6 +67,7 @@
 (package! google-translate)
 (package! AUCTeX)
 (package! org-pomodoro)
+(package! pandoc-mode)
 
 ;; Disable this package so I can easily change background color through default face
 (package! solaire-mode :disable t)
