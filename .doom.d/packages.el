@@ -63,7 +63,6 @@
 (package! flyspell-correct)
 (package! flyspell-correct-ivy)
 (package! nov)
-(package! org-noter)
 (package! google-translate)
 (package! AUCTeX)
 (package! pandoc-mode)
