@@ -173,7 +173,6 @@
 
 (use-package! org-pomodoro
   :init
-  (map! :prefix "C-c" "p" #'org-pomodoro)
   (setq org-pomodoro-format "%s")
   (setq org-pomodoro-short-break-format "Short Break: %s")
   (setq org-pomodoro-long-break-format "Long Break: %s")
