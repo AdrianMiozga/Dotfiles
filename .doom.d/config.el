@@ -261,6 +261,10 @@
 (use-package! flyspell-correct-ivy
   :after flyspell-correct)
 
+(use-package! pdf-tools
+  :config
+  (setq pdf-view-resize-factor 1.1))
+
 (use-package! nov
   :init
   (setq nov-text-width t)
