@@ -57,6 +57,9 @@
 (package! org-table-wrap-functions
   :recipe (:host github :repo "analyticd/org-table-wrap-functions"))
 
+(package! title-capitalization
+  :recipe (:host github :repo "novoid/title-capitalization.el"))
+
 (package! mixed-pitch)
 (package! org-superstar)
 (package! typo)

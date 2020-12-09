@@ -201,13 +201,13 @@
   ("C-|" . org-table-column-wrap-to-point)
   ("C->" . org-table-unwrap-cell-region))
 
-(use-package! title-case
-  :commands (xah-title-case-region-or-line)
-  :load-path "~/emacs-plugins"
+(use-package! title-capitalization
+  :commands (title-capitalization)
   :init
+  (require 'ert)
   (map! :leader
         :prefix "e"
-        :desc "title-case" "t" #'xah-title-case-region-or-line))
+        :desc "title-case" "t" #'title-capitalization))
 
 (use-package! org-delete-link
   :commands (org-delete-link)
