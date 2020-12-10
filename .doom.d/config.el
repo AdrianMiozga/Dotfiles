@@ -209,13 +209,6 @@
         :prefix "e"
         :desc "title-case" "t" #'title-capitalization))
 
-(use-package! org-delete-link
-  :commands (org-delete-link)
-  :load-path  "~/emacs-plugins"
-  :init
-  (map! :leader
-        :desc "delete-link" "aod" #'org-delete-link))
-
 ;; Turn off auto completion in org-mode
 (use-package! company
   :init
