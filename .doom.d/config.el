@@ -304,6 +304,10 @@
       evil-operator-state-cursor '((hbar . 9) "#CD96CD")
       evil-replace-state-cursor '(hbar "#CD96CD"))
 
+(use-package server
+  :config
+  (server-start))
+
 (custom-set-faces!
   '(org-level-1 :foreground "#AB9BD5" :weight bold :height 1.1)
   '(org-level-2 :foreground "#BC6EC5" :weight bold :height 1.1)
