@@ -297,16 +297,22 @@
   :load-path "~/emacs-plugins"
   :after google-translate)
 
-;; Change cursor colors
-(setq evil-normal-state-cursor '(box "#CD96CD")
-      evil-insert-state-cursor '(bar "#CD96CD")
-      evil-visual-state-cursor '(box "#CD96CD")
-      evil-operator-state-cursor '((hbar . 9) "#CD96CD")
-      evil-replace-state-cursor '(hbar "#CD96CD"))
 
 (use-package server
   :config
   (server-start))
+
+(use-package! evil
+  :commands (evil-insert)
+  :init
+  (map! "C-S-i" #'evil-insert)
+  :config
+  ;; Change cursor colors
+  (setq evil-normal-state-cursor '(box "#CD96CD"))
+  (setq evil-insert-state-cursor '(bar "#CD96CD"))
+  (setq evil-visual-state-cursor '(box "#CD96CD"))
+  (setq evil-operator-state-cursor '((hbar . 9) "#CD96CD"))
+  (setq evil-replace-state-cursor '(hbar "#CD96CD")))
 
 (custom-set-faces!
   '(org-level-1 :foreground "#AB9BD5" :weight bold :height 1.1)
