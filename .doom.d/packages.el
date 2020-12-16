@@ -69,6 +69,7 @@
 (package! google-translate)
 (package! AUCTeX)
 (package! pandoc-mode)
+(package! matlab-mode)
 
 ;; Disable this package so I can easily change background color through default face
 (package! solaire-mode :disable t)
