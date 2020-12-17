@@ -81,6 +81,8 @@
   (setq org-hide-emphasis-markers t)
   (setq org-pretty-entities t)
   (setq org-directory "~/org-roam/")
+  ;; Show only today clock-in time for the task in modeline
+  (setq org-clock-mode-line-total 'today)
   :config
   (setq org-display-remote-inline-images 'skip)
   :hook (org-mode . doom-disable-line-numbers-h)
