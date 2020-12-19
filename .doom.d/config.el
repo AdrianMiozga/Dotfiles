@@ -142,6 +142,29 @@
                              (68 :foreground "#51AFEF")))
   (setq org-agenda-start-day "+0d"))
 
+(use-package! org-clock-convenience
+  :after (org-agenda)
+  :commands (org-clock-convenience-timestamp-up
+             org-clock-convenience-timestamp-down
+             org-clock-convenience-fill-gap
+             org-clock-convenience-fill-gap-both)
+  :init
+  (map! :map org-agenda-mode-map
+        "C-S-k" #'org-clock-convenience-timestamp-up
+        "C-S-j" #'org-clock-convenience-timestamp-down
+        "o" #'org-clock-convenience-fill-gap
+        "C-S-o" #'org-clock-convenience-fill-gap-both)
+  :config
+  ;; Make this package work with my custom agenda display format
+  ;; (org-agenda-prefix-format) which doesn’t contain file name.
+  (setq org-clock-convenience-clocked-agenda-fields
+        '(d1-time d1-hours d1-minutes d2-time d2-hours d2-minutes duration))
+  (setq org-clock-convenience-clocked-agenda-re
+        (concat "^  \\(\\([ 	012][0-9]\\):\\([0-5][0-9]\\)\\)"
+                "\\(?:-\\(\\([ 012][0-9]\\):\\([0-5][0-9]\\)\\)\\|.*\\)"
+                "?[[:space:]]+Clocked:[[:space:]]+"
+                "\\(([0-9]+:[0-5][0-9])\\|(-)\\)")))
+
 (use-package! org-roam
   :commands (org-roam-insert org-roam-find-file org-roam-switch-to-buffer org-roam)
   :hook (after-init . org-roam-mode)
