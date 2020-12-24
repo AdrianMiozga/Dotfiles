@@ -222,7 +222,7 @@
 
 (use-package! deft
   :init
-  (setq deft-directory "~/org-roam"))
+  (setq deft-directory (symbol-value 'org-directory)))
 
 (use-package! org-table-wrap-functions
   :after org
