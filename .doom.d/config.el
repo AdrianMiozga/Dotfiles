@@ -12,9 +12,9 @@
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
 ;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
+;; + ‘doom-font’
+;; + ‘oom-variable-pitch-font’
+;; + ‘doom-big-font’ -- used for ‘doom-big-font-mode’; use this for
 ;;   presentations or streaming.
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
@@ -26,24 +26,24 @@
       doom-variable-pitch-font (font-spec :family "DejaVu Sans"))
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
+;; available. You can either set 'doom-theme' or manually load a theme with the
+;; ‘load-theme’ function. This is the default:
 (setq doom-theme 'doom-one)
 
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
+;; This determines the style of line numbers in effect. If set to ‘nil’, line
+;; numbers are disabled. For relative line numbers, set this to ‘relative’.
 (setq display-line-numbers-type 'relative)
 
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
+;; - ‘load!’ for loading external *.el files relative to this one
+;; - ‘use-package!’ for configuring packages
+;; - ‘after!’ for running code after a package has loaded
+;; - ‘add-load-path!’ for adding directories to the ‘load-path’, relative to
+;;   this file. Emacs searches the ‘load-path’ when you load packages with
+;;   ‘require' or `use-package’.
+;; - ‘map!’ for binding new keys
 ;;
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
@@ -93,13 +93,14 @@
 
 (use-package! org-agenda
   :init
-  (map! :prefix "C-c" "a" #'(lambda (&optional arg) (interactive "P")(org-agenda arg "c")))
+  (map! :prefix "C-c" "a"
+        #'(lambda (&optional arg) (interactive "P")(org-agenda arg "c")))
   ;; Start agenda and calendar on Monday
   (setq org-agenda-start-on-weekday 1)
   (setq calendar-week-start-day 1)
-  ;; Don't draw weekend days in special color
+  ;; Don’t draw weekend days in special color
   (setq org-agenda-weekend-days 'nil)
-  ;; Don't show sublevels of TODO entries
+  ;; Don’t show sublevels of TODO entries
   (setq org-agenda-todo-list-sublevels 'nil)
   ;; Show timestamp when making task DONE
   (setq org-log-done 'time)
@@ -110,13 +111,15 @@
   (setq org-priority-start-cycle-with-default 'nil)
   ;; Go further with clock report than 2 levels
   (setq org-agenda-clockreport-parameter-plist '(:link t :maxlevel 99))
-  ;; Don't show done entries
+  ;; Don’t show done entries
   (setq org-agenda-skip-scheduled-if-done t)
   ;; Show only clocked items. Default was clocked + closed
   (setq org-agenda-log-mode-items '(clock))
-  ;; Don't show headline tags
+  ;; Don’t show headline tags
   (setq org-agenda-remove-tags t)
-  (setq org-agenda-files '("~/org-roam/main.org" "~/org-roam/todo.org" "~/org-roam/getflow.org"))
+  (setq org-agenda-files '("~/org-roam/main.org"
+                           "~/org-roam/todo.org"
+                           "~/org-roam/getflow.org"))
   (setq org-agenda-prefix-format '((agenda . " %i %?-12t% s")
                                    (todo . " %i ")
                                    (tags . " %i ")
@@ -156,7 +159,7 @@
         "C-S-o" #'org-clock-convenience-fill-gap-both)
   :config
   ;; Make this package work with my custom agenda display format
-  ;; (org-agenda-prefix-format) which doesn’t contain file name.
+  ;; (‘org-agenda-prefix-format’) which doesn’t contain file name.
   (setq org-clock-convenience-clocked-agenda-fields
         '(d1-time d1-hours d1-minutes d2-time d2-hours d2-minutes duration))
   (setq org-clock-convenience-clocked-agenda-re
@@ -181,7 +184,7 @@
         :desc "Org-roam capture" "c" #'org-roam-capture)
   :config
   (setq org-roam-directory (symbol-value 'org-directory))
-  ;; Don’t delete org-roam buffer when using delete-other-windows
+  ;; Don’t delete org-roam buffer when using ‘delete-other-windows’
   (setq org-roam-buffer-window-parameters '((no-delete-other-windows . t)))
   (setq org-roam-tag-sources '(prop last-directory))
   (setq org-id-link-to-org-use-id t)
@@ -267,10 +270,13 @@
   (let ((current-location (point))
         (word (flyspell-get-word)))
     (when (consp word)
-      (flyspell-do-correct 'save nil (car word) current-location (cadr word) (caddr word) current-location))))
+      (flyspell-do-correct 'save nil (car word) current-location
+                           (cadr word) (caddr word) current-location))))
 
 (use-package! flyspell-correct
-  :commands (flyspell-correct-at-point flyspell-correct-next flyspell-correct-previous)
+  :commands (flyspell-correct-at-point
+             flyspell-correct-next
+             flyspell-correct-previous)
   :after flyspell
   :bind (:map flyspell-mode-map ("C-;" . flyspell-correct-wrapper))
   :init
@@ -312,7 +318,8 @@
 (setq google-translate-backend-method 'curl)
 
 (use-package! google-translate
-  :commands (google-translate-query-translate google-translate-query-translate-reverse)
+  :commands (google-translate-query-translate
+             google-translate-query-translate-reverse)
   :init
   (setq google-translate-default-source-language "en")
   (setq google-translate-default-target-language "pl")
@@ -356,7 +363,8 @@
 
   '(org-footnote :foreground "SteelBlue1")
 
-  '(org-document-title :inherit bold :foreground "#BC6EC5" :underline nil :height 1.4)
+  '(org-document-title :inherit bold :foreground "#BC6EC5"
+                       :underline nil :height 1.4)
   '(org-meta-line :inherit org-document-info-keyword :foreground "Seashell")
 
   '(hl-line :background "#383341")
@@ -367,7 +375,8 @@
   '(org-tag :foreground "#C0C5CE")
   '(org-todo :background "#32322C" :foreground "SteelBlue1" :weight bold)
 
-  '(org-table :background "#262633" :foreground "#BBC2CF" :height 1.0 :family "Consolas")
+  '(org-table :background "#262633" :foreground "#BBC2CF"
+              :height 1.0 :family "Consolas")
 
   '(org-indent :inherit (org-hide fixed-pitch))
 
