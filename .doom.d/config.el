@@ -181,12 +181,15 @@
         :desc "Org-roam capture" "c" #'org-roam-capture)
   :config
   (setq org-roam-directory (symbol-value 'org-directory))
+  ;; Don’t delete org-roam buffer when using delete-other-windows
+  (setq org-roam-buffer-window-parameters '((no-delete-other-windows . t)))
   (setq org-roam-tag-sources '(prop last-directory))
   (setq org-id-link-to-org-use-id t)
   (setq org-roam-capture-templates
         '(("d" "default" plain #'org-roam-capture--get-point "%?"
            :file-name "%<%Y%m%d%H%M%S>-${slug}"
            :head "#+TITLE: ${title}" :unnarrowed t)))
+  ;; Open links in another window
   (setq org-link-frame-setup '((file . find-file-other-window))))
 
 (use-package! mixed-pitch
