@@ -367,7 +367,8 @@
   '(org-tag :foreground "#C0C5CE")
   '(org-todo :background "#32322C" :foreground "SteelBlue1" :weight bold)
 
-  '(org-table :background "#262633" :foreground "#B2B2B2" :height 1.0 :family "Consolas")
+  '(org-table :background "#262633" :foreground "#BBC2CF" :height 1.0 :family "Consolas")
+
   '(org-indent :inherit (org-hide fixed-pitch))
 
   ;; Agenda
