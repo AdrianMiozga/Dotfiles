@@ -166,8 +166,10 @@
                 "\\(([0-9]+:[0-5][0-9])\\|(-)\\)")))
 
 (use-package! org-roam
-  :commands (org-roam-insert org-roam-find-file org-roam-switch-to-buffer org-roam)
-  :hook (after-init . org-roam-mode)
+  :commands (org-roam-insert
+             org-roam-find-file
+             org-roam-switch-to-buffer
+             org-roam)
   :init
   (map! :leader
         :prefix "n"
@@ -177,16 +179,15 @@
         :desc "Org-roam find file" "f" #'org-roam-find-file
         :desc "Org-roam insert" "i" #'org-roam-insert
         :desc "Org-roam capture" "c" #'org-roam-capture)
-  (setq org-roam-directory (file-truename "~/org-roam/"))
-  (setq org-roam-db-gc-threshold most-positive-fixnum)
+  :config
+  (setq org-roam-directory (symbol-value 'org-directory))
   (setq org-roam-tag-sources '(prop last-directory))
   (setq org-id-link-to-org-use-id t)
   (setq org-roam-capture-templates
         '(("d" "default" plain #'org-roam-capture--get-point "%?"
            :file-name "%<%Y%m%d%H%M%S>-${slug}"
            :head "#+TITLE: ${title}" :unnarrowed t)))
-  (after! org-roam
-    (setq org-link-frame-setup '((file . find-file-other-window)))))
+  (setq org-link-frame-setup '((file . find-file-other-window))))
 
 (use-package! mixed-pitch
   :hook (text-mode . mixed-pitch-mode))
