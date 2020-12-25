@@ -81,9 +81,20 @@
   (setq org-hide-emphasis-markers t)
   (setq org-pretty-entities t)
   (setq org-directory "~/org-roam/")
+  ;; Show timestamp when making task DONE
+  (setq org-log-done 'time)
   ;; Show only today clock-in time for the task in modeline
   (setq org-clock-mode-line-total 'today)
   (setq org-display-remote-inline-images 'skip)
+  ;; Add D as another task priority
+  (setq org-lowest-priority ?D)
+  ;; Use C as default priority instead of B
+  (setq org-default-priority ?C)
+  (setq org-priority-start-cycle-with-default 'nil)
+  (setq org-priority-faces '((65 . error)
+                             (66 . warning)
+                             (67 . success)
+                             (68 :foreground "#51AFEF")))
   :hook (org-mode . doom-disable-line-numbers-h)
   :hook (org-mode . (lambda ()
                       (push '("#+TITLE: " . "") prettify-symbols-alist)
@@ -132,17 +143,6 @@
   (setq org-agenda-weekend-days 'nil)
   ;; Don’t show sublevels of TODO entries
   (setq org-agenda-todo-list-sublevels 'nil)
-  ;; Show timestamp when making task DONE
-  (setq org-log-done 'time)
-  ;; Add D as another task priority
-  (setq org-lowest-priority ?D)
-  ;; Use C as default priority instead of B
-  (setq org-default-priority ?C)
-  (setq org-priority-start-cycle-with-default 'nil)
-  (setq org-priority-faces '((65 . error)
-                             (66 . warning)
-                             (67 . success)
-                             (68 :foreground "#51AFEF")))
   (setq org-agenda-start-day "+0d"))
 
 (use-package! org-clock-convenience
