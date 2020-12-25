@@ -348,6 +348,9 @@
   :config
   (setq doom-modeline-column-zero-based nil))
 
+;; Fix flickering on Windows
+(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
+
 (custom-set-faces!
   '(org-level-1 :foreground "#AB9BD5" :weight bold :height 1.1)
   '(org-level-2 :foreground "#BC6EC5" :weight bold :height 1.1)
