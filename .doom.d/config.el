@@ -350,6 +350,10 @@
   (setq evil-operator-state-cursor '((hbar . 9) "#CD96CD"))
   (setq evil-replace-state-cursor '(hbar "#CD96CD")))
 
+(use-package! doom-modeline
+  :config
+  (setq doom-modeline-column-zero-based nil))
+
 (custom-set-faces!
   '(org-level-1 :foreground "#AB9BD5" :weight bold :height 1.1)
   '(org-level-2 :foreground "#BC6EC5" :weight bold :height 1.1)
