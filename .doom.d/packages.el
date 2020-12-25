@@ -71,6 +71,7 @@
 (package! pandoc-mode)
 (package! org-clock-convenience)
 (package! matlab-mode)
+(package! go-translate)
 
 ;; Disable this package so I can easily change background color
 ;; through default face

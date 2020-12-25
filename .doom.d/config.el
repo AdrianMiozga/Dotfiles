@@ -75,7 +75,7 @@
 (setq doom-org-special-tags nil)
 
 (use-package! org
-  :init
+  :config
   (setq org-startup-folded t)
   (setq org-startup-with-inline-images t)
   (setq org-hide-emphasis-markers t)
@@ -83,7 +83,6 @@
   (setq org-directory "~/org-roam/")
   ;; Show only today clock-in time for the task in modeline
   (setq org-clock-mode-line-total 'today)
-  :config
   (setq org-display-remote-inline-images 'skip)
   :hook (org-mode . doom-disable-line-numbers-h)
   :hook (org-mode . (lambda ()
@@ -92,23 +91,11 @@
                       (prettify-symbols-mode))))
 
 (use-package! org-agenda
+  :defer
   :init
   (map! :prefix "C-c" "a"
         #'(lambda (&optional arg) (interactive "P")(org-agenda arg "c")))
-  ;; Start agenda and calendar on Monday
-  (setq org-agenda-start-on-weekday 1)
-  (setq calendar-week-start-day 1)
-  ;; Don’t draw weekend days in special color
-  (setq org-agenda-weekend-days 'nil)
-  ;; Don’t show sublevels of TODO entries
-  (setq org-agenda-todo-list-sublevels 'nil)
-  ;; Show timestamp when making task DONE
-  (setq org-log-done 'time)
-  ;; Add D as another task priority
-  (setq org-lowest-priority ?D)
-  ;; Use C as default priority instead of B
-  (setq org-default-priority ?C)
-  (setq org-priority-start-cycle-with-default 'nil)
+  :config
   ;; Go further with clock report than 2 levels
   (setq org-agenda-clockreport-parameter-plist '(:link t :maxlevel 99))
   ;; Don’t show done entries
@@ -138,7 +125,20 @@
                       (org-agenda-skip-deadline-if-done t)
                       (org-agenda-entry-types '(:deadline))
                       (org-deadline-warning-days 0)))))
-  :config
+  ;; Start agenda and calendar on Monday
+  (setq org-agenda-start-on-weekday 1)
+  (setq calendar-week-start-day 1)
+  ;; Don’t draw weekend days in special color
+  (setq org-agenda-weekend-days 'nil)
+  ;; Don’t show sublevels of TODO entries
+  (setq org-agenda-todo-list-sublevels 'nil)
+  ;; Show timestamp when making task DONE
+  (setq org-log-done 'time)
+  ;; Add D as another task priority
+  (setq org-lowest-priority ?D)
+  ;; Use C as default priority instead of B
+  (setq org-default-priority ?C)
+  (setq org-priority-start-cycle-with-default 'nil)
   (setq org-priority-faces '((65 . error)
                              (66 . warning)
                              (67 . success)
@@ -199,12 +199,13 @@
   :hook (text-mode . mixed-pitch-mode))
 
 (use-package! org-superstar
-   :init
-   (setq org-superstar-headline-bullets-list '("◉" "○" "✸" "◆"))
-   :hook (org-mode . org-superstar-mode))
+   :hook (org-mode . org-superstar-mode)
+   :config
+   (setq org-superstar-headline-bullets-list '("◉" "○" "✸" "◆")))
 
 (use-package! org-pomodoro
-  :init
+  :defer
+  :config
   (setq org-pomodoro-format "%s")
   (setq org-pomodoro-short-break-format "Short Break: %s")
   (setq org-pomodoro-long-break-format "Long Break: %s")
@@ -221,10 +222,13 @@
   (add-hook 'org-pomodoro-break-finished-hook 'org-pomodoro-prompt))
 
 (use-package! typo
-  :hook (text-mode . typo-mode))
+  :hook (text-mode . typo-mode)
+  :init
+  (typo-global-mode 1))
 
 (use-package! deft
-  :init
+  :defer
+  :config
   (setq deft-directory (symbol-value 'org-directory)))
 
 (use-package! org-table-wrap-functions
@@ -236,20 +240,18 @@
 (use-package! title-capitalization
   :commands (title-capitalization)
   :init
-  (require 'ert)
   (map! :leader
         :prefix "e"
         :desc "title-case" "t" #'title-capitalization))
 
 ;; Turn off auto completion in org-mode
 (use-package! company
-  :init
+  :defer
+  :config
   (setq company-global-modes '(not org-mode)))
 
 ;; Spell checking
 (use-package! ispell
-  :hook
-  (after-init . ispell)
   :config
   (setq ispell-program-name "hunspell")
   (setq ispell-dictionary "en_US,pl_PL")
@@ -258,20 +260,19 @@
 
 (use-package! flyspell
   :commands (add-word-to-personal-dictionary)
-  :hook
-  (text-mode . flyspell-mode)
+  :hook (text-mode . flyspell-mode)
   :init
   (map! :leader
         :prefix "S"
-        :desc "add-word-to-dictionary" "a" #'add-word-to-personal-dictionary))
-
-(defun add-word-to-personal-dictionary ()
-  (interactive)
-  (let ((current-location (point))
-        (word (flyspell-get-word)))
-    (when (consp word)
-      (flyspell-do-correct 'save nil (car word) current-location
-                           (cadr word) (caddr word) current-location))))
+        :desc "add-word-to-dictionary" "a" #'add-word-to-personal-dictionary)
+  :config
+  (defun add-word-to-personal-dictionary ()
+    (interactive)
+    (let ((current-location (point))
+          (word (flyspell-get-word)))
+      (when (consp word)
+        (flyspell-do-correct 'save nil (car word) current-location
+                             (cadr word) (caddr word) current-location)))))
 
 (use-package! flyspell-correct
   :commands (flyspell-correct-at-point
@@ -290,14 +291,14 @@
   :after flyspell-correct)
 
 (use-package! pdf-tools
+  :defer
   :config
   (setq pdf-view-resize-factor 1.1))
 
 (use-package! nov
-  :init
+  :config
   (setq nov-text-width t)
   (setq nov-unzip-program "C:\\Program Files\\Unzip\\unzip.exe")
-  :config
   (unbind-key "i" nov-mode-map)
   (unbind-key "<normal-state> i" nov-mode-map)
   :hook (nov-mode . visual-line-mode)
@@ -313,28 +314,20 @@
   (setq writeroom-extra-line-spacing 0.3)
   (setq +zen-text-scale 0))
 
-(require 'google-translate)
-(defun google-translate--search-tkk () "Search TKK." (list 430675 2721866130))
-(setq google-translate-backend-method 'curl)
-
-(use-package! google-translate
-  :commands (google-translate-query-translate
-             google-translate-query-translate-reverse)
+(use-package! go-translate
+  :commands (go-translate)
   :init
-  (setq google-translate-default-source-language "en")
-  (setq google-translate-default-target-language "pl")
-  (setq google-translate-pop-up-buffer-set-focus t)
   (map! :leader
         :prefix "s"
-        "g" #'google-translate-query-translate
-        "G" #'google-translate-query-translate-reverse))
-
-(use-package! translate-operator
-  :load-path "~/emacs-plugins"
-  :after google-translate)
-
+        :desc "Google Translate" "g" #'go-translate)
+  :config
+  (setq go-translate-local-language "pl")
+  (setq go-translate-target-language "en")
+  (setq go-translate-buffer-follow-p t)
+  (setq go-translate-token-current (cons 430675 2721866130)))
 
 (use-package server
+  :defer
   :config
   (server-start))
 
@@ -351,6 +344,7 @@
   (setq evil-replace-state-cursor '(hbar "#CD96CD")))
 
 (use-package! doom-modeline
+  :defer
   :config
   (setq doom-modeline-column-zero-based nil))
 
