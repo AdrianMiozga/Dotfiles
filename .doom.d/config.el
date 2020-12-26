@@ -348,8 +348,6 @@
   :config
   (setq doom-modeline-column-zero-based nil))
 
-;; Fix screen flickering on Windows
-(add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
 
 ;; Don’t display hourglass cursor when Emacs is busy
 (setq display-hourglass nil)
