@@ -95,6 +95,7 @@
                              (66 . warning)
                              (67 . success)
                              (68 :foreground "#51AFEF")))
+  (setq org-ellipsis "  ")
   :hook (org-mode . doom-disable-line-numbers-h)
   :hook (org-mode . (lambda ()
                       (push '("#+TITLE: " . "") prettify-symbols-alist)
@@ -386,6 +387,9 @@
               :height 1.0 :family "Consolas")
 
   '(org-indent :inherit (org-hide fixed-pitch))
+
+  ;; :foreground nil makes ellipsis color same as the heading
+  '(org-ellipsis :foreground nil :height 120)
 
   ;; Agenda
   '(org-agenda-done :foreground "#AB9BD5") ;; Done tasks + clocked items
