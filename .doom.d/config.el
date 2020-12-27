@@ -349,6 +349,11 @@
   (setq doom-modeline-column-zero-based nil))
 
 
+(use-package! evil-multiedit
+  :defer
+  :config
+  (setq evil-multiedit-follow-matches t))
+
 ;; Don’t display hourglass cursor when Emacs is busy
 (setq display-hourglass nil)
 
