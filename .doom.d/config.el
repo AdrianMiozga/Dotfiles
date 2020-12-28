@@ -196,6 +196,92 @@
   ;; Open links in another window
   (setq org-link-frame-setup '((file . find-file-other-window))))
 
+(use-package org-roam-bibtex
+  :disabled
+  :after org-roam
+  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :config
+  (setq orb-templates
+        `(("r" "ref" plain (function org-roam-capture--get-point) ""
+           :file-name "${citekey}"
+           :head ,(concat
+                   "#+TITLE: ${title}\n"
+                   "#+ROAM_KEY: ${citekey}\n\n"
+                   "* Notes\n"
+                   ":PROPERTIES:\n"
+                   ":Custom_ID: ${citekey}\n"
+                   ":NOTER_DOCUMENT: %(orb-process-file-field \"${citekey}\")\n"
+                   ":END:\n")
+           :unnarrowed t))))
+
+(use-package org-ref
+  :disabled
+  :defer
+  :init
+  (setq org-ref-completion-library 'org-ref-ivy-cite)
+  (setq org-ref-default-bibliography
+        (list "~/Documents/References/Zotero Library.bib"))
+  :config
+  (setq org-ref-get-pdf-filename-function
+        'org-ref-get-pdf-filename-helm-bibtex)
+
+  (setq org-ref-open-pdf-function 'my/org-ref-open-pdf-at-point)
+
+  (defun my/org-ref-open-pdf-at-point ()
+    "Open the pdf for bibtex key under point if it exists."
+    (interactive)
+    (let* ((results (org-ref-get-bibtex-key-and-file))
+           (key (car results))
+           (pdf-file (funcall org-ref-get-pdf-filename-function key))
+           (pdf-other (bibtex-completion-find-pdf key)))
+      (cond ((file-exists-p pdf-file)
+             (org-open-file pdf-file))
+            (pdf-other
+             (org-open-file pdf-other))
+            (message "No PDF found for %s" key))))
+
+  ;; Open PDFs in default program set from OS
+  (setq org-file-apps '((auto-mode . emacs)
+                        (directory . emacs)
+                        ("\\.mm\\'" . default)
+                        ("\\.x?html?\\'" . default)
+                        ("\\.pdf\\'" . system))))
+
+(use-package! ivy-bibtex
+  :disabled
+  :commands (ivy-bibtex)
+  :init
+  (map! :leader
+        :prefix "n"
+        :desc "ivy-bibtex" "r" #'ivy-bibtex)
+  :config
+  (ivy-add-actions 'ivy-bibtex '(("n" ivy-bibtex-edit-notes "Edit notes"))))
+
+(use-package! helm-bibtex
+  :disabled
+  :after ivy-bibtex
+  :config
+  (defun bibtex-completion-format-citation-org-ref (keys)
+    "Formatter for org-ref references."
+    (s-join ", " (--map (format "cite:%s" it) keys)))
+
+  (setq bibtex-completion-format-citation-functions
+        '((org-mode . bibtex-completion-format-citation-org-ref)
+          (latex-mode . bibtex-completion-format-citation-cite)
+          (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
+          (python-mode . bibtex-completion-format-citation-sphinxcontrib-bibtex)
+          (rst-mode . bibtex-completion-format-citation-sphinxcontrib-bibtex)
+          (default . bibtex-completion-format-citation-default)))
+
+  (setq ivy-bibtex-default-action 'ivy-bibtex-insert-citation)
+  (setq bibtex-completion-pdf-field "File")
+  (setq bibtex-completion-display-formats
+        '((t . "${title:*} ${author:36} ${year:4} \
+                ${=has-pdf=:1}${=has-note=:1} ${=type=:12}")))
+  (setq bibtex-completion-library-path '("~/Documents/References/"))
+  (setq bibtex-completion-bibliography
+        '("~/Documents/References/Zotero Library.bib")))
+
 (use-package! mixed-pitch
   :hook (text-mode . mixed-pitch-mode))
 
@@ -374,6 +460,8 @@
   '(org-document-title :inherit bold :foreground "#BC6EC5"
                        :underline nil :height 1.4)
   '(org-meta-line :inherit org-document-info-keyword :foreground "Seashell")
+
+  '(org-ref-cite-face :foreground "SteelBlue1" :weight bold)
 
   '(hl-line :background "#383341")
   '(default :background "#1D1D26")
