@@ -68,6 +68,7 @@
 (package! nov)
 (package! google-translate)
 (package! AUCTeX)
+(package! sound-wav)
 (package! org-ref)
 (package! ivy-bibtex)
 (package! org-roam-bibtex)
