@@ -58,6 +58,9 @@
 
 (add-hook! 'after-make-frame-functions #'toggle-frame-fullscreen)
 
+;; Don’t display hourglass cursor when Emacs is busy
+(setq display-hourglass nil)
+
 ;; Auto save after 2 seconds of idle
 (setq auto-save-timeout 2)
 
@@ -81,11 +84,11 @@
   (setq org-hide-emphasis-markers t)
   (setq org-pretty-entities t)
   (setq org-directory "~/org-roam/")
+  (setq org-display-remote-inline-images 'skip)
   ;; Show timestamp when making task DONE
   (setq org-log-done 'time)
   ;; Show only today clock-in time for the task in modeline
   (setq org-clock-mode-line-total 'today)
-  (setq org-display-remote-inline-images 'skip)
   ;; Add D as another task priority
   (setq org-lowest-priority ?D)
   ;; Use C as default priority instead of B
@@ -441,8 +444,6 @@
   :config
   (setq evil-multiedit-follow-matches t))
 
-;; Don’t display hourglass cursor when Emacs is busy
-(setq display-hourglass nil)
 
 (custom-set-faces!
   '(org-level-1 :foreground "#AB9BD5" :weight bold :height 1.1)
