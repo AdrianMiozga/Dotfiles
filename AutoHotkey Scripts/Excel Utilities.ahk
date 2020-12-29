@@ -8,6 +8,14 @@ Send m
 Send m
 return
 
+; Unmerge Cells
+
+F5::
+Send !h
+Send m
+Send u
+return
+
 ; Insert Cells > Shift Cells Down
 
 F6::
