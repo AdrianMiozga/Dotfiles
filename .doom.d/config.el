@@ -111,6 +111,16 @@
   (map! :prefix "C-c" "a"
         #'(lambda (&optional arg) (interactive "P")(org-agenda arg "c")))
   :config
+  (defun go-to-last-clockout ()
+    "Move cursor to the last clocked-in entry in agenda."
+    (goto-char (point-max))
+    (if (search-backward "Clocked:" nil t)
+        (progn (beginning-of-line)
+               (goto-char (+ (point) 7)))
+      (goto-char (point-min))))
+
+  (add-hook 'org-agenda-finalize-hook 'go-to-last-clockout)
+
   ;; Go further with clock report than 2 levels
   (setq org-agenda-clockreport-parameter-plist '(:link t :maxlevel 99))
   ;; Don’t show done entries
