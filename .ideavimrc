@@ -1,14 +1,19 @@
+""" First, load the .vimrc settings
 source ~/.vimrc
 
-set ideajoin
-set ideamarks
+""" General settings
 set clipboard+=ideaput
+set ideamarks
+set ideajoin
+
+""" Plugins
 set surround
 set multiple-cursors
 set argtextobj
 set commentary
 set ReplaceWithRegister
 
+""" Mappings
 let mapleader = " "
 :map <leader>m. :action FileStructurePopup<CR>
 :map <leader>pr :action ActivateProjectToolWindow<CR>
