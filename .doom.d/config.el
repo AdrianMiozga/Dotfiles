@@ -298,7 +298,11 @@
         '("~/Documents/References/Zotero Library.bib")))
 
 (use-package! mixed-pitch
-  :hook (text-mode . mixed-pitch-mode))
+  :hook (text-mode . mixed-pitch-mode)
+  :init
+  (map! :leader
+        :prefix "t"
+        :desc "Mixed pitch mode" "m" #'mixed-pitch-mode))
 
 (use-package! org-superstar
    :hook (org-mode . org-superstar-mode)
