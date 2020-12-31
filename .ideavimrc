@@ -38,5 +38,11 @@ let mapleader = " "
 :map <leader>re :action RenameElement<CR>
 :map <leader>em :action ActivateAndroidEmulatorToolWindow<CR>
 
+:map <Enter> <A-x>
+
+:nmap <A-j> :action EditorSplitLine<CR>
+
+:nmap <S-q> :action ReformatCode<CR>
+
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
