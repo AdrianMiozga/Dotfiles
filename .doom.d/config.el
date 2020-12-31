@@ -206,6 +206,8 @@
         '(("d" "default" plain #'org-roam-capture--get-point "%?"
            :file-name "%<%Y%m%d%H%M%S>-${slug}"
            :head "#+TITLE: ${title}" :unnarrowed t)))
+  ;; Don’t show modeline in org-roam buffer
+  (add-hook 'org-roam-buffer-prepare-hook #'hide-mode-line-mode)
   ;; Open links in another window
   (setq org-link-frame-setup '((file . find-file-other-window))))
 
