@@ -164,7 +164,6 @@ nnoremap yd :!powershell.exe -NoProfile -Command "Set-Clipboard -Value %d" & <cr
 nnoremap yf :!powershell.exe -NoProfile -Command "Set-Clipboard -Value %d/%c" & <cr>
 
 " Mappings for faster renaming
-nnoremap I cw<c-a>
 nnoremap cc cw<c-u>
 nnoremap A cw
 
@@ -212,6 +211,9 @@ nnoremap <wait> <Space>fe :!explorer.exe . & <cr>
 
 " Open file in Vim
 nnoremap i :!vim %f <cr>
+
+" Open file in currently running instance of Emacs
+nnoremap I :!emacsclient.exe -n %f & <cr>
 
 nnoremap <wait> <Space>uz :!zsh -ic "extract %d/%c" <cr>
 nnoremap <wait> <Space>zi :!zip -r %f.zip %f <cr>
