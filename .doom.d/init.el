@@ -14,6 +14,13 @@
 ;;      Alternatively, press 'gd' (or 'C-c c d') on a module to browse its
 ;;      directory (for easy access to its source code).
 
+;; Uncomment to benchmark Emacs startup
+;; (use-package benchmark-init
+;;   :ensure t
+;;   :config
+;;   ;; To disable collection of benchmark data after init is done.
+;;   (add-hook 'after-init-hook 'benchmark-init/deactivate))
+
 (doom! :input
        ;;chinese
        ;;japanese
