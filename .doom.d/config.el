@@ -350,10 +350,12 @@
         :prefix "e"
         :desc "title-case" "t" #'title-capitalization))
 
-;; Turn off auto completion in org-mode
 (use-package! company
   :defer
   :config
+  (setq company-idle-delay 0)
+  (setq company-tooltip-idle-delay 0)
+  ;; Turn off auto completion in org-mode
   (setq company-global-modes '(not org-mode)))
 
 ;; Spell checking
