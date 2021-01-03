@@ -74,6 +74,7 @@
 (package! pandoc-mode)
 (package! org-clock-convenience)
 (package! matlab-mode)
+(package! ahk-mode)
 (package! benchmark-init)
 
 ;; Disable this package so I can easily change background color
