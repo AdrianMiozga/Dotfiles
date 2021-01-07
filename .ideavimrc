@@ -15,28 +15,32 @@ set ReplaceWithRegister
 
 """ Mappings
 let mapleader = " "
-:map <leader>m. :action FileStructurePopup<CR>
-:map <leader>pr :action ActivateProjectToolWindow<CR>
+
+""" Open windows
+:map <leader>op :action ActivateProjectToolWindow<CR>
 :map <leader>bv :action SelectBuildVariant<CR>
 :map <leader>vc :action Vcs.Show.Log<CR>
 :map <leader>lc :action ActivateLogcatToolWindow<CR>
 :map <leader>ru :action ActivateRunToolWindow<CR>
 :map <leader>me :action ActivateMessagesToolWindow<CR>
-:map <leader>ic :action InspectCode<CR>
 :map <leader>sd :action DeviceAndSnapshotComboBox<CR>
-:map <leader>ed :action ExternalJavaDoc<CR>
-:map <leader>co :action CheckinProject<CR>
 :map <leader>ir :action ActivateInspectionResultsToolWindow<CR>
 :map <leader>bu :action ActivateBuildToolWindow<CR>
-:nmap <Enter> :action EditorStartNewLine<CR>
-:nmap <S-Enter> :action EditorStartNewLineBefore<CR>
 :map <leader>td :action ActivateTODOToolWindow<CR>
 :map <leader>fe :action ActivateDeviceFileExplorerToolWindow<CR>
-:map <leader>cs :action ChangeSignature<CR>
 :map <leader>fi :action ActivateFindToolWindow<CR>
+:map <leader>em :action ActivateAndroidEmulatorToolWindow<CR>
+
+:map <leader>m. :action FileStructurePopup<CR>
+:map <leader>ic :action InspectCode<CR>
+:map <leader>ed :action ExternalJavaDoc<CR>
+:map <leader>co :action CheckinProject<CR>
+:map <leader>cs :action ChangeSignature<CR>
 :map <leader>fu :action FindUsages<CR>
 :map <leader>re :action RenameElement<CR>
-:map <leader>em :action ActivateAndroidEmulatorToolWindow<CR>
+
+:nmap <Enter> :action EditorStartNewLine<CR>
+:nmap <S-Enter> :action EditorStartNewLineBefore<CR>
 
 :map <Enter> <A-x>
 
