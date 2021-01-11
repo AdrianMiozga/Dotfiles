@@ -121,6 +121,9 @@
 
   (add-hook 'org-agenda-finalize-hook 'go-to-last-clockout)
 
+  ;; Hide mode line in org-agenda
+  (add-hook 'org-agenda-finalize-hook #'hide-mode-line-mode)
+
   ;; Go further with clock report than 2 levels
   (setq org-agenda-clockreport-parameter-plist '(:link t :maxlevel 99))
   ;; Don’t show done entries
