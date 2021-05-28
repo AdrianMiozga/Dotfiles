@@ -16,7 +16,7 @@ set ReplaceWithRegister
 """ Mappings
 let mapleader = " "
 
-""" Open windows
+" Open windows
 :map <leader>op :action ActivateProjectToolWindow<CR>
 :map <leader>bv :action SelectBuildVariant<CR>
 :map <leader>vc :action Vcs.Show.Log<CR>
@@ -32,21 +32,29 @@ let mapleader = " "
 :map <leader>em :action ActivateAndroidEmulatorToolWindow<CR>
 
 :map <leader>m. :action FileStructurePopup<CR>
+:map <leader>pf :action GotoFile<CR>
 :map <leader>ic :action InspectCode<CR>
 :map <leader>ed :action ExternalJavaDoc<CR>
 :map <leader>co :action CheckinProject<CR>
 :map <leader>cs :action ChangeSignature<CR>
 :map <leader>fu :action FindUsages<CR>
-:map <leader>re :action RenameElement<CR>
+:map <leader>cr :action RenameElement<CR>
 
 :nmap <Enter> :action EditorStartNewLine<CR>
 :nmap <S-Enter> :action EditorStartNewLineBefore<CR>
 
+" Skip multicursor
 :map <Enter> <A-x>
+
+" Start/next multicursor
+:map <A-d> <A-n>
 
 :nmap <A-j> :action EditorSplitLine<CR>
 
 :nmap <S-q> :action ReformatCode<CR>
 
-nnoremap <C-o> :action Back<CR>
-nnoremap <C-i> :action Forward<CR>
+:map <A-;> :action CommentByLineComment<CR>
+:imap <A-;> <C-o>:action CommentByLineComment<CR>
+
+:nnoremap <C-o> :action Back<CR>
+:nnoremap <C-i> :action Forward<CR>
