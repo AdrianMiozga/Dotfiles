@@ -6,4 +6,3 @@
 * `(format-time-string "%B %Y")`
 ** `(format-time-string "%d.%m.%Y")`
 $0
-
