@@ -1,57 +1,11 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
-
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
-;; (setq user-full-name "John Doe"
-;;       user-mail-address "john@doe.com")
-
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + ‘doom-font’
-;; + ‘oom-variable-pitch-font’
-;; + ‘doom-big-font’ -- used for ‘doom-big-font-mode’; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-
 (setq doom-font (font-spec :family "Consolas" :size 18)
       doom-variable-pitch-font (font-spec :family "DejaVu Sans"))
 
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set 'doom-theme' or manually load a theme with the
-;; ‘load-theme’ function. This is the default:
 (setq doom-theme 'doom-one)
 
-;; This determines the style of line numbers in effect. If set to ‘nil’, line
-;; numbers are disabled. For relative line numbers, set this to ‘relative’.
 (setq display-line-numbers-type 'relative)
-
-
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - ‘load!’ for loading external *.el files relative to this one
-;; - ‘use-package!’ for configuring packages
-;; - ‘after!’ for running code after a package has loaded
-;; - ‘add-load-path!’ for adding directories to the ‘load-path’, relative to
-;;   this file. Emacs searches the ‘load-path’ when you load packages with
-;;   ‘require' or `use-package’.
-;; - ‘map!’ for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
-
 
 ;; Start Doom in fullscreen
 (add-hook! 'window-setup-hook #'toggle-frame-fullscreen)
@@ -107,10 +61,16 @@
 
 (use-package! org-agenda
   :defer
+  :hook (org-agenda-mode . org-super-agenda-mode)
   :init
   (map! :prefix "C-c" "a"
         #'(lambda (&optional arg) (interactive "P")(org-agenda arg "c")))
   :config
+  ;; Without this, when the cursor is on a org-super-agenda heading, I can’t
+  ;; use j/k to move up and down. This is rather a workaround, as now I can’t
+  ;; use q to exit the agenda when the cursor is on the aforementioned heading.
+  (setq org-super-agenda-header-map (make-sparse-keymap))
+
   (defun go-to-last-clockout ()
     "Move cursor to the last clocked-in entry in agenda."
     (goto-char (point-max))
@@ -145,7 +105,15 @@
                         (org-agenda-show-log t)
                         (org-agenda-skip-deadline-if-done t)
                         (org-agenda-time-grid nil)))
-            (alltodo "")))
+            ;; Show all TODOs under agenda and group them based on file they are
+            ;; in.
+            (alltodo "" ((org-super-agenda-groups
+                          '((:name "Music" :tag "music" :order 5)
+                            (:name "GetFlow" :file-path "getflow" :order 4)
+                            (:name "Programming" :tag "programming" :order 3)
+                            (:name "University" :tag "university" :order 2)
+                            (:name "General" :file-path "main" :order 1)
+                            (:auto-category t :order 100)))))))
           ("d" "Incomplete deadlines"
            agenda "" ((org-agenda-span 'month)
                       (org-agenda-time-grid nil)
@@ -153,6 +121,10 @@
                       (org-agenda-skip-deadline-if-done t)
                       (org-agenda-entry-types '(:deadline))
                       (org-deadline-warning-days 0)))))
+
+  ;; Don’t show TODOs in org-agenda to-do list when they have specified date.
+  ;; That means scheduled TODOs or ones with a deadline will not be shown.
+  (setq org-agenda-todo-ignore-with-date t)
   ;; Start agenda and calendar on Monday
   (setq org-agenda-start-on-weekday 1)
   (setq calendar-week-start-day 1)
@@ -214,92 +186,6 @@
   ;; Open links in another window
   (setq org-link-frame-setup '((file . find-file-other-window))))
 
-(use-package org-roam-bibtex
-  :disabled
-  :after org-roam
-  :hook (org-roam-mode . org-roam-bibtex-mode)
-  :config
-  (setq orb-templates
-        `(("r" "ref" plain (function org-roam-capture--get-point) ""
-           :file-name "${citekey}"
-           :head ,(concat
-                   "#+TITLE: ${title}\n"
-                   "#+ROAM_KEY: ${citekey}\n\n"
-                   "* Notes\n"
-                   ":PROPERTIES:\n"
-                   ":Custom_ID: ${citekey}\n"
-                   ":NOTER_DOCUMENT: %(orb-process-file-field \"${citekey}\")\n"
-                   ":END:\n")
-           :unnarrowed t))))
-
-(use-package org-ref
-  :disabled
-  :defer
-  :init
-  (setq org-ref-completion-library 'org-ref-ivy-cite)
-  (setq org-ref-default-bibliography
-        (list "~/Documents/References/Zotero Library.bib"))
-  :config
-  (setq org-ref-get-pdf-filename-function
-        'org-ref-get-pdf-filename-helm-bibtex)
-
-  (setq org-ref-open-pdf-function 'my/org-ref-open-pdf-at-point)
-
-  (defun my/org-ref-open-pdf-at-point ()
-    "Open the pdf for bibtex key under point if it exists."
-    (interactive)
-    (let* ((results (org-ref-get-bibtex-key-and-file))
-           (key (car results))
-           (pdf-file (funcall org-ref-get-pdf-filename-function key))
-           (pdf-other (bibtex-completion-find-pdf key)))
-      (cond ((file-exists-p pdf-file)
-             (org-open-file pdf-file))
-            (pdf-other
-             (org-open-file pdf-other))
-            (message "No PDF found for %s" key))))
-
-  ;; Open PDFs in default program set from OS
-  (setq org-file-apps '((auto-mode . emacs)
-                        (directory . emacs)
-                        ("\\.mm\\'" . default)
-                        ("\\.x?html?\\'" . default)
-                        ("\\.pdf\\'" . system))))
-
-(use-package! ivy-bibtex
-  :disabled
-  :commands (ivy-bibtex)
-  :init
-  (map! :leader
-        :prefix "n"
-        :desc "ivy-bibtex" "r" #'ivy-bibtex)
-  :config
-  (ivy-add-actions 'ivy-bibtex '(("n" ivy-bibtex-edit-notes "Edit notes"))))
-
-(use-package! helm-bibtex
-  :disabled
-  :after ivy-bibtex
-  :config
-  (defun bibtex-completion-format-citation-org-ref (keys)
-    "Formatter for org-ref references."
-    (s-join ", " (--map (format "cite:%s" it) keys)))
-
-  (setq bibtex-completion-format-citation-functions
-        '((org-mode . bibtex-completion-format-citation-org-ref)
-          (latex-mode . bibtex-completion-format-citation-cite)
-          (markdown-mode . bibtex-completion-format-citation-pandoc-citeproc)
-          (python-mode . bibtex-completion-format-citation-sphinxcontrib-bibtex)
-          (rst-mode . bibtex-completion-format-citation-sphinxcontrib-bibtex)
-          (default . bibtex-completion-format-citation-default)))
-
-  (setq ivy-bibtex-default-action 'ivy-bibtex-insert-citation)
-  (setq bibtex-completion-pdf-field "File")
-  (setq bibtex-completion-display-formats
-        '((t . "${title:*} ${author:36} ${year:4} \
-                ${=has-pdf=:1}${=has-note=:1} ${=type=:12}")))
-  (setq bibtex-completion-library-path '("~/Documents/References/"))
-  (setq bibtex-completion-bibliography
-        '("~/Documents/References/Zotero Library.bib")))
-
 (use-package! mixed-pitch
   :hook (text-mode . mixed-pitch-mode)
   :init
@@ -335,11 +221,6 @@
   :init
   (typo-global-mode 1))
 
-(use-package! deft
-  :defer
-  :config
-  (setq deft-directory (symbol-value 'org-directory)))
-
 (use-package! org-table-wrap-functions
   :after org
   :bind
@@ -353,14 +234,6 @@
         :prefix "e"
         :desc "title-case" "t" #'title-capitalization))
 
-(use-package! company
-  :defer
-  :config
-  (setq company-idle-delay 0)
-  (setq company-tooltip-idle-delay 0)
-  ;; Turn off auto completion in org-mode
-  (setq company-global-modes '(not org-mode)))
-
 ;; Spell checking
 (use-package! ispell
   :config
@@ -372,10 +245,14 @@
 (use-package! flyspell
   :commands (add-word-to-personal-dictionary)
   :hook (text-mode . flyspell-mode)
+  :hook (prog-mode . flyspell-prog-mode)
   :init
   (map! :leader
         :prefix "S"
         :desc "add-word-to-dictionary" "a" #'add-word-to-personal-dictionary)
+  (map! :leader
+        :prefix "t"
+        :desc "Spell checking" "s" #'toggle-spell-check)
   :config
   (defun add-word-to-personal-dictionary ()
     (interactive)
@@ -383,7 +260,14 @@
           (word (flyspell-get-word)))
       (when (consp word)
         (flyspell-do-correct 'save nil (car word) current-location
-                             (cadr word) (caddr word) current-location)))))
+                             (cadr word) (caddr word) current-location))))
+
+  (defun toggle-spell-check ()
+    (interactive
+     (if (symbol-value 'flyspell-mode)
+         (call-interactively 'flyspell-mode)
+       (progn (call-interactively 'flyspell-prog-mode)
+              (flyspell-buffer))))))
 
 (use-package! flyspell-correct
   :commands (flyspell-correct-at-point
@@ -406,19 +290,30 @@
   :config
   (setq pdf-view-resize-factor 1.1))
 
-(use-package! nov
+(use-package! whitespace
+  :commands (whitespace-toggle-options)
+  :init
+  (map! :leader
+        :prefix "t"
+        :desc "Whitespace options" "W" #'whitespace-toggle-options)
   :config
-  (setq nov-text-width t)
-  (setq nov-unzip-program "C:\\Program Files\\Unzip\\unzip.exe")
-  (unbind-key "i" nov-mode-map)
-  (unbind-key "<normal-state> i" nov-mode-map)
-  :hook (nov-mode . visual-line-mode)
-  :mode ("\\.\\(epub\\|mobi\\)\\'" . nov-mode))
+  (defun my-update (column)
+    "Keep ‘whitespace-line-column’ in sync with ‘set-fill-column’."
+    (setq whitespace-line-column column))
+
+  (advice-add 'set-fill-column :after 'my-update)
+
+  (setq whitespace-line-column (symbol-value 'fill-column)))
+
+(use-package! display-fill-column-indicator
+  ;; Show fill column indicator but only in prog-mode
+  :hook (prog-mode . display-fill-column-indicator-mode)
+  :init
+  (remove-hook! 'text-mode-hook '+fill-column-enable-h))
 
 (use-package! writeroom
   :hook
   (org-mode . writeroom-mode)
-  (nov-mode . writeroom-mode)
   (org-agenda-mode . writeroom-mode)
   :init
   (setq writeroom-mode-line t)
@@ -459,12 +354,6 @@
   :config
   (setq doom-modeline-column-zero-based nil))
 
-
-(use-package! evil-multiedit
-  :defer
-  :config
-  (setq evil-multiedit-follow-matches t))
-
 (use-package! epa
   :config
   ;; I can’t in any way make the password caching work when it’s prompted in the
@@ -473,7 +362,6 @@
   ;; is required. That way, caching works as expected. I guess this is some
   ;; Windows issue.
   (setq epg-pinentry-mode nil))
-
 
 (custom-set-faces!
   '(org-level-1 :foreground "#AB9BD5" :weight bold :height 1.1)
@@ -506,6 +394,8 @@
               :height 1.0 :family "Consolas")
 
   '(org-indent :inherit (org-hide fixed-pitch))
+
+  '(font-lock-comment-face :foreground "#83898d")
 
   ;; :foreground nil makes ellipsis color same as the heading
   '(org-ellipsis :foreground nil :height 120)
