@@ -58,3 +58,5 @@ let mapleader = " "
 
 :nnoremap <C-o> :action Back<CR>
 :nnoremap <C-i> :action Forward<CR>
+
+:nmap gt :action GotoTypeDeclaration<CR>
