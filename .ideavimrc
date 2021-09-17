@@ -39,6 +39,7 @@ let mapleader = " "
 :map <leader>cs :action ChangeSignature<CR>
 :map <leader>fu :action FindUsages<CR>
 :map <leader>cr :action RenameElement<CR>
+:map <leader>fp :action FindInPath<CR>
 
 :nmap <Enter> :action EditorStartNewLine<CR>
 :nmap <S-Enter> :action EditorStartNewLineBefore<CR>
