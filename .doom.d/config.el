@@ -354,15 +354,6 @@
   :config
   (setq doom-modeline-column-zero-based nil))
 
-(use-package! epa
-  :config
-  ;; I can’t in any way make the password caching work when it’s prompted in the
-  ;; mini buffer. Each time encrypted file is opened I have to provide the
-  ;; password again. Setting this to nil makes a window pop up when a password
-  ;; is required. That way, caching works as expected. I guess this is some
-  ;; Windows issue.
-  (setq epg-pinentry-mode nil))
-
 (custom-set-faces!
   '(org-level-1 :foreground "#AB9BD5" :weight bold :height 1.1)
   '(org-level-2 :foreground "#BC6EC5" :weight bold :height 1.1)
