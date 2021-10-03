@@ -1,0 +1,12 @@
+[user]
+    name = Adrian Miozga
+    email = AdrianMiozga@outlook.com
+
+[push]
+    followTags = true
+
+[core]
+    editor = code --wait --new-window
+
+[github]
+    user = AdrianMiozga
