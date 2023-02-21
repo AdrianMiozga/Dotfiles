@@ -18,17 +18,13 @@
     "when": "editorLangId == 'ahk'"
   },
   {
-    "key": "ctrl+shift+a",
-    "command": "workbench.action.showCommands"
-  },
-  {
-    "key": "ctrl+shift+p",
-    "command": "-workbench.action.showCommands"
-  },
-  {
     "key": "alt+r",
     "command": "workbench.action.debug.run",
     "when": "debuggersAvailable && debugState != 'initializing'"
+  },
+  {
+    "key": "alt+x",
+    "command": "workbench.action.showCommands"
   },
   {
     "key": "alt+d",
