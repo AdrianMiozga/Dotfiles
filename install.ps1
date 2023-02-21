@@ -10,3 +10,5 @@ New-Item -Force -Path $HOME\.vimrc -ItemType SymbolicLink -Value $HOME\dotfiles\
 New-Item -Force -Path $HOME\.zshrc -ItemType SymbolicLink -Value $HOME\dotfiles\.zshrc
 New-Item -Force -Path "C:\Program Files\Dual Key Remap\config.txt" -ItemType SymbolicLink -Value $HOME\dotfiles\dual-key-remap-settings.txt
 New-Item -Force -Path $HOME\windows-terminal-settings.json -ItemType SymbolicLink -Value $HOME\dotfiles\windows-terminal-settings.json
+New-Item -Force -Path $HOME\gallery-dl.conf -ItemType SymbolicLink -Value $HOME\dotfiles\gallery-dl.conf
+New-Item -Force -Path $HOME\yt-dlp.conf -ItemType SymbolicLink -Value $HOME\dotfiles\yt-dlp.conf
