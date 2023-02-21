@@ -12,3 +12,5 @@ New-Item -Force -Path "C:\Program Files\Dual Key Remap\config.txt" -ItemType Sym
 New-Item -Force -Path $HOME\windows-terminal-settings.json -ItemType SymbolicLink -Value $HOME\dotfiles\windows-terminal-settings.json
 New-Item -Force -Path $HOME\gallery-dl.conf -ItemType SymbolicLink -Value $HOME\dotfiles\gallery-dl.conf
 New-Item -Force -Path $HOME\yt-dlp.conf -ItemType SymbolicLink -Value $HOME\dotfiles\yt-dlp.conf
+New-Item -Force -Path $HOME\AppData\Roaming\Code\User\keybindings.json -ItemType SymbolicLink -Value "$HOME\dotfiles\VS Code\keybindings.json"
+New-Item -Force -Path $HOME\AppData\Roaming\Code\User\settings.json -ItemType SymbolicLink -Value "$HOME\dotfiles\VS Code\settings.json"

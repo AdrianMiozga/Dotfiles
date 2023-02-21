@@ -1,0 +1,53 @@
+{
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+  "editor.fontFamily": "'Cascadia Code PL'",
+  "editor.fontLigatures": true,
+  "files.autoSave": "onFocusChange",
+  "editor.minimap.enabled": false,
+  "vim.useSystemClipboard": true,
+  "editor.lineNumbers": "relative",
+  "extensions.ignoreRecommendations": false,
+  "editor.wordWrapColumn": 120,
+  "markdown.preview.breaks": true,
+  "vim.vimrc.enable": true,
+  "vim.leader": " ",
+  "editor.rulers": [80],
+  "diffEditor.ignoreTrimWhitespace": false,
+  "code-runner.runInTerminal": true,
+  "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
+  "debug.onTaskErrors": "showErrors",
+  "[git-commit]": {
+    "editor.rulers": [72],
+    "workbench.editor.restoreViewState": false
+  },
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "git.autofetch": true,
+  "window.restoreFullscreen": true,
+  "explorer.confirmDelete": false,
+  "git.confirmSync": false,
+  "window.zoomLevel": 1,
+  "editor.fontSize": 15,
+  "files.associations": {
+    ".ideavimrc": "vimrc"
+  },
+  "git.enableSmartCommit": true,
+  "editor.formatOnSave": true,
+  "explorer.confirmDragAndDrop": false,
+  "workbench.startupEditor": "none",
+  "python.formatting.provider": "black",
+  "python.terminal.executeInFileDir": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  }
+}
