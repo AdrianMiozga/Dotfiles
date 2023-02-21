@@ -1,6 +1,4 @@
 {
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
   "editor.fontFamily": "'Cascadia Code PL'",
   "editor.fontLigatures": true,
   "files.autoSave": "onFocusChange",
@@ -49,5 +47,6 @@
   "python.terminal.executeInFileDir": true,
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
-  }
+  },
+  "telemetry.telemetryLevel": "off"
 }
