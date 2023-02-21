@@ -68,5 +68,35 @@
   {
     "key": "shift+f2",
     "command": "extension.renameBatch"
+  },
+  {
+    "key": "alt+[",
+    "command": "type",
+    "args": { "text": "‘" },
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+]",
+    "command": "type",
+    "args": { "text": "’" },
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+[",
+    "command": "type",
+    "args": { "text": "“" },
+    "when": "editorTextFocus&&!editorHasSelection"
+  },
+  {
+    "key": "shift+alt+]",
+    "command": "type",
+    "args": { "text": "”" },
+    "when": "editorTextFocus&&!editorHasSelection"
+  },
+  {
+    "key": "alt+.",
+    "command": "type",
+    "args": { "text": "…" },
+    "when": "editorTextFocus"
   }
 ]
