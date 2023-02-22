@@ -3,11 +3,11 @@
   "editor.fontLigatures": true,
   "files.autoSave": "onFocusChange",
   "editor.minimap.enabled": false,
-  "vim.useSystemClipboard": true,
   "editor.lineNumbers": "relative",
   "extensions.ignoreRecommendations": false,
   "editor.wordWrapColumn": 120,
   "markdown.preview.breaks": true,
+  "vim.useSystemClipboard": true,
   "vim.vimrc.enable": true,
   "vim.leader": " ",
   "editor.rulers": [80],
@@ -46,5 +46,27 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
-  "telemetry.telemetryLevel": "off"
+  "telemetry.telemetryLevel": "off",
+  "python.linting.pylintEnabled": true,
+  "formatFiles.excludedFolders": [
+    "node_modules",
+    ".vscode",
+    ".git",
+    "dist",
+    ".chrome",
+    "venv"
+  ],
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vim.normalModeKeyBindingsNonRecursive": [
+    { "before": ["u"], "commands": ["undo"] },
+    { "before": ["c-r"], "commands": ["redo"] }
+  ]
 }
