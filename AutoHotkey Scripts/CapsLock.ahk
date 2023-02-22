@@ -23,8 +23,8 @@
 
 #Persistent
 OnWinActiveChange(hWinEventHook, vEvent, hWnd) {
-	static _ := DllCall("user32\SetWinEventHook", "UInt", 0x3, "UInt", 0x3, "Ptr", 0, "Ptr", RegisterCallback("OnWinActiveChange"), "UInt", 0, "UInt", 0, "UInt", 0, "Ptr")
-	DetectHiddenWindows, On
+    static _ := DllCall("user32\SetWinEventHook", "UInt", 0x3, "UInt", 0x3, "Ptr", 0, "Ptr", RegisterCallback("OnWinActiveChange"), "UInt", 0, "UInt", 0, "UInt", 0, "Ptr")
+    DetectHiddenWindows, On
 
     WinGetTitle, title, A
 
@@ -83,15 +83,15 @@ RShift & LShift::ToggleCaps()
 KeyboardLED(LEDvalue, Cmd, Kbd=0) {
     SetUnicodeStr(fn,"\Device\KeyBoardClass" Kbd)
     h_device := NtCreateFile(fn,0+0x00000100+0x00000080+0x00100000,1,1,0x00000040+0x00000020,0)
-    If (Cmd = "switch")  ;switches every LED according to LEDvalue
+    If (Cmd = "switch") ;switches every LED according to LEDvalue
         KeyLED:= LEDvalue
-    If (Cmd = "on")  ;forces all choosen LED's to ON (LEDvalue= 0 ->LED's according to keystate)
+    If (Cmd = "on") ;forces all choosen LED's to ON (LEDvalue= 0 ->LED's according to keystate)
         KeyLED:= LEDvalue | (GetKeyState("ScrollLock", "T") + 2*GetKeyState("NumLock", "T") + 4*GetKeyState("CapsLock", "T"))
     If (Cmd = "off") { ;forces all choosen LED's to OFF (LEDvalue= 0 ->LED's according to keystate)
         LEDvalue := LEDvalue ^ 7
         KeyLED := LEDvalue & (GetKeyState("ScrollLock", "T") + 2*GetKeyState("NumLock", "T") + 4*GetKeyState("CapsLock", "T"))
     }
-    success := DllCall( "DeviceIoControl" ,  "ptr", h_device , "uint", CTL_CODE( 0x0000000b , 2 , 0 , 0  ) , "int*", KeyLED << 16 , "uint", 4 ,  "ptr", 0 , "uint", 0 ,  "ptr*", output_actual ,  "ptr", 0 )
+    success := DllCall( "DeviceIoControl" , "ptr", h_device , "uint", CTL_CODE( 0x0000000b , 2 , 0 , 0 ) , "int*", KeyLED << 16 , "uint", 4 , "ptr", 0 , "uint", 0 , "ptr*", output_actual , "ptr", 0 )
     NtCloseFile(h_device)
     return success
 }

@@ -21,23 +21,23 @@
 ; type anywhere the letter you’ve bound the key to.
 
 #IfWinActive, ahk_exe reaper.exe
-b::ToggleTunerAndMasterMute()
-+b::ToggleTuner()
+    b::ToggleTunerAndMasterMute()
+    +b::ToggleTuner()
 
-ToggleTunerAndMasterMute() {
-    SendInput, {F6}
+    ToggleTunerAndMasterMute() {
+        SendInput, {F6}
 
-    if WinActive("VST: GTune") {
-        WinKill, VST: GTune
-    } else {
-        Send b
+        if WinActive("VST: GTune") {
+            WinKill, VST: GTune
+        } else {
+            Send b
+        }
     }
-}
 
-ToggleTuner() { 
-    if WinActive("VST: GTune") {
-        WinKill, VST: GTune
-    } else {
-        Send b
+    ToggleTuner() { 
+        if WinActive("VST: GTune") {
+            WinKill, VST: GTune
+        } else {
+            Send b
+        }
     }
-}
