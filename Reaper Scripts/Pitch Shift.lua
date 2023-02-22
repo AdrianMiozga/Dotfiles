@@ -17,7 +17,7 @@
 selectedTrack = reaper.GetSelectedTrack(0, 0)
 
 if selectedTrack == nil then
-    return
+	return
 end
 
 manipulator = reaper.TrackFX_GetByName(selectedTrack, "Manipulator", false)
@@ -28,18 +28,18 @@ trackNumSends = reaper.GetTrackNumSends(selectedTrack, 0)
 -- Track: Toggle record arm for selected tracks
 reaper.Main_OnCommand(9, 0)
 
-if reaper.GetMediaTrackInfo_Value(selectedTrack, "I_RECARM") == 1 then 
+if reaper.GetMediaTrackInfo_Value(selectedTrack, "I_RECARM") == 1 then
 	reaper.TrackFX_SetEnabled(selectedTrack, manipulator, true)
 	reaper.TrackFX_SetEnabled(selectedTrack, pitchproof, true)
 	reaper.TrackFX_SetEnabled(selectedTrack, reapitch, false)
-	
+
 	if trackNumSends > 0 then
-		for i = 0, trackNumSends - 1 do  
+		for i = 0, trackNumSends - 1 do
 			receiveTrack = reaper.BR_GetMediaTrackSendInfo_Track(selectedTrack, 0, i, 1)
 			manipulatorReceive = reaper.TrackFX_GetByName(receiveTrack, "Manipulator", false)
 			pitchproofReceive = reaper.TrackFX_GetByName(receiveTrack, "PitchProof", false)
 			reapitchReceive = reaper.TrackFX_GetByName(receiveTrack, "ReaPitch", false)
-			
+
 			reaper.TrackFX_SetEnabled(receiveTrack, manipulatorReceive, true)
 			reaper.TrackFX_SetEnabled(receiveTrack, pitchproofReceive, true)
 			reaper.TrackFX_SetEnabled(receiveTrack, reapitchReceive, false)
@@ -49,14 +49,14 @@ else
 	reaper.TrackFX_SetEnabled(selectedTrack, manipulator, false)
 	reaper.TrackFX_SetEnabled(selectedTrack, pitchproof, false)
 	reaper.TrackFX_SetEnabled(selectedTrack, reapitch, true)
-	
+
 	if trackNumSends > 0 then
 		for i = 0, trackNumSends - 1 do
 			receiveTrack = reaper.BR_GetMediaTrackSendInfo_Track(selectedTrack, 0, i, 1)
 			manipulatorReceive = reaper.TrackFX_GetByName(receiveTrack, "Manipulator", false)
 			pitchproofReceive = reaper.TrackFX_GetByName(receiveTrack, "PitchProof", false)
 			reapitchReceive = reaper.TrackFX_GetByName(receiveTrack, "ReaPitch", false)
-			
+
 			reaper.TrackFX_SetEnabled(receiveTrack, manipulatorReceive, false)
 			reaper.TrackFX_SetEnabled(receiveTrack, pitchproofReceive, false)
 			reaper.TrackFX_SetEnabled(receiveTrack, reapitchReceive, true)
