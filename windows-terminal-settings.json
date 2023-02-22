@@ -8,11 +8,13 @@
     },
     {
       "command": {
-        "action": "splitPane",
-        "split": "auto",
-        "splitMode": "duplicate"
+        "action": "commandPalette"
       },
-      "keys": "alt+shift+d"
+      "keys": "alt+x"
+    },
+    {
+      "command": "unbound",
+      "keys": "ctrl+shift+p"
     }
   ],
   "confirmCloseAllTabs": false,
@@ -297,7 +299,7 @@
       "yellow": "#808000"
     }
   ],
-  "startOnUserLogin": true,
+  "startOnUserLogin": false,
   "tabSwitcherMode": "disabled",
   "themes": []
 }
