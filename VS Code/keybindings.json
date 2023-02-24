@@ -27,7 +27,7 @@
     "command": "workbench.action.showCommands"
   },
   {
-    "key": "alt+d",
+    "key": "alt+n",
     "command": "editor.action.addSelectionToNextFindMatch",
     "when": "editorFocus"
   },
