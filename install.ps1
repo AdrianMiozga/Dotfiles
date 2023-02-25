@@ -7,6 +7,7 @@ New-Item -Force -Path "$HOME\Reaper Scripts\" -ItemType SymbolicLink -Value "$HO
 New-Item -Force -Path $HOME\.gitconfig -ItemType SymbolicLink -Value $HOME\dotfiles\.gitconfig
 New-Item -Force -Path $HOME\.ideavimrc -ItemType SymbolicLink -Value $HOME\dotfiles\.ideavimrc
 New-Item -Force -Path $HOME\.vimrc -ItemType SymbolicLink -Value $HOME\dotfiles\.vimrc
+New-Item -Force -Path $HOME\.hunspell_personal -ItemType SymbolicLink -Value $HOME\dotfiles\.hunspell_personal
 New-Item -Force -Path "C:\Program Files\Dual Key Remap\config.txt" -ItemType SymbolicLink -Value $HOME\dotfiles\dual-key-remap-settings.txt
 New-Item -Force -Path $HOME\windows-terminal-settings.json -ItemType SymbolicLink -Value $HOME\dotfiles\windows-terminal-settings.json
 New-Item -Force -Path $HOME\gallery-dl.conf -ItemType SymbolicLink -Value $HOME\dotfiles\gallery-dl.conf
