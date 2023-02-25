@@ -2,7 +2,7 @@
 -- If there are items on current track, select and move to item on the
 -- left from cursor, or if it doesn’t exist, item on the right side.
 
-selectedTracks = reaper.GetSelectedTrack(0, 0)
+local selectedTracks = reaper.GetSelectedTrack(0, 0)
 
 if selectedTracks == nil then
     return
