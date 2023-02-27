@@ -9,8 +9,8 @@
 ; master track intact.
 ;
 ; You need to have B bound inside Reaper to show tuner.
-; 'Show Tuner.lua' script does exactly that.
-; F6 needs to be bound to 'Track: Toggle mute for master track'
+; ‘Show Tuner.lua’ script does exactly that.
+; F6 needs to be bound to ‘Track: Toggle mute for master track’
 ;
 ; Using AutoHotkey script is required as keybinds in Reaper don’t work if
 ; the focus isn’t on the main window. Showing the tuner steals the focus,

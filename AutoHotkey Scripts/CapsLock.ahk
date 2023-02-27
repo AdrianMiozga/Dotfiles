@@ -1,19 +1,22 @@
 #SingleInstance force
 
-; Script to make binding CapsLock to Esc/Ctrl work both in host and guest machine.
+; Script to make binding CapsLock to Esc/Ctrl work both in host and guest
+; machine.
 ; 
-; It's written with this setup in mind:
-; Windows as host machine with dual-key-remap
-; Linux VM on VirtualBox with caps2esc OR Windows VM on VirtualBox with dual-key-remap
+; It’s written with this setup in mind:
+; - Windows as host machine with dual-key-remap
+; - Linux VM on VirtualBox with caps2esc OR Windows VM on VirtualBox with
+;   dual-key-remap
 ; 
 ; Basically, it kills the dual-key-remap process whenever you switch to VM
 ; and starts it when you switch out.
 ; 
 ; Additionally, it also fixes the led light toggling on/off whenever using
-; CapsLock on a VM. It wouldn't actually make your letters upper case,
+; CapsLock on a VM. It wouldn’t actually make your letters upper case,
 ; but it was annoying.
 ; 
-; You can still access CapsLock by pressing the left and right shift at the same time.
+; You can still access CapsLock by pressing the left and right shift at the same
+; time.
 ;
 ; For best results, you might want to run this script and dual-key-remap
 ; with elevated privileges. That way, they will also have an effect on programs
@@ -40,7 +43,7 @@ OnWinActiveChange(hWinEventHook, vEvent, hWnd) {
 }
 
 ToggleCaps() {
-    ; I'm turning off CapsLock on the host machine when using VirtualBox
+    ; I’m turning off CapsLock on the host machine when using VirtualBox
     ; as the led light behavior is wrong. It always toggles when pressing CapsLock,
     ; be it alone or with other keys.
     ;
@@ -60,7 +63,7 @@ ToggleCaps() {
     ; Without this, using double shifts to disable CapsLock would also leak ESC.
     SetStoreCapsLockMode, Off
 
-    ; Sending CapsLock directly doesn't do anything with dual-key-remap or caps2esc.
+    ; Sending CapsLock directly doesn’t do anything with dual-key-remap or caps2esc.
     Send {Esc}
     SetStoreCapsLockMode, On
     return
@@ -85,9 +88,9 @@ KeyboardLED(LEDvalue, Cmd, Kbd=0) {
     h_device := NtCreateFile(fn,0+0x00000100+0x00000080+0x00100000,1,1,0x00000040+0x00000020,0)
     If (Cmd = "switch") ;switches every LED according to LEDvalue
         KeyLED:= LEDvalue
-    If (Cmd = "on") ;forces all choosen LED's to ON (LEDvalue= 0 ->LED's according to keystate)
+    If (Cmd = "on") ;forces all choosen LED’s to ON (LEDvalue= 0 ->LED’s according to keystate)
         KeyLED:= LEDvalue | (GetKeyState("ScrollLock", "T") + 2*GetKeyState("NumLock", "T") + 4*GetKeyState("CapsLock", "T"))
-    If (Cmd = "off") { ;forces all choosen LED's to OFF (LEDvalue= 0 ->LED's according to keystate)
+    If (Cmd = "off") { ;forces all choosen LED’s to OFF (LEDvalue= 0 ->LED’s according to keystate)
         LEDvalue := LEDvalue ^ 7
         KeyLED := LEDvalue & (GetKeyState("ScrollLock", "T") + 2*GetKeyState("NumLock", "T") + 4*GetKeyState("CapsLock", "T"))
     }
