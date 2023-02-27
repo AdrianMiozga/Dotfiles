@@ -11,17 +11,15 @@
         "action": "commandPalette"
       },
       "keys": "alt+x"
-    },
-    {
-      "command": "unbound",
-      "keys": "ctrl+shift+p"
     }
   ],
   "confirmCloseAllTabs": false,
   "copyFormatting": "none",
   "copyOnSelect": false,
-  "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
   "multiLinePasteWarning": false,
+  "startOnUserLogin": false,
+  "tabSwitcherMode": "disabled",
+  "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
   "profiles": {
     "defaults": {
       "font": {
@@ -30,7 +28,6 @@
     },
     "list": [
       {
-        "colorScheme": "MyTheme",
         "commandline": "pwsh.exe -NoLogo",
         "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
         "hidden": false,
@@ -113,29 +110,6 @@
       "selectionBackground": "#FFFFFF",
       "white": "#CCCCCC",
       "yellow": "#C19C00"
-    },
-    {
-      "background": "#0C0C0C",
-      "black": "#0C0C0C",
-      "blue": "#9B6BDF",
-      "brightBlack": "#767676",
-      "brightBlue": "#3B78FF",
-      "brightCyan": "#61D6D6",
-      "brightGreen": "#16C60C",
-      "brightPurple": "#B4009E",
-      "brightRed": "#E74856",
-      "brightWhite": "#F2F2F2",
-      "brightYellow": "#F9F1A5",
-      "cursorColor": "#FFFFFF",
-      "cyan": "#3A96DD",
-      "foreground": "#CCCCCC",
-      "green": "#42E66C",
-      "name": "MyTheme",
-      "purple": "#881798",
-      "red": "#C50F1F",
-      "selectionBackground": "#FFFFFF",
-      "white": "#CCCCCC",
-      "yellow": "#E4F34A"
     },
     {
       "background": "#282C34",
@@ -298,8 +272,5 @@
       "white": "#C0C0C0",
       "yellow": "#808000"
     }
-  ],
-  "startOnUserLogin": false,
-  "tabSwitcherMode": "disabled",
-  "themes": []
+  ]
 }
