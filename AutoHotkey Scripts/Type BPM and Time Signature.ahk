@@ -2,7 +2,7 @@
 
 ; Keybinds that click on BPM and time signature fields in Reaper allowing you
 ; to change the values without the need for a mouse.
-; 
+;
 ; Works both with the menu hidden and shown.
 ; Also works with transport hidden (shows it for five seconds).
 ; Requires Reaper in fullscreen.

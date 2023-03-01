@@ -2,19 +2,19 @@
 
 ; Script to make binding CapsLock to Esc/Ctrl work both in host and guest
 ; machine.
-; 
+;
 ; It’s written with this setup in mind:
 ; - Windows as host machine with dual-key-remap
 ; - Linux VM on VirtualBox with caps2esc OR Windows VM on VirtualBox with
 ;   dual-key-remap
-; 
+;
 ; Basically, it kills the dual-key-remap process whenever you switch to VM
 ; and starts it when you switch out.
-; 
+;
 ; Additionally, it also fixes the led light toggling on/off whenever using
 ; CapsLock on a VM. It wouldn’t actually make your letters upper case,
 ; but it was annoying.
-; 
+;
 ; You can still access CapsLock by pressing the left and right shift at the same
 ; time.
 ;
