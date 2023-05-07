@@ -1,53 +1,61 @@
 {
-  "editor.fontFamily": "'Cascadia Code PL'",
-  "editor.fontLigatures": true,
-  "files.autoSave": "onFocusChange",
-  "editor.minimap.enabled": false,
-  "editor.lineNumbers": "relative",
-  "extensions.ignoreRecommendations": false,
-  "editor.wordWrapColumn": 120,
-  "markdown.preview.breaks": true,
-  "vim.useSystemClipboard": true,
-  "vim.vimrc.enable": true,
-  "vim.leader": " ",
-  "editor.rulers": [80],
-  "diffEditor.ignoreTrimWhitespace": false,
-  "C_Cpp.default.intelliSenseMode": "windows-gcc-x64",
-  "debug.onTaskErrors": "showErrors",
+  "C_Cpp.default.intelliSenseMode": "windows-msvc-x64",
   "[git-commit]": {
     "editor.rulers": [72],
     "workbench.editor.restoreViewState": false
   },
-  "editor.suggestSelection": "first",
-  "files.exclude": {
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter.notebook.ipynb"
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "git.autofetch": true,
-  "window.restoreFullscreen": true,
-  "explorer.confirmDelete": false,
-  "git.confirmSync": false,
-  "window.zoomLevel": 1,
-  "editor.fontSize": 15,
-  "files.associations": {
-    ".ideavimrc": "vimrc"
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "git.enableSmartCommit": true,
-  "editor.formatOnSave": true,
-  "explorer.confirmDragAndDrop": false,
-  "workbench.startupEditor": "none",
-  "python.formatting.provider": "black",
-  "python.terminal.executeInFileDir": true,
+  "[markdown]": {
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "other": "off",
+      "strings": "off"
+    },
+    "editor.unicodeHighlight.ambiguousCharacters": false,
+    "editor.unicodeHighlight.invisibleCharacters": false,
+    "editor.wordWrap": "on"
+  },
+  "[python]": {
+    // ‘black’ formatter line length
+    "editor.rulers": [88]
+  },
+  "cmake.configureOnOpen": true,
+  "debug.onTaskErrors": "showErrors",
+  "diffEditor.ignoreTrimWhitespace": false,
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
-  "telemetry.telemetryLevel": "off",
-  "python.linting.pylintEnabled": true,
+  "editor.fontFamily": "Cascadia Code PL",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 15,
+  "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.rulers": [80],
+  "editor.suggestSelection": "first",
+  "editor.wordWrapColumn": 120,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "files.associations": {
+    ".ideavimrc": "vimrc"
+  },
+  "files.autoSave": "onFocusChange",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.factorypath": true,
+    "**/.project": true,
+    "**/.settings": true
+  },
   "formatFiles.excludedFolders": [
     "node_modules",
     ".vscode",
@@ -56,17 +64,41 @@
     ".chrome",
     "venv"
   ],
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "git.enableSmartCommit": true,
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": true,
+    "plaintext": false,
+    "yaml": false
   },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  "ltex.additionalRules.enablePickyRules": true,
+  "ltex.additionalRules.motherTongue": "pl-PL",
+  "notebook.formatOnSave.enabled": true,
+  "python.formatting.provider": "black",
+  "python.linting.pylintEnabled": true,
+  "python.terminal.executeInFileDir": true,
+  "telemetry.telemetryLevel": "off",
+  "terminal.integrated.allowChords": false,
+  "terminal.integrated.fontFamily": "CaskaydiaCove NFM",
+  "update.showReleaseNotes": false,
   "vim.normalModeKeyBindingsNonRecursive": [
-    { "before": ["u"], "commands": ["undo"] },
-    { "before": ["c-r"], "commands": ["redo"] }
-  ]
+    {
+      "before": ["u"],
+      "commands": ["undo"]
+    },
+    {
+      "before": ["c-r"],
+      "commands": ["redo"]
+    }
+  ],
+  "vim.useSystemClipboard": true,
+  "vim.vimrc.enable": true,
+  "window.restoreFullscreen": true,
+  "window.zoomLevel": 0.8,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+  "workbench.startupEditor": "none"
 }
