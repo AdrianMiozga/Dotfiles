@@ -84,5 +84,46 @@
     "command": "type",
     "args": { "text": "…" },
     "when": "editorTextFocus"
+  },
+  {
+    // En dash
+    "key": "alt+-",
+    "command": "type",
+    "args": { "text": "–" },
+    "when": "editorTextFocus"
+  },
+  {
+    // Em dash
+    "key": "shift+alt+-",
+    "command": "type",
+    "args": { "text": "—" },
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+1",
+    "command": "-workbench.action.openEditorAtIndex1"
+  },
+  {
+    "key": "alt+1",
+    "command": "workbench.view.explorer",
+    "when": "viewContainer.workbench.view.explorer.enabled"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "alt+3",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  {
+    "key": "alt+3",
+    "command": "-workbench.action.openEditorAtIndex3"
+  },
+  {
+    "key": "ctrl+alt+z",
+    "command": "git.revertSelectedRanges",
+    "when": "isInDiffEditor && !operationInProgress"
   }
 ]
