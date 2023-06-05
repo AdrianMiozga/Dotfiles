@@ -1,4 +1,4 @@
-#SingleInstance force
+#SingleInstance, Force
 
 ; Script to make binding CapsLock to Esc/Ctrl work both in host and guest
 ; machine.
@@ -26,7 +26,16 @@
 
 #Persistent
 OnWinActiveChange(hWinEventHook, vEvent, hWnd) {
-    static _ := DllCall("user32\SetWinEventHook", "UInt", 0x3, "UInt", 0x3, "Ptr", 0, "Ptr", RegisterCallback("OnWinActiveChange"), "UInt", 0, "UInt", 0, "UInt", 0, "Ptr")
+    static _ := DllCall("User32.dll\SetWinEventHook"
+        , "UInt", 0x3
+        , "UInt", 0x3
+        , "Ptr", 0
+        , "Ptr", RegisterCallback("OnWinActiveChange")
+        , "UInt", 0
+        , "UInt", 0
+        , "UInt", 0
+        , "Ptr")
+
     DetectHiddenWindows, On
 
     WinGetTitle, title, A
@@ -44,10 +53,11 @@ OnWinActiveChange(hWinEventHook, vEvent, hWnd) {
 
 ToggleCaps() {
     ; I’m turning off CapsLock on the host machine when using VirtualBox
-    ; as the led light behavior is wrong. It always toggles when pressing CapsLock,
-    ; be it alone or with other keys.
+    ; as the led light behavior is wrong. It always toggles when pressing
+    ; CapsLock, be it alone or with other keys.
     ;
-    ; But I still want to have an LED indicator when using the double shift method.
+    ; But I still want to have an LED indicator when using the double shift
+    ; method.
     if (WinActive("ahk_exe VirtualBoxVM.exe")) {
         static capsState := true
 
@@ -63,7 +73,8 @@ ToggleCaps() {
     ; Without this, using double shifts to disable CapsLock would also leak ESC.
     SetStoreCapsLockMode, Off
 
-    ; Sending CapsLock directly doesn’t do anything with dual-key-remap or caps2esc.
+    ; Sending CapsLock directly doesn’t do anything with dual-key-remap or
+    ; caps2esc.
     Send {Esc}
     SetStoreCapsLockMode, On
     return
