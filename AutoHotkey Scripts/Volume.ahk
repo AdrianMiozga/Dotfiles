@@ -1,4 +1,4 @@
-#SingleInstance force
+#SingleInstance, Force
 
 ; Script to change system volume to either 10% or 100%. On my sound system,
 ; it’s hard to precisely choose a comfortable low volume through hardware

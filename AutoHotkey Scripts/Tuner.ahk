@@ -1,4 +1,4 @@
-#SingleInstance force
+#SingleInstance, Force
 
 ; A script that toggles the GTune tuner and mutes master track in Reaper,
 ; so your neighbors don’t need to hear the obnoxious noises when you

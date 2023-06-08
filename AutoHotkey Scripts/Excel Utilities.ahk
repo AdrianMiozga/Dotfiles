@@ -1,4 +1,4 @@
-#SingleInstance force
+#SingleInstance, Force
 
 ; Merge Cells
 

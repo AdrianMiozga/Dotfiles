@@ -1,4 +1,4 @@
-#SingleInstance force
+#SingleInstance, Force
 
 ; Keybinds that click on BPM and time signature fields in Reaper allowing you
 ; to change the values without the need for a mouse.
