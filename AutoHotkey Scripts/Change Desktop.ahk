@@ -1,4 +1,8 @@
 #SingleInstance, Force
+#NoEnv
+SendMode, Input
 
-<#<^WheelUp::<#<^Right
-<#<^WheelDown::<#<^Left
+; Left Ctrl + Left Win + Left/Right arrows switch desktop
+
+<#<^WheelUp::Right
+<#<^WheelDown::Left
