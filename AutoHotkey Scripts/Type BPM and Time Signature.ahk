@@ -1,3 +1,4 @@
+#Requires AutoHotkey v1.1
 #SingleInstance, Force
 
 ; Keybinds that click on BPM and time signature fields in Reaper allowing you

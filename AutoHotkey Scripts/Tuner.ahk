@@ -1,3 +1,4 @@
+#Requires AutoHotkey v1.1
 #SingleInstance, Force
 
 ; A script that toggles the GTune tuner and mutes master track in Reaper,

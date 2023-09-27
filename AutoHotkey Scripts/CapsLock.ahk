@@ -1,3 +1,4 @@
+#Requires AutoHotkey v1.1
 #SingleInstance, Force
 
 ; Script to make binding CapsLock to Esc/Ctrl work both in host and guest

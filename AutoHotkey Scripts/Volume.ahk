@@ -1,3 +1,4 @@
+#Requires AutoHotkey v1.1
 #SingleInstance, Force
 
 ; Script to change system volume to either 10% or 100%. On my sound system,
