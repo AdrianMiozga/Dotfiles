@@ -1,29 +1,25 @@
-#Requires AutoHotkey v1.1
-#SingleInstance, Force
+#Requires AutoHotkey v2.0
+#SingleInstance Force
 
 ; Merge Cells
 
 F7::
-    Send !h
-    Send m
-    Send m
-return
+{
+    Send "!hmm"
+}
 
 ; Unmerge Cells
 
 F5::
-    Send !h
-    Send m
-    Send u
-return
+{
+    Send "!hmu"
+}
 
 ; Insert Cells > Shift Cells Down
 
 F6::
-    Send !h
-    Send i
-    Send i
+{
+    Send "!hii"
     Sleep 100
-    Send !d
-    Send {Enter}
-return
+    Send "!d{Enter}"
+}
