@@ -1,9 +1,7 @@
-#Requires AutoHotkey v1.1
-#SingleInstance, Force
-#NoEnv
-SendMode, Input
+#Requires AutoHotkey v2.0
+#SingleInstance Force
 
 ; Left Ctrl + Left Win + Left/Right arrows switch desktop
 
-<#<^WheelUp::Right
-<#<^WheelDown::Left
+<#<^WheelUp::Send "{Blind}{Right}"
+<#<^WheelDown::Send "{Blind}{Left}"
