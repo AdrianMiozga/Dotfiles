@@ -1,8 +1,6 @@
-#Requires AutoHotkey v1.1
-#SingleInstance, Force
-#NoEnv
-SendMode, Input
+#Requires AutoHotkey v2.0
+#SingleInstance Force
 
-<^<+Left::Send {Media_Prev}
-<^<+Down::Send {Media_Play_Pause}
-<^<+Right::Send {Media_Next}
+<^<+Left::Send "{Media_Prev}"
+<^<+Down::Send "{Media_Play_Pause}"
+<^<+Right::Send "{Media_Next}"
