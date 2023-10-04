@@ -1,5 +1,5 @@
-#Requires AutoHotkey v1.1
-#SingleInstance, Force
+#Requires AutoHotkey v2.0
+#SingleInstance Force
 
 ; A script that toggles the GTune tuner and mutes master track in Reaper,
 ; so your neighbors don’t need to hear the obnoxious noises when you
@@ -21,24 +21,24 @@
 ; Setting it to global + text fields does work indeed, but you can’t
 ; type anywhere the letter you’ve bound the key to.
 
-#IfWinActive, ahk_exe reaper.exe
+#HotIf WinActive("ahk_exe reaper.exe")
     b::ToggleTunerAndMasterMute()
     +b::ToggleTuner()
 
     ToggleTunerAndMasterMute() {
-        SendInput, {F6}
+        Send("{F6}")
 
         if WinActive("VST: GTune") {
-            WinKill, VST: GTune
+            WinKill("VST: GTune")
         } else {
-            Send b
+            Send("b")
         }
     }
 
     ToggleTuner() {
         if WinActive("VST: GTune") {
-            WinKill, VST: GTune
+            WinKill("VST: GTune")
         } else {
-            Send b
+            Send("b")
         }
     }
