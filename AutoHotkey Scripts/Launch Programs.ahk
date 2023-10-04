@@ -1,29 +1,27 @@
-#Requires AutoHotkey v1.1
-#SingleInstance, Force
-#NoEnv
-SendMode, Input
+#Requires AutoHotkey v2.0
+#SingleInstance Force
 
 ^!d::ShowTerminal()
 ^!w::ShowEmacs()
 
 ShowTerminal() {
-    WinMatcher := "ahk_class CASCADIA_HOSTING_WINDOW_CLASS"
+    WindowsTerminal := "ahk_class CASCADIA_HOSTING_WINDOW_CLASS"
 
-    if WinExist(WinMatcher) {
-        WinShow ahk_class CASCADIA_HOSTING_WINDOW_CLASS
-        WinActivate ahk_class CASCADIA_HOSTING_WINDOW_CLASS
+    if WinExist(WindowsTerminal) {
+        WinShow WindowsTerminal
+        WinActivate WindowsTerminal
     } else {
-        Run, wt.exe
+        Run "wt.exe"
     }
 }
 
 ShowEmacs() {
-    WinMatcher := "ahk_class Emacs"
+    Emacs := "ahk_class Emacs"
 
-    if WinExist(WinMatcher) {
-        WinShow ahk_class Emacs
-        WinActivate ahk_class Emacs
+    if WinExist(Emacs) {
+        WinShow Emacs
+        WinActivate Emacs
     } else {
-        Run, emacs.exe, , hide
+        Run "emacs.exe", , "Hide"
     }
 }
