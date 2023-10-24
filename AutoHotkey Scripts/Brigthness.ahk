@@ -1,7 +1,5 @@
-#Requires AutoHotkey v1.1
-#SingleInstance, Force
-#NoEnv
-SendMode, Input
+#Requires AutoHotkey v2.0
+#SingleInstance Force
 
 ; Increase/decrease monitor brightness under current mouse point.
 
@@ -9,45 +7,45 @@ SendMode, Input
 <#<+k::BrightnessUp()
 
 BrightnessUp() {
-    hMonitor := getMonitorHandle()
-    currentBrightness := getMonitorBrightness(hMonitor)
+    hMonitor := GetMonitorHandle()
+    currentBrightness := GetMonitorBrightness(hMonitor)
 
     if (currentBrightness == 100) {
-        destroyMonitorHandle(hMonitor)
+        DestroyMonitorHandle(hMonitor)
         return
     }
 
-    setMonitorBrightness(hMonitor, currentBrightness + 5)
-    destroyMonitorHandle(hMonitor)
+    SetMonitorBrightness(hMonitor, currentBrightness + 5)
+    DestroyMonitorHandle(hMonitor)
 }
 
 <#<+WheelDown::BrightnessDown()
 <#<+j::BrightnessDown()
 
 BrightnessDown() {
-    hMonitor := getMonitorHandle()
-    currentBrightness := getMonitorBrightness(hMonitor)
+    hMonitor := GetMonitorHandle()
+    currentBrightness := GetMonitorBrightness(hMonitor)
 
     if (currentBrightness == 0) {
-        destroyMonitorHandle(hMonitor)
+        DestroyMonitorHandle(hMonitor)
         return
     }
 
-    setMonitorBrightness(hMonitor, currentBrightness - 5)
-    destroyMonitorHandle(hMonitor)
+    SetMonitorBrightness(hMonitor, currentBrightness - 5)
+    DestroyMonitorHandle(hMonitor)
 }
 
-getMonitorHandle() {
-    MouseGetPos, xpos, ypos
+GetMonitorHandle() {
+    MouseGetPos(&xpos, &ypos)
 
     ; Convert to POINT structure
-    VarSetCapacity(pt, 8)
-    NumPut(xpos, pt, 0, "Int")
-    NumPut(ypos, pt, 4, "Int")
+    pt := Buffer(8)
+    NumPut("Int", xpos, pt, 0)
+    NumPut("Int", ypos, pt, 4)
 
     static MONITOR_DEFAULTTOPRIMARY := 0x00000001
     hMonitor := DllCall("User32.dll\MonitorFromPoint"
-        , "Int", pt
+        , "Ptr", pt
         ; If the point is not contained within any display monitor return
         ; a handle to the primary display monitor
         , "UInt", MONITOR_DEFAULTTOPRIMARY)
@@ -55,33 +53,36 @@ getMonitorHandle() {
     ; PHYSICAL_MONITOR structure
     ; 8 bytes for monitor HANDLE
     ; 256 bytes for monitor description
-    VarSetCapacity(pPhysicalMonitorArray, 8 + 256, 0)
+    pPhysicalMonitorArray := Buffer(8 + 256)
 
     DllCall("Dxva2.dll\GetPhysicalMonitorsFromHMONITOR"
         , "Int", hMonitor
         , "UInt", 1
-        , "Ptr", &pPhysicalMonitorArray)
+        , "Ptr", pPhysicalMonitorArray)
 
-    return hPhysicalMonitor := NumGet(pPhysicalMonitorArray)
+    return NumGet(pPhysicalMonitorArray, "Ptr")
 }
 
-destroyMonitorHandle(hMonitor) {
+DestroyMonitorHandle(hMonitor) {
     DllCall("Dxva2.dll\DestroyPhysicalMonitor"
         , "Int", hMonitor)
 }
 
-getMonitorBrightness(hMonitor) {
+GetMonitorBrightness(hMonitor) {
+    pdwMinimumBrightness := 0
+    pdwCurrentBrightness := 0
+    pdwMaximumBrightness := 0
+
     DllCall("Dxva2.dll\GetMonitorBrightness"
         , "Int", hMonitor
-        , "UInt*", pdwMinimumBrightness
-        , "UInt*", pdwCurrentBrightness
-        , "UInt*", pdwMaximumBrightness)
+        , "UInt*", &pdwMinimumBrightness
+        , "UInt*", &pdwCurrentBrightness
+        , "UInt*", &pdwMaximumBrightness)
 
     return pdwCurrentBrightness
 }
 
-setMonitorBrightness(hMonitor, brightness)
-{
+SetMonitorBrightness(hMonitor, brightness) {
     DllCall("Dxva2.dll\SetMonitorBrightness"
         , "Int", hMonitor
         , "Int", brightness)
