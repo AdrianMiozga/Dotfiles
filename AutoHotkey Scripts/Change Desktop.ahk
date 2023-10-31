@@ -3,5 +3,5 @@
 
 ; Left Ctrl + Left Win + Left/Right arrows switch desktop
 
-<#<^WheelUp::Send "{Blind}{Right}"
-<#<^WheelDown::Send "{Blind}{Left}"
+<#<^WheelUp::Send("{Blind}{Right}")
+<#<^WheelDown::Send("{Blind}{Left}")

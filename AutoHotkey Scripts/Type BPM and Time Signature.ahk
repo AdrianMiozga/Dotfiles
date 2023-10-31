@@ -18,7 +18,7 @@
         if (!isTransportShown) {
             ; Use Reaper action "View: Toggle transport visible"
             ; bound to Ctrl+Alt+T
-            Send("{Ctrl down}{Alt down}t{Ctrl up}{Alt up}")
+            Send("{Ctrl Down}{Alt Down}t{Ctrl Up}{Alt Up}")
             Sleep(200)
         }
 
@@ -44,6 +44,6 @@
             ; If the transport was hidden during invocation of the method,
             ; hide it again after 5 seconds.
             KeyWait("Enter", "D T5")
-            Send("{Ctrl down}{Alt down}t{Ctrl up}{Alt up}")
+            Send("{Ctrl Down}{Alt Down}t{Ctrl Up}{Alt Up}")
         }
     }
