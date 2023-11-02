@@ -1,63 +1,57 @@
-""" First, load the .vimrc settings
+" First, load the .vimrc settings
 source ~/.vimrc
 
-""" General settings
-set clipboard+=ideaput
-set ideamarks
+" General settings
 set ideajoin
+set ideamarks
+set clipboard+=ideaput
 
-""" Plugins
+" Plugins
 set surround
-set multiple-cursors
 set argtextobj
 set commentary
+set multiple-cursors
 set ReplaceWithRegister
 
-""" Mappings
-let mapleader = " "
-
-" Open windows
-:map <leader>op :action ActivateProjectToolWindow<CR>
-:map <leader>bv :action SelectBuildVariant<CR>
-:map <leader>vc :action Vcs.Show.Log<CR>
-:map <leader>lc :action ActivateLogcatToolWindow<CR>
-:map <leader>ru :action ActivateRunToolWindow<CR>
-:map <leader>me :action ActivateMessagesToolWindow<CR>
-:map <leader>sd :action DeviceAndSnapshotComboBox<CR>
-:map <leader>ir :action ActivateInspectionResultsToolWindow<CR>
-:map <leader>bu :action ActivateBuildToolWindow<CR>
-:map <leader>td :action ActivateTODOToolWindow<CR>
-:map <leader>fe :action ActivateDeviceFileExplorerToolWindow<CR>
-:map <leader>fi :action ActivateFindToolWindow<CR>
-:map <leader>em :action ActivateAndroidEmulatorToolWindow<CR>
-
-:map <leader>m. :action FileStructurePopup<CR>
-:map <leader>pf :action GotoFile<CR>
-:map <leader>ic :action InspectCode<CR>
-:map <leader>ed :action ExternalJavaDoc<CR>
-:map <leader>co :action CheckinProject<CR>
-:map <leader>cs :action ChangeSignature<CR>
-:map <leader>fu :action FindUsages<CR>
-:map <leader>cr :action RenameElement<CR>
-:map <leader>fp :action FindInPath<CR>
-
-:nmap <Enter> :action EditorStartNewLine<CR>
-:nmap <S-Enter> :action EditorStartNewLineBefore<CR>
-
 " Skip multicursor
-:map <Enter> <A-x>
+:vmap <Enter> <A-x>
 
-" Start/next multicursor
-:map <A-d> <A-n>
-
-:nmap <A-j> :action EditorSplitLine<CR>
+" Mappings
 
 :nmap <S-q> :action ReformatCode<CR>
+:map <leader>re :action Refactorings.QuickListPopupAction<CR>
+:nmap <leader>om :action OverrideMethods<CR>
 
-:map <A-;> :action CommentByLineComment<CR>
-:imap <A-;> <C-o>:action CommentByLineComment<CR>
+" Open windows
+:nmap gq :action QuickJavaDoc<CR>
+:map <leader>sd :action DeviceAndSnapshotComboBox<CR>
+:map <leader>bv :action SelectBuildVariant<CR>
+:map <leader>ic :action InspectCode<CR>
 
-:nnoremap <C-o> :action Back<CR>
-:nnoremap <C-i> :action Forward<CR>
+" :map <leader>op :action ActivateProjectToolWindow<CR>
+" :map <leader>vc :action Vcs.Show.Log<CR>
+" :map <leader>lc :action ActivateLogcatToolWindow<CR>
+" :map <leader>ru :action ActivateRunToolWindow<CR>
+" :map <leader>me :action ActivateMessagesToolWindow<CR>
+" :map <leader>ir :action ActivateInspectionResultsToolWindow<CR>
+" :map <leader>bu :action ActivateBuildToolWindow<CR>
+" :map <leader>td :action ActivateTODOToolWindow<CR>
+" :map <leader>fe :action ActivateDeviceFileExplorerToolWindow<CR>
+" :map <leader>fi :action ActivateFindToolWindow<CR>
+" :map <leader>em :action ActivateAndroidEmulatorToolWindow<CR>
+" :map <leader>co :action CheckinProject<CR>
 
-:nmap gt :action GotoTypeDeclaration<CR>
+" :map <leader>m. :action FileStructurePopup<CR>
+" :map <leader>pf :action GotoFile<CR>
+" :map <leader>ed :action ExternalJavaDoc<CR>
+" :map <leader>cs :action ChangeSignature<CR>
+" :map <leader>fu :action FindUsages<CR>
+" :map <leader>cr :action RenameElement<CR>
+" :map <leader>fp :action FindInPath<CR>
+
+" :nmap <A-j> :action EditorSplitLine<CR>
+
+" :nmap gt :action GotoTypeDeclaration<CR>
+
+" :nnoremap <C-o> :action Back<CR>
+" :nnoremap <C-i> :action Forward<CR>
