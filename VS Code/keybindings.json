@@ -1,4 +1,5 @@
 [
+  // Ctrl + Tab
   {
     "key": "ctrl+tab",
     "command": "workbench.action.nextEditor"
@@ -7,6 +8,7 @@
     "key": "ctrl+shift+tab",
     "command": "workbench.action.previousEditor"
   },
+  // Run & Debug
   {
     "key": "alt+r",
     "command": "-toggleFindRegex",
@@ -14,23 +16,41 @@
   },
   {
     "key": "alt+r",
-    "command": "run.ahk",
+    "command": "ahk++.run",
     "when": "editorLangId == 'ahk'"
   },
   {
     "key": "alt+r",
-    "command": "workbench.action.debug.run",
-    "when": "debuggersAvailable && debugState != 'initializing'"
+    "command": "python.execInTerminal-icon",
+    "when": "editorLangId == 'python'"
   },
+  {
+    "key": "alt+r",
+    "command": "workbench.action.tasks.build",
+    "when": "editorLangId == 'asm-collection'"
+  },
+  {
+    "key": "alt+r",
+    "command": "C_Cpp.BuildAndRunFile",
+    "when": "editorLangId == 'c' || editorLangId == 'cpp'"
+  },
+  {
+    "key": "alt+d",
+    "command": "C_Cpp.BuildAndDebugFile",
+    "when": "editorLangId == 'c' || editorLangId == 'cpp'"
+  },
+  // Commands
   {
     "key": "alt+x",
     "command": "workbench.action.showCommands"
   },
+  // Multiple cursors
   {
     "key": "alt+n",
     "command": "editor.action.addSelectionToNextFindMatch",
     "when": "editorFocus"
   },
+  // Next and previous error
   {
     "key": "alt+l",
     "command": "-toggleFindInSelection",
@@ -46,59 +66,13 @@
     "command": "editor.action.marker.prev",
     "when": "editorFocus"
   },
+  // Quickfix
   {
     "key": "alt+enter",
     "command": "editor.action.quickFix",
     "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
   },
-  {
-    "key": "shift+f2",
-    "command": "extension.renameBatch"
-  },
-  {
-    "key": "alt+[",
-    "command": "type",
-    "args": { "text": "‘" },
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+]",
-    "command": "type",
-    "args": { "text": "’" },
-    "when": "editorTextFocus"
-  },
-  {
-    "key": "shift+alt+[",
-    "command": "type",
-    "args": { "text": "“" },
-    "when": "editorTextFocus&&!editorHasSelection"
-  },
-  {
-    "key": "shift+alt+]",
-    "command": "type",
-    "args": { "text": "”" },
-    "when": "editorTextFocus&&!editorHasSelection"
-  },
-  {
-    "key": "alt+.",
-    "command": "type",
-    "args": { "text": "…" },
-    "when": "editorTextFocus"
-  },
-  {
-    // En dash
-    "key": "alt+-",
-    "command": "type",
-    "args": { "text": "–" },
-    "when": "editorTextFocus"
-  },
-  {
-    // Em dash
-    "key": "shift+alt+-",
-    "command": "type",
-    "args": { "text": "—" },
-    "when": "editorTextFocus"
-  },
+  // Windows
   {
     "key": "alt+1",
     "command": "-workbench.action.openEditorAtIndex1"
@@ -109,21 +83,127 @@
     "when": "viewContainer.workbench.view.explorer.enabled"
   },
   {
-    "key": "ctrl+j",
-    "command": "-workbench.action.togglePanel"
+    "key": "alt+2",
+    "command": "-workbench.action.openEditorAtIndex2"
   },
   {
-    "key": "alt+3",
-    "command": "workbench.view.scm",
-    "when": "workbench.scm.active"
+    "key": "alt+2",
+    "command": "workbench.action.findInFiles"
   },
   {
     "key": "alt+3",
     "command": "-workbench.action.openEditorAtIndex3"
   },
   {
+    "key": "alt+3",
+    "command": "workbench.view.scm",
+    "when": "workbench.scm.active"
+  },
+  // Git
+  {
     "key": "ctrl+alt+z",
     "command": "git.revertSelectedRanges",
     "when": "isInDiffEditor && !operationInProgress"
+  },
+  // Zooming
+  {
+    "key": "ctrl+numpad0",
+    "command": "editor.action.fontZoomReset"
+  },
+  {
+    "key": "ctrl+0",
+    "command": "editor.action.fontZoomReset"
+  },
+  {
+    "key": "ctrl+numpad0",
+    "command": "-workbench.action.zoomReset"
+  },
+  {
+    "key": "ctrl+oem_plus",
+    "command": "editor.action.fontZoomIn"
+  },
+  {
+    "key": "ctrl+oem_minus",
+    "command": "editor.action.fontZoomOut"
+  },
+  {
+    "key": "ctrl+oem_minus",
+    "command": "-workbench.action.zoomOut"
+  },
+  {
+    "key": "ctrl+oem_plus",
+    "command": "-workbench.action.zoomIn"
+  },
+  // Ctrl+J and Ctrl+K for lists
+  {
+    "key": "ctrl+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "selectNextCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.quickOpenSelectPrevious",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevSuggestion",
+    "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "selectPrevCodeAction",
+    "when": "codeActionMenuVisible"
+  },
+  // Find file
+  {
+    "key": "ctrl+p",
+    "command": "-extension.vim_ctrl+p",
+    "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+  },
+  // File Explorer
+  {
+    "key": "a",
+    "command": "explorer.newFile",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+a",
+    "command": "explorer.newFolder",
+    "when": "filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "y",
+    "command": "filesExplorer.copy",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+  },
+  {
+    "key": "x",
+    "command": "filesExplorer.cut",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+  },
+  {
+    "key": "p",
+    "command": "filesExplorer.paste",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
   }
 ]
