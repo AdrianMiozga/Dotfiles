@@ -3,7 +3,6 @@
 # Install manually:
 # - Cascadia Code Nerd Font
 
-Install-Module z -Force
 Install-Module posh-git -Force
 winget install JanDeDobbeleer.OhMyPosh --source winget
 

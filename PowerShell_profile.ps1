@@ -1,5 +1,3 @@
-Import-Module posh-git
-
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\velvet.omp.json" | Invoke-Expression
 
 # Enable posh-git for oh-my-posh
