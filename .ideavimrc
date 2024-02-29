@@ -24,6 +24,8 @@ set ReplaceWithRegister
 
 " Open windows
 :nmap gq :action QuickJavaDoc<CR>
+:nmap ge :action ShowErrorDescription<CR>
+
 :map <leader>sd :action DeviceAndSnapshotComboBox<CR>
 :map <leader>bv :action SelectBuildVariant<CR>
 :map <leader>ic :action InspectCode<CR>
