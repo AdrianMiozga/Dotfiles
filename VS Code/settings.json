@@ -1,8 +1,13 @@
 {
-  "C_Cpp.default.intelliSenseMode": "windows-msvc-x64",
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[git-commit]": {
     "editor.rulers": [72],
     "workbench.editor.restoreViewState": false
+  },
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -25,14 +30,56 @@
     "editor.wordWrap": "on"
   },
   "[python]": {
-    // ‘PyLint’ line length
+    // 'PyLint' line length
     "editor.rulers": [100]
   },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "asm-code-lens.enableCodeLenses": false,
+  "C_Cpp.default.intelliSenseMode": "windows-msvc-x64",
   "cmake.configureOnOpen": true,
+  "code-runner.executorMapByFileExtension": {
+    ".ahk": "autohotkey",
+    ".asm": "C:\\fasmw\\fasm.exe $fileName",
+    ".au3": "autoit3",
+    ".cr": "crystal",
+    ".csproj": "dotnet run --project",
+    ".cu": "cd $dir && nvcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
+    ".d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
+    ".dart": "dart",
+    ".exs": "elixir",
+    ".fsproj": "dotnet run --project",
+    ".hs": "runhaskell",
+    ".hx": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
+    ".jl": "julia",
+    ".kit": "kitc --run",
+    ".kt": "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
+    ".kts": "kotlinc -script",
+    ".lisp": "sbcl --script",
+    ".ml": "ocaml",
+    ".nim": "nim compile --verbosity:0 --hints:off --run",
+    ".pas": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    ".pp": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
+    ".ring": "ring",
+    ".rkt": "racket",
+    ".sass": "sass --style expanded",
+    ".scala": "scala",
+    ".scm": "csi -script",
+    ".sml": "cd $dir && sml $fileName",
+    ".v": "v run",
+    ".vb": "cd $dir && vbc /nologo $fileName && $dir$fileNameWithoutExt",
+    ".vbs": "cscript //Nologo",
+    ".vsh": "v run",
+    ".zig": "zig run"
+  },
   "debug.onTaskErrors": "showErrors",
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true
+    "source.organizeImports": "explicit"
   },
   "editor.fontFamily": "Cascadia Code PL",
   "editor.fontLigatures": true,
@@ -40,13 +87,19 @@
   "editor.inlineSuggest.enabled": true,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
+  "editor.mouseWheelZoom": true,
   "editor.rulers": [80],
   "editor.suggestSelection": "first",
   "editor.wordWrapColumn": 120,
   "explorer.confirmDelete": false,
   "explorer.confirmDragAndDrop": false,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1,
+    "vscodevim.vim": 1
+  },
   "files.associations": {
-    ".ideavimrc": "vimrc"
+    ".ideavimrc": "vimrc",
+    "*.inc": "asm-collection"
   },
   "files.autoSave": "onFocusChange",
   "files.exclude": {
@@ -68,20 +121,43 @@
   "git.enableSmartCommit": true,
   "github.copilot.enable": {
     "*": true,
+    "markdown": false,
     "plaintext": false,
-    "markdown": true,
     "scminput": false,
     "yaml": false
   },
   "ltex.additionalRules.enablePickyRules": true,
   "ltex.additionalRules.motherTongue": "pl-PL",
   "notebook.formatOnSave.enabled": true,
+  "php.validate.executablePath": "C:\\xampp\\php\\php.exe",
   "python.formatting.provider": "black",
-  "python.terminal.executeInFileDir": true,
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.allowChords": false,
   "terminal.integrated.fontFamily": "CaskaydiaCove NFM",
   "update.showReleaseNotes": false,
+  "vim.leader": "<space>",
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["g", "p"],
+      "commands": ["markdown.showPreviewToSide"],
+      "silent": true,
+      "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+    },
+    {
+      "before": ["g", "e"],
+      "commands": ["editor.action.showDefinitionPreviewHover"]
+    },
+    {
+      "before": ["<leader>", "r", "e"],
+      "commands": ["editor.action.refactor"],
+      "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    },
+    {
+      "before": ["Q"],
+      "commands": ["editor.action.formatDocument"],
+      "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+    }
+  ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": ["u"],
@@ -94,55 +170,19 @@
   ],
   "vim.useSystemClipboard": true,
   "vim.vimrc.enable": true,
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<leader>", "r", "e"],
+      "commands": ["editor.action.refactor"],
+      "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+    }
+  ],
+  "window.newWindowDimensions": "inherit",
   "window.restoreFullscreen": true,
+  "window.restoreWindows": "none",
   "window.zoomLevel": 0.8,
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
   },
-  "workbench.startupEditor": "none",
-  "editor.mouseWheelZoom": true,
-  "code-runner.executorMapByFileExtension": {
-    ".asm": "C:\\fasmw\\fasm.exe $fileName",
-    ".vb": "cd $dir && vbc /nologo $fileName && $dir$fileNameWithoutExt",
-    ".vbs": "cscript //Nologo",
-    ".scala": "scala",
-    ".jl": "julia",
-    ".cr": "crystal",
-    ".ml": "ocaml",
-    ".zig": "zig run",
-    ".exs": "elixir",
-    ".hx": "haxe --cwd $dirWithoutTrailingSlash --run $fileNameWithoutExt",
-    ".rkt": "racket",
-    ".scm": "csi -script",
-    ".ahk": "autohotkey",
-    ".au3": "autoit3",
-    ".kt": "cd $dir && kotlinc $fileName -include-runtime -d $fileNameWithoutExt.jar && java -jar $fileNameWithoutExt.jar",
-    ".kts": "kotlinc -script",
-    ".dart": "dart",
-    ".pas": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
-    ".pp": "cd $dir && fpc $fileName && $dir$fileNameWithoutExt",
-    ".d": "cd $dir && dmd $fileName && $dir$fileNameWithoutExt",
-    ".hs": "runhaskell",
-    ".nim": "nim compile --verbosity:0 --hints:off --run",
-    ".csproj": "dotnet run --project",
-    ".fsproj": "dotnet run --project",
-    ".lisp": "sbcl --script",
-    ".kit": "kitc --run",
-    ".v": "v run",
-    ".vsh": "v run",
-    ".sass": "sass --style expanded",
-    ".cu": "cd $dir && nvcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
-    ".ring": "ring",
-    ".sml": "cd $dir && sml $fileName"
-  },
-  "asm-code-lens.enableCodeLenses": false,
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "extensions.experimental.affinity": {
-    "asvetliakov.vscode-neovim": 1
-  }
+  "workbench.startupEditor": "none"
 }

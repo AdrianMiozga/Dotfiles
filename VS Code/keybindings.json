@@ -31,6 +31,11 @@
   },
   {
     "key": "alt+r",
+    "command": "workbench.action.tasks.build",
+    "when": "editorLangId == 'pawn'"
+  },
+  {
+    "key": "alt+r",
     "command": "C_Cpp.BuildAndRunFile",
     "when": "editorLangId == 'c' || editorLangId == 'cpp'"
   },
@@ -38,6 +43,11 @@
     "key": "alt+d",
     "command": "C_Cpp.BuildAndDebugFile",
     "when": "editorLangId == 'c' || editorLangId == 'cpp'"
+  },
+  {
+    "key": "alt+r",
+    "command": "workbench.action.debug.run",
+    "when": "editorLangId == 'powershell'"
   },
   // Commands
   {
@@ -73,6 +83,16 @@
     "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
   },
   // Windows
+  {
+    "key": "ctrl+oem_3",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "alt+oem_3",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
   {
     "key": "alt+1",
     "command": "-workbench.action.openEditorAtIndex1"
@@ -205,5 +225,23 @@
     "key": "p",
     "command": "filesExplorer.paste",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "editor.action.moveLinesDownAction",
+    "when": "editorTextFocus && !suggestWidgetVisible && !editorReadonly"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "editor.action.moveLinesUpAction",
+    "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible"
+  },
+  {
+    "key": "alt+z",
+    "command": "-editor.action.toggleWordWrap"
+  },
+  {
+    "key": "alt+z",
+    "command": "toggleVim"
   }
 ]
