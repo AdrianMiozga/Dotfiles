@@ -226,6 +226,7 @@
     "command": "filesExplorer.paste",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
   },
+  // Other
   {
     "key": "ctrl+j",
     "command": "editor.action.moveLinesDownAction",
@@ -237,11 +238,13 @@
     "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible"
   },
   {
-    "key": "alt+z",
-    "command": "-editor.action.toggleWordWrap"
+    "key": "ctrl+shift+c",
+    "command": "-workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
   },
   {
-    "key": "alt+z",
-    "command": "toggleVim"
+    "key": "ctrl+shift+c",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus"
   }
 ]
