@@ -168,8 +168,6 @@
       "commands": ["redo"]
     }
   ],
-  "vim.useSystemClipboard": true,
-  "vim.vimrc.enable": true,
   "vim.visualModeKeyBindings": [
     {
       "before": ["<leader>", "r", "e"],
@@ -184,5 +182,9 @@
   "workbench.editorAssociations": {
     "*.ipynb": "jupyter.notebook.ipynb"
   },
-  "workbench.startupEditor": "none"
+  "workbench.startupEditor": "none",
+  "diffEditor.renderSideBySide": true,
+  "github.copilot.editor.enableAutoCompletions": true,
+  "vim.useSystemClipboard": true,
+  "vim.vimrc.enable": true
 }
