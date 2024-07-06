@@ -21,6 +21,7 @@ set ReplaceWithRegister
 :nmap <S-q> :action ReformatCode<CR>
 :map <leader>re :action Refactorings.QuickListPopupAction<CR>
 :nmap <leader>om :action OverrideMethods<CR>
+:nmap gt :action GotoTypeDeclaration<CR>
 
 " Open windows
 :nmap gq :action QuickJavaDoc<CR>
@@ -52,8 +53,6 @@ set ReplaceWithRegister
 " :map <leader>fp :action FindInPath<CR>
 
 " :nmap <A-j> :action EditorSplitLine<CR>
-
-" :nmap gt :action GotoTypeDeclaration<CR>
 
 " :nnoremap <C-o> :action Back<CR>
 " :nnoremap <C-i> :action Forward<CR>
