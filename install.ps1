@@ -3,6 +3,15 @@
 # Install manually:
 # - Cascadia Code Nerd Font
 
+# Setup dual-key-remap:
+# 1. Create task in Task Scheduler to run dual-key-remap.exe with highest
+#    privileges on startup.
+# 2. Export task.
+# 3. Set priority to 5 (from 7) in the XML file.
+#    https://learn.microsoft.com/en-us/windows/win32/taskschd/tasksettings-priority
+# 4. Delete task.
+# 5. Import task.
+
 Install-Module posh-git -Force
 winget install JanDeDobbeleer.OhMyPosh --source winget
 
