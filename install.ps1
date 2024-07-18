@@ -1,7 +1,8 @@
 #Requires -RunAsAdministrator
 
 # Install manually:
-# - Cascadia Code Nerd Font
+# - All Cascadia Code fonts
+#   https://github.com/microsoft/cascadia-code/releases/
 
 # Setup dual-key-remap:
 # 1. Create task in Task Scheduler to run dual-key-remap.exe with highest
