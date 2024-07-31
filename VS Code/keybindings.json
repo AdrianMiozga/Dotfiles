@@ -246,5 +246,15 @@
     "key": "ctrl+shift+c",
     "command": "editor.action.clipboardCopyAction",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "editor.action.indentLines",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "editor.action.outdentLines",
+    "when": "editorTextFocus && !editorReadonly"
   }
 ]
