@@ -17,7 +17,7 @@
   {
     "key": "alt+r",
     "command": "ahk++.run",
-    "when": "editorLangId == 'ahk'"
+    "when": "editorLangId == 'ahk' || editorLangId == 'ahk2'"
   },
   {
     "key": "alt+r",
