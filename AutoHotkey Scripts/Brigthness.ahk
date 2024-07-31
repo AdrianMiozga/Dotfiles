@@ -50,28 +50,28 @@ GetMonitorHandle() {
     NumPut("Int", ypos, pt, 4)
 
     static MONITOR_DEFAULTTOPRIMARY := 0x00000001
-    hMonitor := DllCall("User32.dll\MonitorFromPoint"
-        , "Ptr", pt
+    hMonitor := DllCall("User32.dll\MonitorFromPoint",
+        "Ptr", pt,
         ; If the point is not contained within any display monitor return
         ; a handle to the primary display monitor
-        , "UInt", MONITOR_DEFAULTTOPRIMARY)
+        "UInt", MONITOR_DEFAULTTOPRIMARY)
 
     ; PHYSICAL_MONITOR structure
     ; 8 bytes for monitor HANDLE
     ; 256 bytes for monitor description
     pPhysicalMonitorArray := Buffer(8 + 256)
 
-    DllCall("Dxva2.dll\GetPhysicalMonitorsFromHMONITOR"
-        , "Int", hMonitor
-        , "UInt", 1
-        , "Ptr", pPhysicalMonitorArray)
+    DllCall("Dxva2.dll\GetPhysicalMonitorsFromHMONITOR",
+        "Int", hMonitor,
+        "UInt", 1,
+        "Ptr", pPhysicalMonitorArray)
 
     return NumGet(pPhysicalMonitorArray, "Ptr")
 }
 
 DestroyMonitorHandle(hMonitor) {
-    DllCall("Dxva2.dll\DestroyPhysicalMonitor"
-        , "Int", hMonitor)
+    DllCall("Dxva2.dll\DestroyPhysicalMonitor",
+        "Int", hMonitor)
 }
 
 GetMonitorBrightness(hMonitor) {
@@ -79,17 +79,17 @@ GetMonitorBrightness(hMonitor) {
     pdwCurrentBrightness := 0
     pdwMaximumBrightness := 0
 
-    DllCall("Dxva2.dll\GetMonitorBrightness"
-        , "Int", hMonitor
-        , "UInt*", &pdwMinimumBrightness
-        , "UInt*", &pdwCurrentBrightness
-        , "UInt*", &pdwMaximumBrightness)
+    DllCall("Dxva2.dll\GetMonitorBrightness",
+        "Int", hMonitor,
+        "UInt*", &pdwMinimumBrightness,
+        "UInt*", &pdwCurrentBrightness,
+        "UInt*", &pdwMaximumBrightness)
 
     return pdwCurrentBrightness
 }
 
 SetMonitorBrightness(hMonitor, brightness) {
-    DllCall("Dxva2.dll\SetMonitorBrightness"
-        , "Int", hMonitor
-        , "Int", brightness)
+    DllCall("Dxva2.dll\SetMonitorBrightness",
+        "Int", hMonitor,
+        "Int", brightness)
 }
