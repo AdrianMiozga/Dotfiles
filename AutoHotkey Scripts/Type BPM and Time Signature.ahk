@@ -10,6 +10,8 @@
 
 #HotIf WinActive("ahk_exe reaper.exe")
     z::Type(1) ; BPM
+
+    ; Shift + Z
     +z::Type(2) ; Time signature
 
     Type(action) {

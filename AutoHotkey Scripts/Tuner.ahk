@@ -23,6 +23,8 @@
 
 #HotIf WinActive("ahk_exe reaper.exe")
     b::ToggleTunerAndMasterMute()
+
+    ; Shift + B
     +b::ToggleTuner()
 
     ToggleTunerAndMasterMute() {

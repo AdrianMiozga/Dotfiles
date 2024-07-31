@@ -1,7 +1,10 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
 
+; Ctrl + Alt + D
 ^!d::ShowTerminal()
+
+; Ctrl + Alt + W
 ; ^!w::ShowEmacs()
 
 ShowTerminal() {

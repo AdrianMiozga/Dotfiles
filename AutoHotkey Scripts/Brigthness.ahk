@@ -3,7 +3,10 @@
 
 ; Increase/decrease monitor brightness under current mouse point.
 
+; Left Win + Left Shift + WheelUp
 <#<+WheelUp::BrightnessUp()
+
+; Left Win + Left Shift + K
 <#<+k::BrightnessUp()
 
 BrightnessUp() {
@@ -19,7 +22,10 @@ BrightnessUp() {
     DestroyMonitorHandle(hMonitor)
 }
 
+; Left Win + Left Shift + WheelDown
 <#<+WheelDown::BrightnessDown()
+
+; Left Win + Left Shift + K
 <#<+j::BrightnessDown()
 
 BrightnessDown() {
