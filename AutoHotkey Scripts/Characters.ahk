@@ -3,26 +3,26 @@
 
 ; Single quotes
 ; Alt + [
-![::Send("‘")
+![:: Send("‘")
 ; Alt + ]
-!]::Send("’")
+!]:: Send("’")
 
 ; Double quotes
 ; Alt + Ctrl + Shift + [
-!^+[::Send("„")
+!^+[:: Send("„")
 ; Alt + Shift + [
-!+[::Send("“")
+!+[:: Send("“")
 ; Alt + Shift + ]
-!+]::Send("”")
+!+]:: Send("”")
 
 ; Ellipsis
 ; Alt + .
-!.::Send("…")
+!.:: Send("…")
 
 ; En dash
 ; Alt + -
-!-::Send("–")
+!-:: Send("–")
 
 ; Em dash
 ; Alt + Shift + -
-!+-::Send("—")
+!+-:: Send("—")

@@ -2,10 +2,10 @@
 #SingleInstance Force
 
 #HotIf WinActive("ahk_exe reaper.exe")
-    `::ToggleMenu()
+`:: ToggleMenu()
 
 #HotIf WinActive("ahk_exe reaper.exe")
-    F9::ToggleDevice()
+F9:: ToggleDevice()
 
 ToggleMenu() {
     static MenuArray := Map()
@@ -31,11 +31,12 @@ ToggleDevice() {
         ToggleMenu()
     }
 
-    ControlSend("{Ctrl Down}{Shift Down}{F1}{Ctrl Up}{Shift Up}", , "ahk_exe reaper.exe")
+    ControlSend("{Ctrl Down}{Shift Down}{F1}{Ctrl Up}{Shift Up}", ,
+        "ahk_exe reaper.exe")
 
     if (WinWait("REAPER Preferences", , 2)) {
         Index := ControlGetIndex("ComboBox1")
-        
+
         if (Index = 2) {
             ControlChooseIndex(3, "ComboBox1")
         } else {

@@ -2,10 +2,10 @@
 #SingleInstance Force
 
 ; Ctrl + Alt + D
-^!d::ShowTerminal()
+^!d:: ShowTerminal()
 
 ; Ctrl + Alt + W
-; ^!w::ShowEmacs()
+; ^!w:: ShowEmacs()
 
 ShowTerminal() {
     WindowsTerminal := "ahk_class CASCADIA_HOSTING_WINDOW_CLASS"

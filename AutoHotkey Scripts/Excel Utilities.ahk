@@ -3,19 +3,19 @@
 
 ; Merge Cells
 
-F7::{
+F7:: {
     Send("!hmm")
 }
 
 ; Unmerge Cells
 
-F5::{
+F5:: {
     Send("!hmu")
 }
 
 ; Insert Cells > Shift Cells Down
 
-F6::{
+F6:: {
     Send("!hii")
     Sleep(100)
     Send("!d{Enter}")

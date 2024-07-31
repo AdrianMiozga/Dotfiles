@@ -6,7 +6,7 @@
 ; when outputting at 100%. 10% gives much more control.
 
 ; Left Shift + Left Ctrl + F9
-<+<^F9::SoundSetVolume(10)
+<+<^F9:: SoundSetVolume(10)
 
 ; Left Shift + Left Ctrl + F10
-<+<^F10::SoundSetVolume(100)
+<+<^F10:: SoundSetVolume(100)
