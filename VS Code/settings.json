@@ -186,5 +186,9 @@
   "diffEditor.renderSideBySide": true,
   "github.copilot.editor.enableAutoCompletions": true,
   "vim.useSystemClipboard": true,
-  "vim.vimrc.enable": true
+  "vim.vimrc.enable": true,
+  "AutoHotkey2.FormatOptions": {
+    "wrap_line_length": 80
+  },
+  "files.insertFinalNewline": true
 }
