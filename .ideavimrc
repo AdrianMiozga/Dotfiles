@@ -1,17 +1,17 @@
-" First, load the .vimrc settings
+" Load .vimrc
 source ~/.vimrc
 
-" General settings
+" General Settings
 set ideajoin
 set ideamarks
 set clipboard+=ideaput
 
-" Plugins
-set surround
-set argtextobj
-set commentary
-set multiple-cursors
-set ReplaceWithRegister
+" Apply Plugins
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/argtextobj.vim'
+Plug 'tpope/vim-commentary'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'vim-scripts/ReplaceWithRegister'
 
 " multiple-cursors
 xmap <Enter> <Plug>SkipOccurrence
@@ -21,42 +21,15 @@ nmap <leader><A-n> <Plug>AllWholeOccurrences
 xmap <leader><A-n> <Plug>AllWholeOccurrences
 
 " Mappings
+:nmap gq <Action>(QuickJavaDoc)
+:nmap ge <Action>(ShowErrorDescription)
+:nmap gt <Action>(GotoTypeDeclaration)
+:map ff <Action>(FindInPath)
 
-:nmap <S-q> :action ReformatCode<CR>
-:map <leader>re :action Refactorings.QuickListPopupAction<CR>
-:nmap <leader>om :action OverrideMethods<CR>
-:nmap gt :action GotoTypeDeclaration<CR>
+:nmap <S-q> <Action>(ReformatCode)
 
-" Open windows
-:nmap gq :action QuickJavaDoc<CR>
-:nmap ge :action ShowErrorDescription<CR>
-
-:map <leader>sd :action DeviceAndSnapshotComboBox<CR>
-:map <leader>bv :action SelectBuildVariant<CR>
-:map <leader>ic :action InspectCode<CR>
-
-" :map <leader>op :action ActivateProjectToolWindow<CR>
-" :map <leader>vc :action Vcs.Show.Log<CR>
-" :map <leader>lc :action ActivateLogcatToolWindow<CR>
-" :map <leader>ru :action ActivateRunToolWindow<CR>
-" :map <leader>me :action ActivateMessagesToolWindow<CR>
-" :map <leader>ir :action ActivateInspectionResultsToolWindow<CR>
-" :map <leader>bu :action ActivateBuildToolWindow<CR>
-" :map <leader>td :action ActivateTODOToolWindow<CR>
-" :map <leader>fe :action ActivateDeviceFileExplorerToolWindow<CR>
-" :map <leader>fi :action ActivateFindToolWindow<CR>
-" :map <leader>em :action ActivateAndroidEmulatorToolWindow<CR>
-" :map <leader>co :action CheckinProject<CR>
-
-" :map <leader>m. :action FileStructurePopup<CR>
-" :map <leader>pf :action GotoFile<CR>
-" :map <leader>ed :action ExternalJavaDoc<CR>
-" :map <leader>cs :action ChangeSignature<CR>
-" :map <leader>fu :action FindUsages<CR>
-" :map <leader>cr :action RenameElement<CR>
-" :map <leader>fp :action FindInPath<CR>
-
-" :nmap <A-j> :action EditorSplitLine<CR>
-
-" :nnoremap <C-o> :action Back<CR>
-" :nnoremap <C-i> :action Forward<CR>
+:map <leader>re <Action>(Refactorings.QuickListPopupAction)
+:nmap <leader>om <Action>(OverrideMethods)
+:map <leader>sd <Action>(DeviceAndSnapshotComboBox)
+:map <leader>bv <Action>(SelectBuildVariant)
+:map <leader>ic <Action>(InspectCode)
