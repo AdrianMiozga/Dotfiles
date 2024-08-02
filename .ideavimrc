@@ -13,8 +13,12 @@ set commentary
 set multiple-cursors
 set ReplaceWithRegister
 
-" Skip multicursor
-:vmap <Enter> <A-x>
+" multiple-cursors
+xmap <Enter> <Plug>SkipOccurrence
+xmap <A-p> <Plug>RemoveOccurrence
+
+nmap <leader><A-n> <Plug>AllWholeOccurrences
+xmap <leader><A-n> <Plug>AllWholeOccurrences
 
 " Mappings
 
