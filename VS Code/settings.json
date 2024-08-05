@@ -190,5 +190,6 @@
   "AutoHotkey2.FormatOptions": {
     "wrap_line_length": 80
   },
-  "files.insertFinalNewline": true
+  "files.insertFinalNewline": true,
+  "vim.highlightedyank.enable": true
 }
