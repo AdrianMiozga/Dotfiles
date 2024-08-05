@@ -12,6 +12,7 @@ Plug 'vim-scripts/argtextobj.vim'
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'machakann/vim-highlightedyank'
 
 " multiple-cursors
 xmap <Enter> <Plug>SkipOccurrence
