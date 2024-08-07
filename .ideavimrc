@@ -18,8 +18,8 @@ Plug 'machakann/vim-highlightedyank'
 xmap <Enter> <Plug>SkipOccurrence
 xmap <A-p> <Plug>RemoveOccurrence
 
-nmap <leader><A-n> <Plug>AllWholeOccurrences
-xmap <leader><A-n> <Plug>AllWholeOccurrences
+nmap <A-S-n> <Plug>AllWholeOccurrences
+xmap <A-S-n> <Plug>AllWholeOccurrences
 
 " Mappings
 :nmap gq <Action>(QuickJavaDoc)

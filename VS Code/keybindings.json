@@ -256,5 +256,10 @@
     "key": "ctrl+h",
     "command": "editor.action.outdentLines",
     "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+alt+n",
+    "command": "editor.action.selectHighlights",
+    "when": "editorFocus"
   }
 ]
