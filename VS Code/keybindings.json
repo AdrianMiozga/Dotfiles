@@ -192,12 +192,12 @@
   },
   // File Explorer
   {
-    "key": "a",
+    "key": "n",
     "command": "explorer.newFile",
     "when": "filesExplorerFocus && !inputFocus"
   },
   {
-    "key": "shift+a",
+    "key": "shift+n",
     "command": "explorer.newFolder",
     "when": "filesExplorerFocus && !inputFocus"
   },
