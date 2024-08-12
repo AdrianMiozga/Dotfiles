@@ -60,6 +60,11 @@
     "command": "editor.action.addSelectionToNextFindMatch",
     "when": "editorFocus"
   },
+  {
+    "key": "shift+alt+n",
+    "command": "editor.action.selectHighlights",
+    "when": "editorFocus"
+  },
   // Next and previous error
   {
     "key": "alt+l",
@@ -190,7 +195,7 @@
     "command": "-extension.vim_ctrl+p",
     "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
   },
-  // File Explorer
+  // File explorer
   {
     "key": "n",
     "command": "explorer.newFile",
@@ -226,7 +231,7 @@
     "command": "filesExplorer.paste",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
   },
-  // Other
+  // Moving lines
   {
     "key": "ctrl+j",
     "command": "editor.action.moveLinesDownAction",
@@ -238,16 +243,6 @@
     "when": "editorTextFocus && !editorReadonly && !suggestWidgetVisible"
   },
   {
-    "key": "ctrl+shift+c",
-    "command": "-workbench.action.terminal.openNativeConsole",
-    "when": "!terminalFocus"
-  },
-  {
-    "key": "ctrl+shift+c",
-    "command": "editor.action.clipboardCopyAction",
-    "when": "editorTextFocus"
-  },
-  {
     "key": "ctrl+l",
     "command": "editor.action.indentLines",
     "when": "editorTextFocus && !editorReadonly"
@@ -257,9 +252,15 @@
     "command": "editor.action.outdentLines",
     "when": "editorTextFocus && !editorReadonly"
   },
+  // Other
   {
-    "key": "shift+alt+n",
-    "command": "editor.action.selectHighlights",
-    "when": "editorFocus"
+    "key": "ctrl+shift+c",
+    "command": "-workbench.action.terminal.openNativeConsole",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "editor.action.clipboardCopyAction",
+    "when": "editorTextFocus"
   }
 ]
