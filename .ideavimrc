@@ -25,7 +25,6 @@ xmap <A-S-n> <Plug>AllWholeOccurrences
 :nmap gq <Action>(QuickJavaDoc)
 :nmap ge <Action>(ShowErrorDescription)
 :nmap gt <Action>(GotoTypeDeclaration)
-:map ff <Action>(FindInPath)
 
 :nmap <S-q> <Action>(ReformatCode)
 
