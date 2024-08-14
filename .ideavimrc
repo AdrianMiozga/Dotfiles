@@ -14,6 +14,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'machakann/vim-highlightedyank'
 Plug 'preservim/nerdtree'
+Plug 'dbakker/vim-paragraph-motion'
 
 " multiple-cursors
 xmap <Enter> <Plug>SkipOccurrence
