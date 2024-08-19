@@ -49,6 +49,11 @@
     "command": "workbench.action.debug.run",
     "when": "editorLangId == 'powershell'"
   },
+  {
+    "key": "alt+r",
+    "command": "vscode-postgres.runQuery",
+    "when": "editorLangId == 'postgres'"
+  },
   // Commands
   {
     "key": "alt+x",
