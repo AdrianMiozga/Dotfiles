@@ -20,6 +20,7 @@
   },
   "[markdown]": {
     "diffEditor.ignoreTrimWhitespace": false,
+    "editor.tabSize": 2,
     "editor.quickSuggestions": {
       "comments": "off",
       "other": "off",
