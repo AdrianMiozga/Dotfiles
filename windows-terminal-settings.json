@@ -11,6 +11,10 @@
         "action": "commandPalette"
       },
       "keys": "alt+x"
+    },
+    {
+      "command": "newTab",
+      "keys": "ctrl+t"
     }
   ],
   "confirmCloseAllTabs": false,
