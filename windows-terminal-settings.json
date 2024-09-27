@@ -7,9 +7,7 @@
       "keys": "ctrl+shift+f"
     },
     {
-      "command": {
-        "action": "commandPalette"
-      },
+      "command": "commandPalette",
       "keys": "alt+x"
     },
     {
