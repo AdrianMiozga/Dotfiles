@@ -13,6 +13,7 @@
 # 4. Delete task.
 # 5. Import task.
 
+Install-Module -Name z -Force
 winget install JanDeDobbeleer.OhMyPosh --source winget
 
 New-Item -Force -Path $HOME\Documents\Powershell\Microsoft.Powershell_profile.ps1 -ItemType SymbolicLink -Value $HOME\dotfiles\Powershell_profile.ps1
