@@ -1,8 +1,5 @@
 oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\velvet.omp.json" | Invoke-Expression
 
-# Enable posh-git for oh-my-posh
-$env:POSH_GIT_ENABLED = $true
-
 # Disable venv prompt as velvet theme already has it
 $env:VIRTUAL_ENV_DISABLE_PROMPT = 1
 
