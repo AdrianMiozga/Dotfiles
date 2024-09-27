@@ -3,6 +3,8 @@
 # Install manually:
 # - All Cascadia Code fonts
 #   https://github.com/microsoft/cascadia-code/releases/
+# - CaskaydiaCove Nerd Font
+#   https://www.nerdfonts.com/font-downloads
 
 # Setup dual-key-remap:
 # 1. Create task in Task Scheduler to run dual-key-remap.exe with highest
