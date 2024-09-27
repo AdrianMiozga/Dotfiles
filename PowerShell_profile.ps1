@@ -1,4 +1,4 @@
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\velvet.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$HOME\dotfiles\custom_velvet.omp.json" | Invoke-Expression
 
 # Disable venv prompt as velvet theme already has it
 $env:VIRTUAL_ENV_DISABLE_PROMPT = 1
