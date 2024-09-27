@@ -135,7 +135,7 @@
   "python.formatting.provider": "black",
   "telemetry.telemetryLevel": "off",
   "terminal.integrated.allowChords": false,
-  "terminal.integrated.fontFamily": "Cascadia Code NF",
+  "terminal.integrated.fontFamily": "CaskaydiaCove NFM",
   "update.showReleaseNotes": false,
   "vim.leader": "<space>",
   "vim.normalModeKeyBindings": [

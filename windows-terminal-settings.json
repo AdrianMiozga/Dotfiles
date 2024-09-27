@@ -28,7 +28,7 @@
   "profiles": {
     "defaults": {
       "font": {
-        "face": "Cascadia Code NF"
+        "face": "CaskaydiaCove NF"
       }
     },
     "list": [
