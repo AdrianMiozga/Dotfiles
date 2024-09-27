@@ -99,7 +99,8 @@
   },
   "files.associations": {
     ".ideavimrc": "vimrc",
-    "*.inc": "asm-collection"
+    "*.inc": "asm-collection",
+    "*.sql": "postgres"
   },
   "files.autoSave": "onFocusChange",
   "files.exclude": {
@@ -191,5 +192,6 @@
     "wrap_line_length": 80
   },
   "files.insertFinalNewline": true,
-  "vim.highlightedyank.enable": true
+  "vim.highlightedyank.enable": true,
+  "vscode-postgres.defaultConnection": "localhost"
 }
