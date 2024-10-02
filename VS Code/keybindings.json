@@ -47,7 +47,7 @@
   {
     "key": "alt+r",
     "command": "workbench.action.debug.run",
-    "when": "editorLangId == 'powershell'"
+    "when": "editorLangId == 'powershell' || editorLangId == 'typescript'"
   },
   {
     "key": "alt+r",
