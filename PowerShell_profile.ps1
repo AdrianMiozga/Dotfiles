@@ -32,5 +32,6 @@ Set-PSReadLineKeyHandler -Chord ctrl+k -Function HistorySearchBackward
 Set-PSReadLineKeyHandler -Chord ctrl+j -Function HistorySearchForward
 
 Set-PSReadLineKeyHandler -Chord ctrl+l -Function ViForwardChar
+Set-PSReadLineKeyHandler -Chord alt+l -Function ForwardWord
 Set-PSReadLineKeyHandler -Chord ctrl+w -Function BackwardDeleteWord
 Set-PSReadLineKeyHandler -Chord ctrl+h -Function BackwardDeleteChar
