@@ -27,7 +27,7 @@ xmap <A-S-n> <Plug>AllWholeOccurrences
 :nmap gq <Action>(QuickJavaDoc)
 :nmap ge <Action>(ShowErrorDescription)
 :nmap gt <Action>(GotoTypeDeclaration)
-:nmap gb <action>(GotoImplementation)
+:nmap gb <Action>(GotoImplementation)
 
 :nmap <S-q> <Action>(ReformatCode)
 
