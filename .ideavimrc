@@ -30,6 +30,7 @@ xmap <A-S-n> <Plug>AllWholeOccurrences
 :nmap gb <Action>(GotoImplementation)
 
 :nmap <S-q> <Action>(ReformatCode)
+:vmap <S-q> <Action>(ReformatCode)
 
 :map <leader>re <Action>(Refactorings.QuickListPopupAction)
 :nmap <leader>om <Action>(OverrideMethods)
