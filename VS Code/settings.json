@@ -146,7 +146,7 @@
       "when": "!notebookEditorFocused && editorLangId == 'markdown'"
     },
     {
-      "before": ["g", "e"],
+      "before": ["g", "q"],
       "commands": ["editor.action.showDefinitionPreviewHover"]
     },
     {
