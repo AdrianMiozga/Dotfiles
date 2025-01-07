@@ -194,5 +194,6 @@
   },
   "files.insertFinalNewline": true,
   "vim.highlightedyank.enable": true,
+  "vim.enableNeovim": true,
   "vscode-postgres.defaultConnection": "localhost"
 }

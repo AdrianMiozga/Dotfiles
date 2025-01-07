@@ -15,6 +15,8 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'machakann/vim-highlightedyank'
 Plug 'preservim/nerdtree'
 Plug 'dbakker/vim-paragraph-motion'
+Plug 'vim-matchit'
+Plug 'tommcdo/vim-exchange'
 
 " multiple-cursors
 xmap <Enter> <Plug>SkipOccurrence
