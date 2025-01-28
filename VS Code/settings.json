@@ -168,6 +168,10 @@
     {
       "before": ["c-r"],
       "commands": ["redo"]
+    },
+    {
+      "before": ["<C-w>", "c"],
+      "commands": ["workbench.action.closeActiveEditor"]
     }
   ],
   "vim.visualModeKeyBindings": [
