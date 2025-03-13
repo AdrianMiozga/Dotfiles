@@ -11,8 +11,12 @@ ShowTerminal() {
     WindowsTerminal := "ahk_class CASCADIA_HOSTING_WINDOW_CLASS"
 
     if WinExist(WindowsTerminal) {
-        WinShow(WindowsTerminal)
-        WinActivate(WindowsTerminal)
+        if WinActive(WindowsTerminal) {
+            WinMinimize(WindowsTerminal)
+        } else {
+            WinShow(WindowsTerminal)
+            WinActivate(WindowsTerminal)
+        }
     } else {
         Run("wt.exe")
     }
