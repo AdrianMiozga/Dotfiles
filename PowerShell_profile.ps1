@@ -35,3 +35,7 @@ Set-PSReadLineKeyHandler -Chord ctrl+l -Function ViForwardChar
 Set-PSReadLineKeyHandler -Chord alt+l -Function ForwardWord
 Set-PSReadLineKeyHandler -Chord ctrl+w -Function BackwardDeleteWord
 Set-PSReadLineKeyHandler -Chord ctrl+h -Function BackwardDeleteChar
+
+function urlencode { param($text) [System.Web.HttpUtility]::UrlEncode($text) }
+
+function urldecode { param($text) [System.Web.HttpUtility]::UrlDecode($text) }
