@@ -133,7 +133,21 @@
   {
     "key": "ctrl+alt+z",
     "command": "git.revertSelectedRanges",
-    "when": "isInDiffEditor && !operationInProgress"
+    "when": "editorTextFocus && !operationInProgress && resourceScheme == 'file'"
+  },
+  {
+    "key": "f4",
+    "command": "git.openFile"
+  },
+  {
+    "key": "f7",
+    "command": "workbench.action.editor.nextChange",
+    "when": "editorTextFocus && !textCompareEditorActive && quickDiffDecorationCount != '0'"
+  },
+  {
+    "key": "shift+f7",
+    "command": "workbench.action.editor.previousChange",
+    "when": "editorTextFocus && !textCompareEditorActive && quickDiffDecorationCount != '0'"
   },
   // Zooming
   {
