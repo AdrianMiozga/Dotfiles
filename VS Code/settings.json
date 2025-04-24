@@ -121,6 +121,7 @@
   "git.autofetch": true,
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
+  "git.inputValidation": true,
   "github.copilot.enable": {
     "*": true,
     "markdown": false,
