@@ -2,8 +2,8 @@
 #SingleInstance Force
 
 ; Left Win + Left Ctrl + Scroll switch desktop
-<#<^WheelUp:: Send("{Blind}{Right}")
-<#<^WheelDown:: Send("{Blind}{Left}")
+<#<^WheelDown:: Send("{Blind}{Right}")
+<#<^WheelUp:: Send("{Blind}{Left}")
 
 ; Left Win + Left Ctrl + H/L switch desktop
 <#<^l:: Send("{Blind}{Right}")
