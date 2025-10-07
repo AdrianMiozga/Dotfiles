@@ -19,7 +19,6 @@
       "id": "User.newTab.5DEADB41"
     }
   ],
-  "confirmCloseAllTabs": false,
   "copyFormatting": "none",
   "copyOnSelect": true,
   "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
@@ -37,7 +36,6 @@
       "keys": "ctrl+t"
     }
   ],
-  "multiLinePasteWarning": false,
   "newTabMenu": [
     {
       "type": "remainingProfiles"
@@ -93,8 +91,9 @@
     ]
   },
   "schemes": [],
-  "startOnUserLogin": false,
   "tabSwitcherMode": "disabled",
   "themes": [],
+  "warning.confirmCloseAllTabs": false,
+  "warning.multiLinePaste": false,
   "windowingBehavior": "useAnyExisting"
 }
