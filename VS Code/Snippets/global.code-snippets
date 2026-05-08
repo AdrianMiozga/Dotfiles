@@ -4,5 +4,10 @@
 		"body": [
 			"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE"
 		],
+	},
+	"Insert time": {
+		"prefix": "hour",
+		"body": "${CURRENT_HOUR}:${CURRENT_MINUTE}",
+		"description": "Insert current time in HH:mm format"
 	}
 }
